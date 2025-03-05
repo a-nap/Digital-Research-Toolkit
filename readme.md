@@ -16,6 +16,8 @@ This seminar provides a gentle, hands-on introduction to the essential tools for
 
 The seminar is targeted at **students with little to no experience with programming**. It provides key skills that are useful for research and industry jobs.
 
+There are two versions of this course. The topics are mostly the same, but some topics are new in 2025 and some were omitted.
+
 ## Course content
 
 In this course, you'll learn how to make sense of data, communicate your insights clearly, and collaborate with others by sharing your data efficiently.  It teaches the following concepts:
@@ -46,4 +48,4 @@ The course does not cover topics such as:
 ❌ Experiment design  
 ❌ Inferential statistics  
 ❌ Cognitive modelling  
-❌ Corpus research  
+❌ Corpus research
