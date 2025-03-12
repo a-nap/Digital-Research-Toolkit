@@ -17,16 +17,16 @@ This is a rough overview of the topics discussed every week. These are subject t
 | 3 | 22.04 | Data, R, RStudio | Scripts, data types, encoding, importing and inspecting data | Assignment 3 | Slides |
 | 4 | 29.04 | Data cleaning and manipulation | Basic operators, data manipulation (filtering, sorting, subsetting, arranging, renaming), dealing with missing data, sets, logic, pipes | Assignment 4 | Slides |
 | 5 | 06.05 | Data manipulation | Tidy code, joining data frames, if…else, summarz statistics | Assignment 5 | Slides |
-| 6 | 13.05 | Debugging, data visualization intro | Debugging, MRE, data vis goals, accessibility, plot types, choice of visualization | Assignment 6 | Slides |
-| 7 | 20.05 | | | Assignment 7 | Slides |
-| 8 | 27.05 | | | Assignment 8 | Slides |
-| 9 | 03.06 | | | Assignment 9 | Slides |
+| 6 | 13.05 | Debugging, data visualization | Debugging, MRE, data vis goals, accessibility, plot types, choice of visualization | Assignment 6 | Slides |
+| 7 | 20.05 | Data visualization | Communicating with graphics, accessibility, visualizing in R (`ggplot2`, `esquisse`), exporting plots and data | Assignment 7 | Slides |
+| 8 | 27.05 | Data visualization | Best practices, lying with plots, in-class exercises, exporting/saving plots and data. | Assignment 8 | Slides |
+| 9 | 03.06 | Documentation, Quarto | Pandoc, markdown, Quarto, `knitr`, basic syntax and elements, export, chunk options, documentation | Assignment 9 | Slides |
 | 10 | 10.06 | *no class* | | |
-| 11 | 17.06 | | | Assignment 10 | Slides |
-| 12 | 24.06 | | | Assignment 11 | Slides |
-| 13 | 01.07 | | | Assignment 12 | Slides |
-| 14 | 08.07 | | | Assignment 13 | Slides |
-| 15 | 15.07 | | | In class assignment | Slides |
+| 11 | 17.06 | Text editors, writing reports | Plain text editors, writing reports | Assignment 11 | Slides |
+| 12 | 24.06 | Reference management | Reference managers, literature research, DOIs | Assignment 10 | Slides |
+| 13 | 01.07 | LLM, AI | LLM for humanities, effective AI use | Assignment 12 | Slides |
+| 14 | 08.07 | Git, GitHub | Version control, Git, GitHub, SSH | Assignment 13 | Slides |
+| 15 | 15.07 | Git, GitHub | Git, GitHub, SSH, reverting to older versions | In class assignment | Slides |
 
 ## Recommended reading
 
