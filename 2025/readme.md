@@ -26,7 +26,7 @@ This is a rough overview of the topics discussed every week. These are subject t
 | 12 | 24.06 | Reference management | Reference managers, literature research, DOIs | Assignment 10 | Slides |
 | 13 | 01.07 | LLM, AI | LLM for humanities, effective AI use | Assignment 12 | Slides |
 | 14 | 08.07 | Git, GitHub | Version control, Git, GitHub, SSH | Assignment 13 | Slides |
-| 15 | 15.07 | Git, GitHub | Git, GitHub, SSH, reverting to older versions | In class assignment | Slides |
+| 15 | 15.07 | Git, GitHub, class outro | Git, GitHub, reverting to older versions, class recap | In class assignment | Slides |
 
 ## Recommended reading
 
