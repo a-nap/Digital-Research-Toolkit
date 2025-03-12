@@ -22,11 +22,11 @@ This is a rough overview of the topics discussed every week. These are subject t
 | 8 | 27.05 | Data visualization | Best practices, lying with plots, in-class exercises, exporting/saving plots and data. | Assignment 8 | Slides |
 | 9 | 03.06 | Documentation, Quarto | Pandoc, markdown, Quarto, `knitr`, basic syntax and elements, export, chunk options, documentation | Assignment 9 | Slides |
 | 10 | 10.06 | *no class* | | |
-| 11 | 17.06 | Text editors, writing reports | Plain text editors, writing reports | Assignment 11 | Slides |
-| 12 | 24.06 | Reference management | Reference managers, literature research, DOIs | Assignment 10 | Slides |
+| 11 | 17.06 | Text editors, writing reports | Plain text editors, writing reports | Assignment 10 | Slides |
+| 12 | 24.06 | Reference management | Reference managers, literature research, DOIs | Assignment 11 | Slides |
 | 13 | 01.07 | LLM, AI | LLM for humanities, effective AI use | Assignment 12 | Slides |
 | 14 | 08.07 | Git, GitHub | Version control, Git, GitHub, SSH | Assignment 13 | Slides |
-| 15 | 15.07 | Git, GitHub, class outro | Git, GitHub, reverting to older versions, class recap | In class assignment | Slides |
+| 15 | 15.07 | Git, GitHub, course outro | Git, GitHub, reverting to older versions, class recap | In class assignment | Slides |
 
 ## Recommended reading
 
