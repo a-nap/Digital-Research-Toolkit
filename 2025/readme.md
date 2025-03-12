@@ -16,7 +16,7 @@ This is a rough overview of the topics discussed every week. These are subject t
 | 2 | 15.04 | Data, R, RStudio | Data sources, directories, R and RStudio, installing and loading packages, working with scripts | Assignment 2 | Slides |
 | 3 | 22.04 | Data, R, RStudio | Scripts, data types, encoding, importing and inspecting data | Assignment 3 | Slides |
 | 4 | 29.04 | Data cleaning and manipulation | Basic operators, data manipulation (filtering, sorting, subsetting, arranging, renaming), dealing with missing data, sets, logic, pipes | Assignment 4 | Slides |
-| 5 | 06.05 | Data manipulation | Tidy code, joining data frames, if…else, summarz statistics | Assignment 5 | Slides |
+| 5 | 06.05 | Data manipulation | Tidy code, joining data frames, if…else, summary statistics | Assignment 5 | Slides |
 | 6 | 13.05 | Debugging, data visualization | Debugging, MRE, data vis goals, accessibility, plot types, choice of visualization | Assignment 6 | Slides |
 | 7 | 20.05 | Data visualization | Communicating with graphics, accessibility, visualizing in R (`ggplot2`, `esquisse`), exporting plots and data | Assignment 7 | Slides |
 | 8 | 27.05 | Data visualization | Best practices, lying with plots, in-class exercises, exporting/saving plots and data. | Assignment 8 | Slides |
