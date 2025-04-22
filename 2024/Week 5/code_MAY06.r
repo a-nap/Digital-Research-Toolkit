@@ -6,6 +6,7 @@ library(psych)
 
 moses <- read_csv("moses.csv")
 
+moses <-
 moses |>
   rename(ID = MD5.hash.of.participant.s.IP.address,
          ANSWER = Value) |>
