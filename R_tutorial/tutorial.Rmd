@@ -2,14 +2,14 @@
 title: "Tidyverse Practice, Digital research toolkit for the humanities, SoSe 2025"
 output:
   learnr::tutorial:
-    progressive: false
+    progressive: true
     include_code: FALSE
     theme:
       bg: "#ffffff"
-      fg: "#000000"
+      fg: "#343643"
       secondary: "#0A0A1A"
       primary: "#000000"
-      success: "#4BBF73"
+      success: "#01AEAD"
       info: "#1F9BCF"
       warning: "#F0AD4E"
       danger: "#D9534F"
