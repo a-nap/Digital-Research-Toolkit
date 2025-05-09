@@ -1530,7 +1530,7 @@ mtcars |>
 
 ---
 
-## 14. Assignment and Data Input
+## 14. Assignment and data input
 
 In R, you can use three operators to assign values to a variable: `->`, `=`, and `->>`. 
 
@@ -1608,7 +1608,7 @@ Create a variable called `mix` which contains 3 of your favorite numbers, 3 of y
 
 ---
 
-## 15. Optional: Creating Dataframes
+## 15. Bonus: Creating dataframes
 
 *6 exercises*
 
@@ -1994,7 +1994,7 @@ This is what you should expect:
 
 ---
 
-## 16. Joining Data
+## 16. Joining data
 
 *10 exercises*
 
