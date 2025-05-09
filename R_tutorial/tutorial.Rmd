@@ -2,7 +2,7 @@
 title: "Tidyverse Practice, Digital research toolkit for the humanities, SoSe 2025"
 output:
   learnr::tutorial:
-    progressive: true
+    progressive: false
     include_code: FALSE
     theme:
       bg: "#ffffff"
@@ -21,6 +21,17 @@ runtime: shiny_prerendered
 library(learnr)
 library(tidyverse)
 # tutorial_options(exercise.timelimit = 60)
+
+countries_data <- data.frame(
+  Country = c("Canada", "Japan", "Brazil", "Egypt", "Germany", "Australia"),
+  Capital = c("Ottawa", "Tokyo", "Brasília", "Cairo", "Berlin", "Canberra"),
+  Continent = c("North America", "Asia", "South America", "Africa", "Europe", "Oceania")
+)
+
+school <- data.frame(Age = 1:18,
+                     School = c("Preschool", "Preschool","Preschool","Preschool", "Preschool",
+                              "Primary school", "Primary school","Primary school","Primary school",
+                              "Middle school","Middle school","Middle school","Middle school","Middle school","Middle school", "High school", "High school", "High school"))
 ```
 
 ## Introduction
@@ -56,7 +67,7 @@ The **`iris`** dataset contains measurements (sepal/petal) of 150 iris flowers a
 |`Petal.Width` | Width of petals |
 |`Species`| One of 3 species |
 
-![Flower diagram from Wikipedia](https://upload.wikimedia.org/wikipedia/commons/7/7f/Mature_flower_diagram.svg){width=50%}
+![Flower diagram from Wikipedia](https://upload.wikimedia.org/wikipedia/commons/7/7f/Mature_flower_diagram.svg){width=70%}
 
 #### starwars
 
@@ -224,7 +235,7 @@ starwars
 
 ### Exercise 3.2: Preview the columns 
 
-What columns does the `mtcars` data frame have?
+What columns does the `mtcars` dataframe have?
 
 ```{r preview-ex2, exercise=TRUE}
 # Write your code here
@@ -406,7 +417,7 @@ rename(starwars, age = birth_year, weight = mass)
 
 ### Exercise 5.3: Rename after select
 
-Select "species" and "homeworld" from `starwars` and rename them to "type" and "planet". Do this in two steps, assigning the steps to the variables `df1` and `df2` ("data frame 1" and "data frame 2" for short).
+Select "species" and "homeworld" from `starwars` and rename them to "type" and "planet". Do this in two steps, assigning the steps to the variables `df1` and `df2` ("dataframe 1" and "dataframe 2" for short).
 
 ```{r rename-ex3, exercise=TRUE}
 # Write your code here
@@ -420,14 +431,14 @@ df2 <- rename(df1, type = species, planet = homeworld)
 ```
 
 <div>
-**Hint:** Remember to pass the correct variable (i.e. data frame) to the second function.
+**Hint:** Remember to pass the correct variable (i.e. dataframe) to the second function.
 </div>
 
 ------------------------------------------------------------------------
 
 ## 6. `filter()`
 
-*3 exercises*
+*7 exercises*
 
 Filtering rows is analogous to selecting columns. Some rows are not relevant to us (or maybe at all!) and removing them makes it easier to determine the important information.
 
@@ -449,7 +460,9 @@ In class, we spoke about using R as a calculator and how it can do basic functio
 | range (from NR1 to NR2)                | NR1`:`NR2           |
 | identify element (is VALUE in OBJECT?) | VALUE `%in%` OBJECT |
 
-We talked about set theory and practiced and `&`, as well as or `|`.
+We also practiced set theory. 
+**Set theory** is a part of math and a way to thinking about groups of things and how they relate to each other. These "things" can be anything: numbers, letters, shapes, people, concepts, ideas, etc. We call these collections sets and each thing inside the set is called an **element**. Sets are useful because they allow us to analyze arguments using logic and structure, define categories (e.g. all living beings) and compare them ("some living beings are humans"). You can combine and compare sets by using unions ('or' `|`, so everything in A or B) and intersections ('and' `&`, so only what is in *both* A and B).
+
 
 ![Venn diagram from slides in Week 4](https://pryslopska.com/img/venn-logic.png){width=50%}
 
@@ -493,13 +506,94 @@ On `iris`, filter only the setosa and versicolor species.
 filter(iris, Species %in% c('setosa', 'versicolor'))
 ```
 
+### Exercise 6.4: More filters 
+
+On `iris`, how many flowers of the virginica species have the petal width of at least 2.5 and petal length of 6 or less?
+
+```{r filter-ex4, exercise=TRUE}
+# Write your code here
+
+```
+
+
+```{r filter-ex4-solution}
+# This is true of only 2 flowers
+filter(iris, Species == 'virginica',
+       Petal.Width > 2.4,
+       Petal.Length <= 6.0) 
+```
+
+### Exercise 6.5: Mixing filters
+
+Look at the `starwars` data. What is the name and species of the man who is between 100 and 180 cm tall, has black or blue eyes, weighs 80 kg or less, does not have black hair, and whose homeworld is neither "Sullust" nor "Bespin".
+
+```{r filter-ex5, exercise=TRUE}
+# Write your code here
+
+```
+
+
+```{r filter-ex5-solution}
+filter(starwars, 
+       sex == "male",
+       height %in% 100:180,
+       eye_color %in% c("black", "blue"),
+       mass <= 80,
+       hair_color != "black",
+       !(homeworld %in% c("Sullust", "Bespin")))
+```
+
+<div>
+**Hint:** You don't need to select the name and species. It's enough if you return the row with this individual.
+</div>
+
+
+### Exercise 6.6: More mixing filters
+
+Look at the `starwars` data.  What is the homeworld of the grey or green-skinned, bald man, who has neither yellow nor gold eyes. They weigh under 90 kg and don't pilot the Millennium Falcon. They're either over 230 cm or under 200 cm tall.
+
+```{r filter-ex6, exercise=TRUE}
+# Write your code here
+
+```
+
+```{r filter-ex6-solution}
+filter(starwars,
+       skin_color %in% c("grey", "green"),
+       hair_color == "none",
+       sex =="male",
+       !(eye_color %in% c("yellow", "gold")),
+       mass < 90,
+       starships != "Millennium Falcon",
+       (height < 200 | height > 230)) 
+```
+
+<div>
+**Hint:** You don't need to select the homeworld. It's enough if you return the row with this individual.
+</div>
+
+### Exercise 6.7: Even more filters
+
+Look at the `starwars` data. Find the only woman with a combined height and mass under 200.
+
+```{r filter-ex7, exercise=TRUE}
+# Write your code here
+
+```
+
+```{r filter-ex7-solution}
+filter(starwars,
+       sex =="female",
+       (height + mass) < 200) 
+```
+
 ------------------------------------------------------------------------
 
 ## 7. `mutate()`
 
 *3 exercises*
 
-In R, mutating means adding new columns or changing existing ones in a data frame. 
+In R, mutating means adding new columns or changing existing ones in a dataframe. 
 
 ### Exercise 7.1: Create a new column
 
@@ -598,7 +692,7 @@ nrow(na.omit(airquality))
 
 <div>
 
-**Hint:** Use the function `nrow()` to get the number of rows of a data frame.
+**Hint:** Use the function `nrow()` to get the number of rows of a dataframe.
 
 </div>
 
@@ -731,7 +825,7 @@ Arrange `mtcars` by weight and horsepower, both in ascending order.
 arrange(mtcars, wt, hp)
 ```
 
-### Exercise 9.2: Descending order
+### Exercise 9.2: Descending order of numbers
 
 Arrange `starwars` by height in descending.
 
@@ -751,7 +845,7 @@ arrange(starwars, -height)
 </div>
 
 
-### Exercise 9.3: Descending order
+### Exercise 9.3: Descending order of characters
 
 Arrange `starwars` by species  in descending.
 
@@ -1410,64 +1504,844 @@ mtcars |>
 
 </div>
 
+---
 
-<!-- --- -->
+## 14. Assignment and Data Input
 
+In R, you can use three operators to assign values to a variable: `->`, `=`, and `->>`. 
 
+| Operator | Example | Uses |
+| -------- | ------- | ---- |
+| `<-` and `->` | `x <- 5` | This is the traditional way of assigning values. You can read it as "Put 5 in x". |
+| `=` | `x = 5` | This is similar to the operator above. It works fine in most cases and is usually used inside functions (like `nrow(x = starwars)`). You can read the example as "Set x equal to 5". |
+| `->>` and `<<-` | `x <<- 5` | This is a special kind of `<-` operator: a "global assignment" operator. It assigns 5 to x in the **global environment** (outside the local scope), even if you're inside a function. In lay terms, it makes the variable jump out of its environment and become global.|
 
-<!-- ## 14. FIXME Joins -->
+In this course, we use the `->` operator for assigning global values (e.g. outside of functions) and the `=` operator for assigning values inside functions.
 
-<!-- ![Venn diagram from slides in Week 5](https://pryslopska.com/img/venn-joins.png){width=50%} -->
+```{r, echo=FALSE, include=TRUE}
+starwars_rows <- nrow(x = starwars)
+```
 
+### Exercise 14.1: Assign a numeric vector
 
-<!-- ### Exercise 1: Inner join with model info -->
-<!-- ```{r join-ex1, exercise=TRUE, hint="Use inner_join(). Create a small dataframe with model names and info."} -->
-<!-- # Join mtcars with a new dataframe containing model labels. -->
+Create a vector of your favorite number and assign it to `my_number`.
 
-<!-- ``` -->
-
-<!-- ### Exercise 2: Left join on species info -->
-<!-- ```{r join-ex2, exercise=TRUE, hint="Make a species_info dataframe then left_join() with starwars."} -->
-<!-- # Join starwars with species_info containing descriptions. -->
-
-<!-- ``` -->
-
-<!-- ### Exercise 3: Full join by month -->
-<!-- ```{r join-ex3, exercise=TRUE, hint="Use full_join(). Create second df with Month and label."} -->
-<!-- # Join airquality with month_labels. -->
-
-<!-- ``` -->
-
-<!-- ### Exercise 4: Anti join for unmatched rows -->
-<!-- ```{r join-ex4, exercise=TRUE, hint="Use anti_join() to find starwars rows not matched in a new df."} -->
-<!-- # Find starwars characters missing from a provided list. -->
-
-<!-- ``` -->
-
-<!-- ### Exercise 5: Semi join for overlap -->
-<!-- ```{r join-ex5, exercise=TRUE, hint="Use semi_join() to filter only matching rows."} -->
-<!-- # Keep starwars characters found in a subset. -->
-
-<!-- ``` -->
-
-<!-- ### Exercise 6: Right join example -->
-<!-- ```{r join-ex6, exercise=TRUE, hint="Create a second df with some mtcars rownames, use right_join()."} -->
-<!-- # Use right join to retain all rows from the right df. -->
-
-<!-- ``` -->
-
-<!-- ### Exercise 7: Merging with common column names -->
-<!-- ```{r join-ex7, exercise=TRUE, hint="Join by common column (e.g. Species)."} -->
-<!-- # Join iris with a dataframe with species facts. -->
-
-<!-- ``` -->
-
-<!-- ### Exercise 8: Join and mutate -->
-<!-- ```{r join-ex8, exercise=TRUE, hint="Join then create new column based on joined data."} -->
-<!-- # Join then add a new column using mutate(). -->
-
-<!-- ``` -->
+```{r assign-ex1, exercise=TRUE}
+# Write your code here
 
 
+```
 
-<!-- FIXME practice assignment and joins -->
+```{r assign-ex1-hint}
+# Use <- to assign a vector of your favorite number.
+
+```
+
+### Exercise 14.2: Assign a character vector
+
+Assign a vector of 3 fruit names to `fruits`.
+
+```{r assign-ex2, exercise=TRUE}
+# Write your code here
+
+
+```
+
+```{r assign-ex2-hint}
+# Use <- and c() to store fruit names in a vector.
+
+```
+
+### Exercise 14.3: Create a logical vector
+
+Imagine you're playing the game "3 truths and a lie". Assign a vector of 4 logical values, 3 of which are `TRUE` and one which is not, to the variable `game`.
+
+```{r assign-ex3, exercise=TRUE}
+# Write your code here
+
+
+```
+
+```{r assign-ex3-hint}
+# Use <- and c() to store logical values in a vector.
+
+```
+
+### Exercise 14.3: Create a mixed vector
+
+Create a variable called `mix` which contains 3 of your favorite numbers, 3 of your favorite fruits, and one logical vector.
+
+```{r assign-ex4, exercise=TRUE}
+# Write your code here
+
+
+```
+
+```{r assign-ex4-hint}
+# Use <- and c() to store the values in a vector.
+
+```
+
+---
+
+## 15. Optional: Creating Dataframes
+
+*6 exercises*
+
+While the toolkit course does not cover creating dataframes, we used joins to add the correct answers to the Moses illusion responses. However, sometimes you might want to make data in R instead of importing it from elsewhere.
+
+**You can safely skip this chapter** but working through this examples will give you a better understanding of the structures underlying the tables we're working with in class.
+
+**Note:** The data in this section is either fictional (`children`) or taken from [Wikipedia](https://en.wikipedia.org/) and [WorldoMeter](https://www.worldometers.info/). It may be inaccurate.
+
+### Exercise 15.1: Create a small dataframe
+
+Create a dataframe with names of 3 children (Lila, Kai, and 
+Ezra) and their ages (7, 2, 12), assign it to `children`. Then print the dataframe.
+
+```{r df-ex1, exercise=TRUE, warning=FALSE}
+# Write your code here 
+
+```
+
+```{r df-ex1-solution, warning=FALSE}
+children <- data.frame(name = c("Lila", "Kai", "Ezra"), age = c(7, 2, 12))
+children
+```
+
+<div>
+
+**Hint:** You need two different kinds of assignment for this exercise.
+
+</div>
+
+### Exercise 15.2: Create a country list
+
+Re-create this table as a dataframe, call it `countries`, and print it. 
+
+| Country | Capital | Continent |
+| -- | -- | -- |
+| Canada | Ottawa | North America |
+| Japan | Tokyo | Asia |
+| Brazil | Brasília | South America |
+| Egypt | Cairo | Africa |
+| Germany | Berlin | Europe |
+| Australia | Canberra | Oceania |
+
+```{r df-ex2, exercise=TRUE, warning=FALSE}
+# Write your code here 
+
+```
+
+```{r df-ex2-solution, warning=FALSE}
+countries_data <- data.frame(
+  Country = c("Canada", "Japan", "Brazil", "Egypt", "Germany", "Australia"),
+  Capital = c("Ottawa", "Tokyo", "Brasília", "Cairo", "Berlin", "Canberra"),
+  Continent = c("North America", "Asia", "South America", "Africa", "Europe", "Oceania")
+)
+print(countries_data)
+```
+
+### Exercise 15.3: Add another column
+
+Add the estimated population in millions and print the resulting dataframe.
+
+|  Country  | Capital|     Continent | Population |
+| -- | -- | -- | -- |
+|   Canada    | Ottawa | North America   | 39.566 |
+|    Japan     | Tokyo  |        Asia   | 123.199 |
+|   Brazil | Brasília  |South America   | 212.693 |
+|    Egypt     | Cairo  |      Africa   | 118.084 |
+|  Germany    | Berlin  |      Europe   | 84.145 |
+| Australia  | Canberra  |    Oceania    | 26.934 |
+
+```{r df-ex3, exercise=TRUE}
+# Write your code here 
+
+```
+
+```{r df-ex3-solution}
+countries_data <- data.frame(countries_data, Population = c(39.566, 123.199, 212.693, 118.084, 84.145, 26.934))
+print(countries_data)
+```
+
+<div>
+
+**Hint:** You can reuse the dataframe you created in the previous exercise.
+
+</div>
+
+
+### Exercise 15.4: Combining data with `cbind()`
+
+Think of `cbind()` as adding more columns to your data.
+Use it when you're adding new types of information about your existing entries (like currency and timezone). It is used to bind any number of dataframes by column. The resulting dataframe is wider.
+
+In this exercise, you will create two new variables called `Population` and  `Official_Language` with the population and official languages of these countries. Then, use `cbind()` to add first "Population" and then "Official_Language" to the dataframe. The first part of the code is provided for you. Save the resulting the dataframe by overwriting `countries_data` and preview the data.
+
+|  Country  | Capital |     Continent |   Population |     Official_Language |
+| -- | -- | -- | -- | -- |
+|   Canada  |   Ottawa | North America |    39.566 | English and French |
+|    Japan  |    Tokyo |          Asia |   123.199 |             Japanese |
+|   Brazil  |Brasília | South America |    212.693 |          Portuguese |
+|    Egypt  |    Cairo |        Africa |   118.084 |               Arabic |
+|  Germany  |   Berlin |        Europe |   84.145 |               German |
+| Australia |  Canberra |      Oceania  | 26.934 |               English |
+
+
+```{r cbind1, exercise=TRUE}
+countries_data <- data.frame(
+  Country = c("Canada", "Japan", "Brazil", "Egypt", "Germany", "Australia"),
+  Capital = c("Ottawa", "Tokyo", "Brasília", "Cairo", "Berlin", "Canberra"),
+  Continent = c("North America", "Asia", "South America", "Africa", "Europe", "Oceania")
+)
+
+Population = c(39.566, 123.199, 212.693, 118.084, 84.145, 26.934)
+countries_data <- cbind(countries_data, Population)
+
+# Write your code here 
+
+```
+
+```{r cbind1-solution}
+countries_data <- data.frame(
+  Country = c("Canada", "Japan", "Brazil", "Egypt", "Germany", "Australia"),
+  Capital = c("Ottawa", "Tokyo", "Brasília", "Cairo", "Berlin", "Canberra"),
+  Continent = c("North America", "Asia", "South America", "Africa", "Europe", "Oceania")
+)
+Population = c(39.566, 123.199, 212.693, 118.084, 84.145, 26.934)
+countries_data <- cbind(countries_data, Population)
+
+Official_Language = c("English and French", "Japanese", "Portuguese", "Arabic", "German", "English")
+
+countries_data <- cbind(countries_data, Official_Language)
+print(countries_data)
+```
+
+
+### Exercise 15.5: Combining rows with `rbind()`
+
+Think of `rbind()` (row bind) as adding more rows to your data (in our case, more countries). It is used to bind any number of dataframes by row. The resulting dataframe is longer. 
+Use `rbind()` to add two new countries to the list: Poland and French Polynesia.  The first part of the code is provided for you. Save the resulting the dataframe by overwriting `countries_data` and preview the data.
+
+|  Country  | Capital |     Continent |   Population |     Official_Language |
+| -- | -- | -- | -- | -- |
+| Poland | Warsaw | Europe |  37.637| Polish |
+| French Polynesia | Papeete | Oceania | 0.282 | French and Tahitian |
+
+```{r rbind1, exercise=TRUE}
+countries_data <- data.frame(
+  Country = c("Canada", "Japan", "Brazil", "Egypt", "Germany", "Australia"),
+  Capital = c("Ottawa", "Tokyo", "Brasília", "Cairo", "Berlin", "Canberra"),
+  Continent = c("North America", "Asia", "South America", "Africa", "Europe", "Oceania"),
+  Population = c(39.566, 123.199, 212.693, 118.084, 84.145, 26.934),
+  Official_Language = c("English and French", "Japanese", "Portuguese", "Arabic", "German", "English")
+)
+
+poland <- data.frame(
+  Country = "Poland",
+  Capital = "Warsaw",
+  Continent = "Europe",
+  Population = 37.637,
+  Official_Language = "Polish"
+)
+
+countries_data <- rbind(countries_data, poland)
+
+###################################
+# Start your code here
+###################################
+
+```
+
+```{r rbind1-solution}
+countries_data <- data.frame(
+  Country = c("Canada", "Japan", "Brazil", "Egypt", "Germany", "Australia"),
+  Capital = c("Ottawa", "Tokyo", "Brasília", "Cairo", "Berlin", "Canberra"),
+  Continent = c("North America", "Asia", "South America", "Africa", "Europe", "Oceania"),
+  Population = c(39.566, 123.199, 212.693, 118.084, 84.145, 26.934),
+  Official_Language = c("English and French", "Japanese", "Portuguese", "Arabic", "German", "English")
+)
+
+poland <- data.frame(
+  Country = "Poland",
+  Capital = "Warsaw",
+  Continent = "Europe",
+  Population = 37.637,
+  Official_Language = "Polish"
+)
+
+countries_data <- rbind(countries_data, poland)
+
+french_polynesia <- data.frame(
+  Country = "French Polynesia",
+  Capital = "Papeete",
+  Continent = "Oceania",
+  Population = 0.282,
+  Official_Language = "French and Tahitian"
+)
+
+countries_data <- rbind(countries_data, french_polynesia)
+print(countries_data)
+```
+
+### Exercise 15.6: Combining rows and columns
+
+For this exercise, you will use both `rbind()` and `cbind()`. In class, we will use joins for combining dataframes, but if you know you have the same rows and columns everywhere, you can also use `rbind()` and `cbind()` for adding data to your dataframe. In this exercise:
+
+1. Add four new countries to your dataframe (in this order): India, Argentina, Kenya, and Mexico.
+2. Add three new columns, one by one, to your dataframe: currency, timezone, and calling code.
+3. Sort the resulting dataframe by the continent, population (descending), and timezone. Save it to `contries_final`.
+4. Print the `contries_final` data.
+
+The code for the new rows and columns is provided for you. Mexico does not have an official language *de jure*, so that data is missing.
+
+```{r crbind1, exercise=TRUE}
+# Original dataframe with Poland and French Polynesia.
+countries_data <- data.frame(
+  Country = c("Canada", "Japan", "Brazil", "Egypt", "Germany", "Australia", "Poland", "French Polynesia"),
+  Capital = c("Ottawa", "Tokyo", "Brasília", "Cairo", "Berlin", "Canberra", "Warsaw", "Papeete"),
+  Continent = c("North America", "Asia", "South America", "Africa", "Europe", "Oceania", "Europe", "Oceania"),
+  Population = c(39.566, 123.199, 212.693, 118.084, 84.145, 26.934, 37.637, 0.282),
+  Official_Language = c("English and French", "Japanese", "Portuguese", "Arabic", "German", "English", "Polish", "French and Tahitian")
+)
+
+# New rows
+india <- data.frame(
+  Country = "India",
+  Capital = "New Delhi",
+  Continent = "Asia",
+  Population = 1461.987,
+  Official_Language = "Hindi, English"
+)
+
+peru <- data.frame(
+  Country = "Peru",
+  Capital = "Lima",
+  Continent = "South America",
+  Population = 34.524,
+  Official_Language = "Spanish, Quechua, Aymara"
+)
+
+kenya <- data.frame(
+  Country = "Kenya",
+  Capital = "Nairobi",
+  Continent = "Africa",
+  Population = 57.372,
+  Official_Language = "English, Swahili"
+)
+
+mexico <- data.frame(
+  Country = c("Mexico"),
+  Capital = c("Mexico City"),
+  Continent = c("North America"),
+  Population  = c(128.932),
+  Official_Language  = NA)
+
+# New columns
+currency    <- c(
+  "CAD", "JPY", "BRL", "EGP", "EUR", "AUD", "PLN", "XPF", "INR", "PEN", "KES", "MXN")
+
+timezone    <- c(
+  "UTC-05:00", # Canada (Ottawa)
+  "UTC+09:00", # Japan (Tokyo)
+  "UTC-03:00", # Brazil (Brasília)
+  "UTC+02:00", # Egypt (Cairo)
+  "UTC+01:00", # Germany (Berlin)
+  "UTC+10:00", # Australia (Canberra)
+  "UTC+01:00", # Poland (Warsaw)
+  "UTC-10:00", # French Polynesia (Papeete)
+  "UTC+05:30", # India (New Delhi)
+  "UTC−05:00", # Peru (Lima)
+  "UTC+03:00", # Kenya (Nairobi)
+  "UTC-06:00"  # Mexico (Mexico City)
+)
+
+calling_code <- c(
+  "+1", "+81", "+55", "+20", "+49", "+61", "+48", "+689", "+91", "+51", "+254", "+52")
+
+###################################
+# Start your code here
+###################################
+
+```
+
+```{r crbind1-solution, exercise=TRUE}
+# Original dataframe with Poland and French Polynesia.
+countries_data <- data.frame(
+  Country = c("Canada", "Japan", "Brazil", "Egypt", "Germany", "Australia", "Poland", "French Polynesia"),
+  Capital = c("Ottawa", "Tokyo", "Brasília", "Cairo", "Berlin", "Canberra", "Warsaw", "Papeete"),
+  Continent = c("North America", "Asia", "South America", "Africa", "Europe", "Oceania", "Europe", "Oceania"),
+  Population = c(39.566, 123.199, 212.693, 118.084, 84.145, 26.934, 37.637, 0.282),
+  Official_Language = c("English and French", "Japanese", "Portuguese", "Arabic", "German", "English", "Polish", "French and Tahitian")
+)
+
+# New rows
+india <- data.frame(
+  Country = "India",
+  Capital = "New Delhi",
+  Continent = "Asia",
+  Population = 1461.987,
+  Official_Language = "Hindi, English"
+)
+
+peru <- data.frame(
+  Country = "Peru",
+  Capital = "Lima",
+  Continent = "South America",
+  Population = 34.524,
+  Official_Language = "Spanish, Quechua, Aymara"
+)
+
+kenya <- data.frame(
+  Country = "Kenya",
+  Capital = "Nairobi",
+  Continent = "Africa",
+  Population = 57.372,
+  Official_Language = "English, Swahili"
+)
+
+mexico <- data.frame(
+  Country = c("Mexico"),
+  Capital = c("Mexico City"),
+  Continent = c("North America"),
+  Population  = c(128.932),
+  Official_Language  = NA)
+
+# New columns
+currency    <- c(
+  "CAD", "JPY", "BRL", "EGP", "EUR", "AUD", "PLN", "XPF", "INR", "PEN", "KES", "MXN")
+
+timezone    <- c(
+  "UTC-05:00", # Canada (Ottawa)
+  "UTC+09:00", # Japan (Tokyo)
+  "UTC-03:00", # Brazil (Brasília)
+  "UTC+02:00", # Egypt (Cairo)
+  "UTC+01:00", # Germany (Berlin)
+  "UTC+10:00", # Australia (Canberra)
+  "UTC+01:00", # Poland (Warsaw)
+  "UTC-10:00", # French Polynesia (Papeete)
+  "UTC+05:30", # India (New Delhi)
+  "UTC−05:00", # Peru (Lima)
+  "UTC+03:00", # Kenya (Nairobi)
+  "UTC-06:00"  # Mexico (Mexico City)
+)
+
+calling_code <- c(
+  "+1", "+81", "+55", "+20", "+49", "+61", "+48", "+689", "+91", "+51", "+254", "+52")
+
+# Adding the four new countries.
+countries_data <- rbind(countries_data,
+                        india, 
+                        peru,
+                        kenya,
+                        mexico)
+
+# Adding the four new rows.
+countries_data <- cbind(countries_data,
+                        Currency = currency,
+                        Timezone = timezone,
+                        Calling_code = calling_code)
+                        
+
+contries_final <- arrange(countries_data, 
+                          Continent, 
+                          -Population,
+                          Timezone)
+contries_final
+```
+
+This is what you should expect:
+
+|          Country |     Capital |     Continent | Population |         Official_Language | Currency |  Timezone | Calling_code |
+| ----------------:| -----------:| -------------:|:---------- | -------------------------:| --------:| ---------:| ------------:|
+|            Egypt |       Cairo |        Africa |   118.084  |                    Arabic |      EGP | UTC+02:00 |          +20 |
+|            Kenya |     Nairobi |        Africa |    57.372  |          English, Swahili |      KES | UTC+03:00 |         +254 |
+|            India |   New Delhi |          Asia |  1461.987  |            Hindi, English |      INR | UTC+05:30 |          +91 |
+|            Japan |       Tokyo |          Asia |   123.199  |                  Japanese |      JPY | UTC+09:00 |          +81 |
+|          Germany |      Berlin |        Europe |    84.145  |                    German |      EUR | UTC+01:00 |          +49 |
+|           Poland |      Warsaw |        Europe |    37.637  |                    Polish |      PLN | UTC+01:00 |          +48 |
+|           Mexico | Mexico City | North America |   128.932  |                      <NA> |      MXN | UTC-06:00 |          +52 |
+|           Canada |      Ottawa | North America |    39.566  |        English and French |      CAD | UTC-05:00 |           +1 |
+|        Australia |    Canberra |       Oceania |    26.934  |                   English |      AUD | UTC+10:00 |          +61 |
+| French Polynesia |     Papeete |       Oceania |     0.282  |       French and Tahitian |      XPF | UTC-10:00 |         +689 |
+|           Brazil |    Brasília | South America |   212.693  |                Portuguese |      BRL | UTC-03:00 |          +55 |
+|             Peru |        Lima | South America |    34.524  |  Spanish, Quechua, Aymara |      PEN | UTC−05:00 |          +51 |
+
+---
+
+## 16. Joining Data
+
+*10 exercises*
+
+Sometimes, you have two dataframes, and you want to combine them based on something they have in common (e.g. matching people by name, countries by continent, or books by title and author). `merge()` is a built-in R function. It looks for a common column (like "Country") in two dataframes and joins the rows that match. The `dplyr` package gives you more precise control with functions like:
+
+- `left_join()`
+- `right_join()`
+- `inner_join()`
+- `full_join()`
+- `anti_join()`
+
+They all do the same basic thing as `merge()`: combine two dataframes using a shared column. But they let you choose what to keep if there's not a perfect match.
+
+![Venn diagram from slides in Week 5](https://pryslopska.com/img/venn-join.png){width=50%}
+
+### Exercise 16.1: Full join two small dataframes
+
+For this exercise, do the following tasks:
+
+1. Create a dataframe with names of 10 children **in this order** (Lila, Kai, Ezra, Maya, Ethan, Zoe, Leo, Isla, Raja, Zara) and their ages (7, 2, 12, 4, 3, 2, 10, 13, 6, 7), assign it to `children`.
+2. Create a second dataframe with the names of the children  **in this order** (Zoe, Kai, Lila, Ethan, Leo, Ezra, Isla, Zara, Maya, Raja) and their favorite animals (Clownfish, Panda, Elephant, Penguin, Koala, Tiger, Giraffe, Rabbit, Cat, Fox), assign it to `animals`.
+3. Use `full_join()` to join these two dataframes by the common identifier column.
+
+```{r joinpractice-ex1, exercise=TRUE}
+# Write your code here 
+
+```
+
+```{r joinpractice-ex1-solution}
+children <- data.frame(
+  Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara"),
+  Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7))
+
+animals <- data.frame(
+  Name = c("Zoe", "Kai", "Lila", "Ethan", "Leo", "Ezra", "Isla", "Zara", "Maya", "Raja"),
+  Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox"))
+
+full_join(children, animals, by="Name")
+```
+
+<div>
+
+**Hint:** The `full_join()` function takes as argument two dataframes and the common identifier arguments by which to match the rows `by=`.
+
+</div>
+
+### Exercise 16.2: Inner join two small dataframes
+
+Again, make the same exact dataframes as in the previous exercise, but this time, use `inner_join()`. Does the resulting dataframe differ from the previous one?
+
+```{r joinpractice-ex2, exercise=TRUE}
+# Write your code here 
+
+```
+
+```{r joinpractice-ex2-solution}
+children <- data.frame(
+  Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara"),
+  Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7))
+
+animals <- data.frame(
+  Name = c("Zoe", "Kai", "Lila", "Ethan", "Leo", "Ezra", "Isla", "Zara", "Maya", "Raja"),
+  Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox"))
+
+inner_join(children, animals, by="Name")
+
+```
+
+<div>
+
+**Hint:** The `inner_join()` function takes as argument two dataframes and the common identifier arguments by which to match the rows `by=`, just like `full_join()`.
+
+</div>
+
+### Exercise 16.3: Inner join on two differently sized dataframes
+
+In the previous two exercises, using both `inner_join()` and `full_join()` resulted in the same dataframe. This time, complete the following steps:
+
+1. Create a dataframe with names of 10 children **in this order** (Lila, Kai, Ezra, Maya, Ethan, Zoe, Leo, Isla, Raja, Zara) and their ages (7, 2, 12, 4, 3, 2, 10, 13, 6, 7), assign it to `children`.
+2. Create a second dataframe with the names of 15 children  **in this order** (Zoe, Kai, Lila, Ethan, Leo, Ezra, Isla, Zara, Maya, Raja, Catherine, Takeshi, Sven, Anouk, Amara) and their favorite animals (Clownfish, Panda, Elephant, Penguin, Koala, Tiger, Giraffe, Rabbit, Cat, Fox, Dog, Otter, Parrot, Owl, Llama), assign it to `animals`.
+3. Use `inner_join()` to join these two dataframes by the common identifier column.
+
+How does the resulting data differ from the previous exercises?
+
+```{r joinpractice-ex3, exercise=TRUE}
+# Write your code here 
+
+```
+
+```{r joinpractice-ex3-solution}
+children <- data.frame(
+  Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara"),
+  Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7))
+
+animals <- data.frame(
+  Name = c("Zoe", "Kai", "Lila", "Ethan", "Leo", "Ezra", "Isla", "Zara", "Maya", "Raja", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
+  Favorite_Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+
+inner_join(children, animals, by = "Name")
+```
+
+<div>
+
+**Hint:** You can reuse the code from the previous exercise.
+
+</div>
+
+### Exercise 16.4: Full join two unequal dataframes
+
+In the last 3 exercises, the dataframes ended up being the same. `inner_join()` simply kept the existing children and did not add the newest 5. This time,  make the same exact dataframes as in the previous exercise (16.3), but this time, use `full_join()`. Does the resulting dataframe differ from the previous ones?
+
+```{r joinpractice-ex4, exercise=TRUE}
+# Write your code here 
+
+```
+
+
+```{r joinpractice-ex4-solution}
+children <- data.frame(
+  Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara"),
+  Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7))
+
+animals <- data.frame(
+  Name = c("Zoe", "Kai", "Lila", "Ethan", "Leo", "Ezra", "Isla", "Zara", "Maya", "Raja", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
+  Favorite_Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+
+full_join(children, animals, by = "Name")
+```
+
+
+### Exercise 16.5: Right join
+
+Make the same exact dataframes as in the previous exercises (this code is provided for you), but this time, use `right_join()`. Which other result does this one match: `inner_join()` or `full_join()`?
+
+```{r joinpractice-ex5, exercise=TRUE}
+children <- data.frame(
+  Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara"),
+  Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7))
+
+animals <- data.frame(
+  Name = c("Zoe", "Kai", "Lila", "Ethan", "Leo", "Ezra", "Isla", "Zara", "Maya", "Raja", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
+  Favorite_Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+
+###################################
+# Start your code here
+###################################
+
+```
+
+
+```{r joinpractice-ex5-solution}
+children <- data.frame(
+  Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara"),
+  Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7))
+
+animals <- data.frame(
+  Name = c("Zoe", "Kai", "Lila", "Ethan", "Leo", "Ezra", "Isla", "Zara", "Maya", "Raja", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
+  Favorite_Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+
+right_join(children, animals, by = "Name")
+```
+
+
+### Exercise 16.6: Left join
+
+Make the same exact dataframes as in the previous exercises (this code is provided for you), but this time, use `left_join()`. Which other result does this one match: `inner_join()` or `full_join()`?
+
+```{r joinpractice-ex6, exercise=TRUE}
+children <- data.frame(
+  Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara"),
+  Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7))
+
+animals <- data.frame(
+  Name = c("Zoe", "Kai", "Lila", "Ethan", "Leo", "Ezra", "Isla", "Zara", "Maya", "Raja", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
+  Favorite_Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+
+###################################
+# Start your code here
+###################################
+
+```
+
+```{r joinpractice-ex6-solution}
+children <- data.frame(
+  Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara"),
+  Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7))
+
+animals <- data.frame(
+  Name = c("Zoe", "Kai", "Lila", "Ethan", "Leo", "Ezra", "Isla", "Zara", "Maya", "Raja", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
+  Favorite_Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+
+left_join(children, animals, by = "Name")
+```
+
+
+### Exercise 16.7: Base R merge
+
+Merge two dataframes in base R using `merge()`. Which of the joins does this result resemble?
+
+```{r joinpractice-ex7, exercise=TRUE}
+children <- data.frame(
+  Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara"),
+  Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7))
+
+animals <- data.frame(
+  Name = c("Zoe", "Kai", "Lila", "Ethan", "Leo", "Ezra", "Isla", "Zara", "Maya", "Raja", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
+  Favorite_Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+
+###################################
+# Start your code here
+###################################
+
+```
+
+```{r joinpractice-ex7-solution}
+children <- data.frame(
+  Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara"),
+  Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7))
+
+animals <- data.frame(
+  Name = c("Zoe", "Kai", "Lila", "Ethan", "Leo", "Ezra", "Isla", "Zara", "Maya", "Raja", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
+  Favorite_Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+
+merge(children, animals, by = "Name")
+```
+
+
+
+### Exercise 16.8: Add missing ages and schools
+
+When using `full_join()` on the `children` and `animals` dataframes, there were ages missing from a few kids. In this exercise you will:
+
+1. Create a dataframe for children and their favorite animals (this code is provided for you).
+2. Use `full_join()` to create a combined dataframe of `children` and `animals`.
+3. Using `case_when()`, add the ages for Catherine (5), Takeshi and Sven (both 8), Anouk (3), and Amara (11).
+4. Then, create a new column called `School` for the school they go to:
+  - 1-5: Preschool
+  - 6-9: Primary school
+  - 10-15: Middle school
+  - 16+: High school
+5. Calculate the number of children (`N`) and their average age (`Mean_age`) per school.
+6. Sort the results by number of children.
+7. Print the resulting dataframe.
+
+**Use pipes to complete steps 2-7.**
+
+```{r joinpractice-ex8, exercise=TRUE} 
+children <- data.frame(
+  Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara"),
+  Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7))
+
+animals <- data.frame(
+  Name = c("Zoe", "Kai", "Lila", "Ethan", "Leo", "Ezra", "Isla", "Zara", "Maya", "Raja", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
+  Favorite_Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+
+###################################
+# Start your code here
+###################################
+
+
+```
+
+
+```{r joinpractice-ex8-solution, exercise=TRUE} 
+children <- data.frame(
+  Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara"),
+  Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7))
+
+animals <- data.frame(
+  Name = c("Zoe", "Kai", "Lila", "Ethan", "Leo", "Ezra", "Isla", "Zara", "Maya", "Raja", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
+  Favorite_Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+
+
+full_join(children, animals, by = "Name") |>
+  mutate(
+    Age = case_when(
+      Name == "Catherine" ~ 5,
+      Name == "Takeshi" ~ 8,
+      Name == "Sven" ~ 8,
+      Name == "Anouk" ~ 3,
+      Name == "Amara" ~ 11,
+      TRUE ~ Age           # Keep everything else as it is.
+    ),
+    School = case_when(
+      Age >= 1 & Age <= 5 ~ "Preschool",
+      Age >= 6 & Age <= 9 ~ "Primary school",
+      Age >= 10 & Age <= 15 ~ "Middle school",
+      TRUE ~ "Highschool"
+    )) |>
+  group_by(School) |>
+  summarise(
+    N = n(),
+    Mean_Age = mean(Age)
+  ) |>
+  arrange(N)
+
+```
+
+<div>
+
+**Hint:** Think about how to handle the cases where you **don't** want to change the age.
+
+</div>
+
+### Exercise 16.9: More join practice
+
+Unlike with the `children` and `animals`, the data we combined in class did not have one unique identifier column. We needed to use the item, condition, list and type columns to match the answers to the answer key. For this exercise, keep all the rows. 
+
+```{r joinpractice-ex9, exercise=TRUE} 
+children <- data.frame(
+  Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
+  Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7, 5, 8, 8, 3, 11),
+  Favorite_Animal = c("Elephant", "Panda", "Tiger", "Cat", "Penguin", "Clownfish", "Koala", "Giraffe", "Fox", "Rabbit", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+
+animals_answers <- data.frame(
+  Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
+  Favorite_Animal = c("Elephant", "Panda", "Tiger", "Cat", "Penguin", "Clownfish", "Koala", "Giraffe", "Fox", "Rabbit", "Dog", "Otter", "Parrot", "Owl", "Llama"),
+  Pets = c(F, F, F, T, F, T, F, F, F, T, T, F, T, F, F),
+  Type = c("Mammal", "Mammal", "Mammal", "Mammal", "Bird", "Fish", "Mammal", "Mammal", "Mammal", "Mammal", "Mammal", "Mammal", "Bird", "Bird", "Mammal"))
+
+###################################
+# Start your code here
+###################################
+
+```
+
+
+```{r joinpractice-ex9-solution} 
+children <- data.frame(
+  Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
+  Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7, 5, 8, 8, 3, 11),
+  Favorite_Animal = c("Elephant", "Panda", "Tiger", "Cat", "Penguin", "Clownfish", "Koala", "Giraffe", "Fox", "Rabbit", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+
+animals_answers <- data.frame(
+  Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
+  Favorite_Animal = c("Elephant", "Panda", "Tiger", "Cat", "Penguin", "Clownfish", "Koala", "Giraffe", "Fox", "Rabbit", "Dog", "Otter", "Parrot", "Owl", "Llama"),
+  Pets = c(F, F, F, T, F, T, F, F, F, T, T, F, T, F, F),
+  Type = c("Mammal", "Mammal", "Mammal", "Mammal", "Bird", "Fish", "Mammal", "Mammal", "Mammal", "Mammal", "Mammal", "Mammal", "Bird", "Bird", "Mammal"))
+
+full_join(children, animals_answers, by = c("Name", "Favorite_Animal"))
+```
+
+### Exercise 16.10: Even more join practice
+
+The children in our database are going to school. The school information is recorded in the `school` dataframe:
+
+```{r echo=F}
+school
+```
+
+Use pipes for this exercise. 
+Join the `children` dataframe with the `school` to assign the students to their schools. **Keep only the values which are in the `children` data.** Arrange the results by age and name, then print the result. 
+
+```{r joinpractice-ex10, exercise=TRUE} 
+children <- data.frame(
+  Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
+  Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7, 5, 8, 8, 3, 11))
+
+###################################
+# Start your code here
+###################################
+
+
+```
+
+```{r joinpractice-ex10-solution} 
+children <- data.frame(
+  Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
+  Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7, 5, 8, 8, 3, 11))
+
+school |>
+  inner_join(children, by = join_by(Age)) |> # You can also use right_join()
+  arrange(Age, Name)
+```
