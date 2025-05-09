@@ -1,5 +1,5 @@
 ---
-title: "Tidyverse Practice, Digital research toolkit for the humanities, SoSe 2025"
+title: "Tidyverse Practice"
 output:
   learnr::tutorial:
     progressive: true
@@ -99,6 +99,30 @@ The **`airquality`** data contains daily air quality measurements in New York (M
 | `Solar.R`|  Solar radiation in Langleys in the frequency band 4000–7700 Angstroms from 0800 to 1200 hours at Central Park |
 | `Wind` | Average wind speed in miles per hour at 0700 and 1000 hours at LaGuardia Airport |
 | `Temp` | Maximum daily temperature in degrees Fahrenheit at La Guardia Airport. |
+
+### About this tutorial
+
+These exercises are meant to be complementary to the *Digital Research Toolkit for Linguists* offered in the summer semester 2025 at the University of Stuttgart. I reference the materials and examples from the seminar in several places. The relevant slides and exercises are available from the GitHub repository: [LINK](https://github.com/a-nap/Digital-Research-Toolkit).
+
+For questions and feedback, please contact Anna Prysłopska at `anna . pryslopska [AT] gmail . com`
+
+Topics covered include:
+
+1. Navigating working directories and file structure
+2. Installing, loading, and unloading R packages
+3. Previewing and exploring data
+4. Data preprocessing: 
+   - Selecting and renaming columns
+   - Filtering values (with an introduction to set theory)
+   - Handling missing values
+   - Creating new variables 
+   - Sorting rows
+   - Identifying unique values
+5. Grouping data and summarizing results
+6. Using conditional logic with if-else statements
+7. Assigning values and data input
+8. Creating dataframes, binding rows and columns
+9. Combining data with joins and merges
 
 ------------------------------------------------------------------------
 
@@ -2207,10 +2231,10 @@ When using `full_join()` on the `children` and `animals` dataframes, there were 
 2. Use `full_join()` to create a combined dataframe of `children` and `animals`.
 3. Using `case_when()`, add the ages for Catherine (5), Takeshi and Sven (both 8), Anouk (3), and Amara (11).
 4. Then, create a new column called `School` for the school they go to:
-  - 1-5: Preschool
-  - 6-9: Primary school
-  - 10-15: Middle school
-  - 16+: High school
+   - 1-5: Preschool
+   - 6-9: Primary school
+   - 10-15: Middle school
+   - 16+: High school
 5. Calculate the number of children (`N`) and their average age (`Mean_age`) per school.
 6. Sort the results by number of children.
 7. Print the resulting dataframe.
