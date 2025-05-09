@@ -13,8 +13,10 @@ output:
       info: "#1F9BCF"
       warning: "#F0AD4E"
       danger: "#D9534F"
-
 runtime: shiny_prerendered
+editor_options: 
+  markdown: 
+    wrap: sentence
 ---
 
 ```{r setup, include=FALSE}
@@ -36,93 +38,96 @@ school <- data.frame(Age = 1:18,
 
 ## Introduction
 
-This interactive tutorial will guide you through common **dplyr** and base R functions for data manipulation. You will practice with real datasets like `mtcars`, `iris`, `starwars`, and `airquality`.
+This interactive tutorial will guide you through common **dplyr** and base R functions for data manipulation.
+You will practice with real datasets like `mtcars`, `iris`, `starwars`, and `airquality`.
 
 #### mtcars
 
 The **`mtcars`** dataset contains car data with fuel consumption and design specs for 32 car models taken from the US magazine *Motor Trend* (1973–74).
 
-| Column | Explanation |
-| ----- | ---- |
-| `mpg` |     Miles/(US) gallon |
-| `cyl` |     Number of cylinders |
-| `disp` |    Displacement (cu.in.) |
-| `hp` |  Gross horsepower |
-| `drat` |    Rear axle ratio |
-| `wt` |  Weight (1000 lbs) |
-| `qsec` |    1/4 mile time |
-| `vs` |  Engine (0 = V-shaped, 1 = straight) |
-| `am` |  Transmission (0 = automatic, 1 = manual) |
-| `gear` |    Number of forward gears  |
+| Column | Explanation                              |
+|--------|------------------------------------------|
+| `mpg`  | Miles/(US) gallon                        |
+| `cyl`  | Number of cylinders                      |
+| `disp` | Displacement (cu.in.)                    |
+| `hp`   | Gross horsepower                         |
+| `drat` | Rear axle ratio                          |
+| `wt`   | Weight (1000 lbs)                        |
+| `qsec` | 1/4 mile time                            |
+| `vs`   | Engine (0 = V-shaped, 1 = straight)      |
+| `am`   | Transmission (0 = automatic, 1 = manual) |
+| `gear` | Number of forward gears                  |
 
 #### iris
 
-The **`iris`** dataset contains measurements (sepal/petal) of 150 iris flowers across three species. Originally published by [the  UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/53/iris).
+The **`iris`** dataset contains measurements (sepal/petal) of 150 iris flowers across three species.
+Originally published by [the UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/53/iris).
 
-| Column | Explanation |
-| ----- | ---- |
-|`Sepal.Length` | Length of sepals  |
-|`Sepal.Width` | Width of sepals   |
-|`Petal.Length` | Length of petals |
-|`Petal.Width` | Width of petals |
-|`Species`| One of 3 species |
+| Column         | Explanation      |
+|----------------|------------------|
+| `Sepal.Length` | Length of sepals |
+| `Sepal.Width`  | Width of sepals  |
+| `Petal.Length` | Length of petals |
+| `Petal.Width`  | Width of petals  |
+| `Species`      | One of 3 species |
 
-![Flower diagram from Wikipedia](https://upload.wikimedia.org/wikipedia/commons/7/7f/Mature_flower_diagram.svg){width=70%}
+![Flower diagram from Wikipedia](https://upload.wikimedia.org/wikipedia/commons/7/7f/Mature_flower_diagram.svg){width="90%"}
 
 #### starwars
 
 The **`starwars`** dataset from the `dplyr` package contains [data on characters from the Star Wars universe](https://dplyr.tidyverse.org/reference/starwars.html).
 
 | Column | Explanation |
-| ----- | ---- |
-| `name` |     Name of the character |
-| `height` |  Height (cm) |
-| `mass` |     Weight (kg) |
+|----------------------------------------|--------------------------------|
+| `name` | Name of the character |
+| `height` | Height (cm) |
+| `mass` | Weight (kg) |
 | `hair_color`, `skin_color`, `eye_color` | Hair, skin, and eye colors |
-| `birth_year` | Year born (BBY = Before Battle of Yavin)
+| `birth_year` | Year born (BBY = Before Battle of Yavin) |
 | `sex` | The biological sex of the character, namely male, female, hermaphroditic, or none (as in the case for Droids). |
-| `gender` |     The gender role or gender identity of the character as determined by their personality or the way they were programmed (as in the case for Droids). |
-| `homeworld` |     Name of homeworld | 
+| `gender` | The gender role or gender identity of the character as determined by their personality or the way they were programmed (as in the case for Droids). |
+| `homeworld` | Name of homeworld |
 | `species` | Name of species |
 | `films` | List of films the character appeared in |
 | `vehicles` | List of vehicles the character has piloted |
 | `starships` | List of starships the character has piloted |
 
-
 #### airquality
 
 The **`airquality`** data contains daily air quality measurements in New York (May–September 1973).
-   
+
 | Column | Explanation |
-| ----- | ---- |
+|----------------------------------------|--------------------------------|
 | `Ozone` | Mean ozone in parts per billion from 1300 to 1500 hours at Roosevelt Island |
-| `Solar.R`|  Solar radiation in Langleys in the frequency band 4000–7700 Angstroms from 0800 to 1200 hours at Central Park |
+| `Solar.R` | Solar radiation in Langleys in the frequency band 4000–7700 Angstroms from 0800 to 1200 hours at Central Park |
 | `Wind` | Average wind speed in miles per hour at 0700 and 1000 hours at LaGuardia Airport |
 | `Temp` | Maximum daily temperature in degrees Fahrenheit at La Guardia Airport. |
 
 ### About this tutorial
 
-These exercises are meant to be complementary to the *Digital Research Toolkit for Linguists* offered in the summer semester 2025 at the University of Stuttgart. I reference the materials and examples from the seminar in several places. The relevant slides and exercises are available from the GitHub repository: [LINK](https://github.com/a-nap/Digital-Research-Toolkit).
+These exercises are meant to be complementary to the *Digital Research Toolkit for Linguists* offered in the summer semester 2025 at the University of Stuttgart.
+I reference the materials and examples from the seminar in several places.
+The relevant slides and exercises are available from the GitHub repository: [LINK](https://github.com/a-nap/Digital-Research-Toolkit).
 
 For questions and feedback, please contact Anna Prysłopska at `anna . pryslopska [AT] gmail . com`
 
 Topics covered include:
 
-1. Navigating working directories and file structure
-2. Installing, loading, and unloading R packages
-3. Previewing and exploring data
-4. Data preprocessing: 
-   - Selecting and renaming columns
-   - Filtering values (with an introduction to set theory)
-   - Handling missing values
-   - Creating new variables 
-   - Sorting rows
-   - Identifying unique values
-5. Grouping data and summarizing results
-6. Using conditional logic with if-else statements
-7. Assigning values and data input
-8. Creating dataframes, binding rows and columns
-9. Combining data with joins and merges
+1.  Navigating working directories and file structure
+2.  Installing, loading, and unloading R packages
+3.  Previewing and exploring data
+4.  Data preprocessing:
+    -   Selecting and renaming columns
+    -   Filtering values (with an introduction to set theory)
+    -   Handling missing values
+    -   Creating new variables
+    -   Sorting rows
+    -   Identifying unique values
+5.  Grouping data and summarizing results
+6.  Using conditional logic with if-else statements
+7.  Assigning values and data input
+8.  Creating dataframes, binding rows and columns
+9.  Combining data with joins and merges
 
 ------------------------------------------------------------------------
 
@@ -130,10 +135,10 @@ Topics covered include:
 
 *2 exercises*
 
-A directory or folder is a container for storing files or other folders. This is where R will look for files, where R will save visible and hidden files, and where R will automatically load files from.
+A directory or folder is a container for storing files or other folders.
+This is where R will look for files, where R will save visible and hidden files, and where R will automatically load files from.
 
-![File structure](https://pryslopska.com/img/filestructure.png){width=50%}
-
+![File structure](https://pryslopska.com/img/filestructure.png){width="50%"}
 
 ### Exercise 1.1: Check your working directory
 
@@ -150,7 +155,8 @@ getwd()
 
 ### Exercise 1.2: Set your working directory
 
-Change the working directory to the one you're using in class. You won't actually manage to change it, but try to do it anyway.
+Change the working directory to the one you're using in class.
+You won't actually manage to change it, but try to do it anyway.
 
 ```{r directory-ex2, exercise=TRUE}
 # Write your code here
@@ -165,11 +171,13 @@ setwd("path/to/your/directory/in quotes")
 
 *4 exercises*
 
-Packages are collections of functions and/or datasets with a common theme (e.g. statistics, spatial analysis, plotting). Most packages are available through the Comprehensive R Archive Network (CRAN) and on GitHub.
+Packages are collections of functions and/or datasets with a common theme (e.g. statistics, spatial analysis, plotting).
+Most packages are available through the Comprehensive R Archive Network (CRAN) and on GitHub.
 
 ### Exercise 2.1: Install packages
 
-Install the packages `ggplot2` and `formattable`. You won't be able to do this online (and will get an error like *trying to use CRAN without setting a mirror*), but try anyway.
+Install the packages `ggplot2` and `formattable`.
+You won't be able to do this online (and will get an error like *trying to use CRAN without setting a mirror*), but try anyway.
 
 ```{r packages-ex1, exercise=TRUE}
 # Write your code here
@@ -181,7 +189,9 @@ install.packages(c("ggplot2", "formattable"))
 ```
 
 <div>
+
 **Hint:** You want to take the range of columns, which should also include the "Ozone" and "Temp" columns.
+
 </div>
 
 ### Exercise 2.2: Load packages
@@ -200,7 +210,9 @@ library(formattable)
 
 ### Exercise 2.3: Unload packages
 
-Sometimes packages will conflict with one another. Then you might want to "unload" a packages. Unload the packages you just installed and loaded into the workspace.
+Sometimes packages will conflict with one another.
+Then you might want to "unload" a packages.
+Unload the packages you just installed and loaded into the workspace.
 
 ```{r packages-ex3, exercise=TRUE}
 # Write your code here
@@ -257,7 +269,7 @@ Preview the `starwars` data without calling any functions.
 starwars
 ```
 
-### Exercise 3.2: Preview the columns 
+### Exercise 3.2: Preview the columns
 
 What columns does the `mtcars` dataframe have?
 
@@ -285,8 +297,7 @@ summary(iris)
 
 ### Exercise 3.4: Describing data
 
-Using the package `psych`, show the description of the `airquality` data. 
-
+Using the package `psych`, show the description of the `airquality` data.
 
 ```{r preview-ex4, exercise=TRUE}
 # Write your code here
@@ -299,12 +310,15 @@ describe(airquality)
 ```
 
 <div>
+
 **Hint:** Remember to load the package `psych` first.
+
 </div>
 
 ### Exercise 3.5: Print the whole data
 
-Print the whole `starwars` data. All rows and columns.
+Print the whole `starwars` data.
+All rows and columns.
 
 ```{r preview-ex5, exercise=TRUE}
 # Write your code here
@@ -398,7 +412,9 @@ Use `select()` to select all the columns between "Ozone" and "Temp" in the `airq
 ```
 
 <div>
+
 **Hint:** You want to take the range of columns, which should also include the "Ozone" and "Temp" columns.
+
 </div>
 
 ```{r select-ex4-solution}
@@ -411,7 +427,8 @@ select(airquality, Ozone:Temp)
 
 *3 exercises*
 
-Sometimes, columns are named in a annoying or misleading way. One of the steps of data analysis is to give columns, data, variables etc. meaningful names.
+Sometimes, columns are named in a annoying or misleading way.
+One of the steps of data analysis is to give columns, data, variables etc. meaningful names.
 
 ### Exercise 5.1: Rename a single column
 
@@ -441,7 +458,8 @@ rename(starwars, age = birth_year, weight = mass)
 
 ### Exercise 5.3: Rename after select
 
-Select "species" and "homeworld" from `starwars` and rename them to "type" and "planet". Do this in two steps, assigning the steps to the variables `df1` and `df2` ("dataframe 1" and "dataframe 2" for short).
+Select "species" and "homeworld" from `starwars` and rename them to "type" and "planet".
+Do this in two steps, assigning the steps to the variables `df1` and `df2` ("dataframe 1" and "dataframe 2" for short).
 
 ```{r rename-ex3, exercise=TRUE}
 # Write your code here
@@ -455,7 +473,9 @@ df2 <- rename(df1, type = species, planet = homeworld)
 ```
 
 <div>
+
 **Hint:** Remember to pass the correct variable (i.e. dataframe) to the second function.
+
 </div>
 
 ------------------------------------------------------------------------
@@ -464,7 +484,8 @@ df2 <- rename(df1, type = species, planet = homeworld)
 
 *7 exercises*
 
-Filtering rows is analogous to selecting columns. Some rows are not relevant to us (or maybe at all!) and removing them makes it easier to determine the important information.
+Filtering rows is analogous to selecting columns.
+Some rows are not relevant to us (or maybe at all!) and removing them makes it easier to determine the important information.
 
 In class, we spoke about using R as a calculator and how it can do basic functions:
 
@@ -484,11 +505,14 @@ In class, we spoke about using R as a calculator and how it can do basic functio
 | range (from NR1 to NR2)                | NR1`:`NR2           |
 | identify element (is VALUE in OBJECT?) | VALUE `%in%` OBJECT |
 
-We also practiced set theory. 
-**Set theory** is a part of math and a way to thinking about groups of things and how they relate to each other. These "things" can be anything: numbers, letters, shapes, people, concepts, ideas, etc. We call these collections sets and each thing inside the set is called an **element**. Sets are useful because they allow us to analyze arguments using logic and structure, define categories (e.g. all living beings) and compare them ("some living beings are humans"). You can combine and compare sets by using unions ('or' `|`, so everything in A or B) and intersections ('and' `&`, so only what is in *both* A and B).
+We also practiced set theory.
+**Set theory** is a part of math and a way to thinking about groups of things and how they relate to each other.
+These "things" can be anything: numbers, letters, shapes, people, concepts, ideas, etc.
+We call these collections sets and each thing inside the set is called an **element**.
+Sets are useful because they allow us to analyze arguments using logic and structure, define categories (e.g. all living beings) and compare them ("some living beings are humans").
+You can combine and compare sets by using unions ('or' `|`, so everything in A or B) and intersections ('and' `&`, so only what is in *both* A and B).
 
-
-![Venn diagram from slides in Week 4](https://pryslopska.com/img/venn-logic.png){width=50%}
+![Venn diagram from slides in Week 4](https://pryslopska.com/img/venn-logic.png){width="50%"}
 
 ### Exercise 6.1: Basic filtering
 
@@ -525,12 +549,11 @@ On `iris`, filter only the setosa and versicolor species.
 
 ```
 
-
 ```{r filter-ex3-solution}
 filter(iris, Species %in% c('setosa', 'versicolor'))
 ```
 
-### Exercise 6.4: More filters 
+### Exercise 6.4: More filters
 
 On `iris`, how many flowers of the virginica species have the petal width of at least 2.5 and petal length of 6 or less?
 
@@ -538,7 +561,6 @@ On `iris`, how many flowers of the virginica species have the petal width of at 
 # Write your code here
 
 ```
-
 
 ```{r filter-ex4-solution}
 # This is true of only 2 flowers
@@ -549,13 +571,13 @@ filter(iris, Species == 'virginica',
 
 ### Exercise 6.5: Mixing filters
 
-Look at the `starwars` data. What is the name and species of the man who is between 100 and 180 cm tall, has black or blue eyes, weighs 80 kg or less, does not have black hair, and whose homeworld is neither "Sullust" nor "Bespin".
+Look at the `starwars` data.
+What is the name and species of the man who is between 100 and 180 cm tall, has black or blue eyes, weighs 80 kg or less, does not have black hair, and whose homeworld is neither "Sullust" nor "Bespin".
 
 ```{r filter-ex5, exercise=TRUE}
 # Write your code here
 
 ```
-
 
 ```{r filter-ex5-solution}
 filter(starwars, 
@@ -568,13 +590,18 @@ filter(starwars,
 ```
 
 <div>
-**Hint:** You don't need to select the name and species. It's enough if you return the row with this individual.
-</div>
 
+**Hint:** You don't need to select the name and species.
+It's enough if you return the row with this individual.
+
+</div>
 
 ### Exercise 6.6: More mixing filters
 
-Look at the `starwars` data.  What is the homeworld of the grey or green-skinned, bald man, who has neither yellow nor gold eyes. They weigh under 90 kg and don't pilot the Millennium Falcon. They're either over 230 cm or under 200 cm tall.
+Look at the `starwars` data.
+What is the homeworld of the grey or green-skinned, bald man, who has neither yellow nor gold eyes.
+They weigh under 90 kg and don't pilot the Millennium Falcon.
+They're either over 230 cm or under 200 cm tall.
 
 ```{r filter-ex6, exercise=TRUE}
 # Write your code here
@@ -593,12 +620,16 @@ filter(starwars,
 ```
 
 <div>
-**Hint:** You don't need to select the homeworld. It's enough if you return the row with this individual.
+
+**Hint:** You don't need to select the homeworld.
+It's enough if you return the row with this individual.
+
 </div>
 
 ### Exercise 6.7: Even more filters
 
-Look at the `starwars` data. Find the only woman with a combined height and mass under 200.
+Look at the `starwars` data.
+Find the only woman with a combined height and mass under 200.
 
 ```{r filter-ex7, exercise=TRUE}
 # Write your code here
@@ -617,7 +648,7 @@ filter(starwars,
 
 *3 exercises*
 
-In R, mutating means adding new columns or changing existing ones in a dataframe. 
+In R, mutating means adding new columns or changing existing ones in a dataframe.
 
 ### Exercise 7.1: Create a new column
 
@@ -635,17 +666,17 @@ mutate(mtcars, power_to_weight = hp / wt)
 
 <div>
 
-**Hint:** To calculate the ratio you need to divide one thing by the other. Check the column names in the code window or in the introduction to figure out which values you need.
+**Hint:** To calculate the ratio you need to divide one thing by the other.
+Check the column names in the code window or in the introduction to figure out which values you need.
 
 </div>
-
 
 ### Exercise 7.2: Multiple mutations
 
 In `starwars`, calculate two values:
 
-- "height_m" each character's height in meters, and
-- "bmi" [the body mass index](https://en.wikipedia.org/wiki/Body_mass_index) of each character.
+-   "height_m" each character's height in meters, and
+-   "bmi" [the body mass index](https://en.wikipedia.org/wiki/Body_mass_index) of each character.
 
 **Don't use pipes for this exercise.**
 
@@ -658,12 +689,12 @@ In `starwars`, calculate two values:
 
 <div>
 
-**Hint 1:** BMI is measured in kg/m2. The "height" values in `starwars` are in centimeters.
+**Hint 1:** BMI is measured in kg/m2.
+The "height" values in `starwars` are in centimeters.
 
 **Hint 2:** Since we're not using pipes at this stage yet, you have to proceed in 2 steps.
 
 </div>
-
 
 ```{r mutate-ex2-solution}
 starwars <- mutate(starwars, height_m = height / 100)
@@ -685,10 +716,9 @@ mutate(airquality, temp_c = (Temp - 32) * 5 / 9)
 
 <div>
 
-**Hint:** The conversion formula is temperature °C =  (temperature °F - 32) * 5/9
+**Hint:** The conversion formula is temperature °C = (temperature °F - 32) \* 5/9
 
 </div>
-
 
 ------------------------------------------------------------------------
 
@@ -696,7 +726,10 @@ mutate(airquality, temp_c = (Temp - 32) * 5 / 9)
 
 *7 exercises*
 
-There are many ways in which you can deal with missing values, which is what R calls `NA`. You can remove them (which is what we're doing here), set them to a specific value, or other things. In class, we simply removed all NAs. As a rule of thumb, you want to look at what values are missing from your data to see if there is anything amiss with it.
+There are many ways in which you can deal with missing values, which is what R calls `NA`.
+You can remove them (which is what we're doing here), set them to a specific value, or other things.
+In class, we simply removed all NAs.
+As a rule of thumb, you want to look at what values are missing from your data to see if there is anything amiss with it.
 
 This function takes only one argument.
 
@@ -748,7 +781,6 @@ Subtract the number of rows with missing values from the number of all rows in t
 nrow(iris) - nrow(na.omit(iris))
 ```
 
-
 ### Exercise 8.4: Chain with select
 
 In the `starwars` data, remove NAs then select the name, weight, and birth_year.
@@ -758,7 +790,6 @@ In the `starwars` data, remove NAs then select the name, weight, and birth_year.
 # Write your code here
 
 ```
-
 
 ```{r naomit-ex4-solution}
 df1 <- na.omit(starwars) 
@@ -774,14 +805,14 @@ Using and `filter()`, show all the rows in the `airquality` dataset with missing
 
 ```
 
-
 ```{r naomit-ex5-solution}
 filter(airquality, is.na(Ozone)==TRUE)
 ```
 
 <div>
 
-**Hint:** Use the function `is.na()` to get a logical vector of rows with an `NA` value. This is similar to the functions `is.numeric()`, `is.logical()` etc. that we talked out in class.
+**Hint:** Use the function `is.na()` to get a logical vector of rows with an `NA` value.
+This is similar to the functions `is.numeric()`, `is.logical()` etc. that we talked out in class.
 
 </div>
 
@@ -795,7 +826,6 @@ In the `airquality` data, remove NAs then select the the wind and temperature.
 
 ```
 
-
 ```{r naomit-ex6-solution}
 select(na.omit(airquality), Wind, Temp)
 ```
@@ -806,7 +836,6 @@ select(na.omit(airquality), Wind, Temp)
 
 </div>
 
-
 ### Exercise 8.7: Chain multiple functions in one line
 
 In the `airquality` data, remove NAs then select the the wind and temperature, then count the number of rows.
@@ -816,7 +845,6 @@ In the `airquality` data, remove NAs then select the the wind and temperature, t
 # Write your code here
 
 ```
-
 
 ```{r naomit-ex7-solution}
 nrow(select(na.omit(airquality), Wind, Temp))
@@ -834,7 +862,8 @@ nrow(select(na.omit(airquality), Wind, Temp))
 
 *4 exercises*
 
-Sort the values in a dataframe. By default, `arrange()` sorts the values from smallest to largest of alphabetically from A to Z.
+Sort the values in a dataframe.
+By default, `arrange()` sorts the values from smallest to largest of alphabetically from A to Z.
 
 ### Exercise 9.1: Ascending order
 
@@ -868,10 +897,9 @@ arrange(starwars, -height)
 
 </div>
 
-
 ### Exercise 9.3: Descending order of characters
 
-Arrange `starwars` by species  in descending.
+Arrange `starwars` by species in descending.
 
 ```{r arrange-ex3, exercise=TRUE}
 # Write your code here
@@ -888,7 +916,6 @@ arrange(starwars, desc(species))
 
 </div>
 
-
 ### Exercise 9.4: Multiple variables
 
 Arrange `iris` by species (descending), then by sepal width (ascending), then by sepal length (descending).
@@ -901,7 +928,6 @@ Arrange `iris` by species (descending), then by sepal width (ascending), then by
 ```{r arrange-ex4-solution}
 arrange(iris, desc(Species), Sepal.Width, -Sepal.Length)
 ```
-
 
 ------------------------------------------------------------------------
 
@@ -916,7 +942,7 @@ Show all unique species in the `iris` dataset.
 ```{r unique-ex1, exercise=TRUE}
 # Write your code here
 
-```  
+```
 
 ```{r unique-ex1-solution}
 unique(iris$Species)
@@ -924,12 +950,13 @@ unique(iris$Species)
 
 ### Exercise 10.2: Count unique car gears
 
-Count how many unique gear values are in `mtcars`. Do this in one line.
+Count how many unique gear values are in `mtcars`.
+Do this in one line.
 
 ```{r unique-ex2, exercise=TRUE}
 # Write your code here
 
-```  
+```
 
 ```{r unique-ex2-solution}
 length(unique(mtcars$gear))
@@ -941,7 +968,6 @@ length(unique(mtcars$gear))
 
 </div>
 
-
 ### Exercise 10.3: Multiple unique values
 
 Get the unique eye and skin colors in the `starwars` dataset.
@@ -949,7 +975,7 @@ Get the unique eye and skin colors in the `starwars` dataset.
 ```{r unique-ex3, exercise=TRUE}
 # Write your code here
 
-```  
+```
 
 ```{r unique-ex3-solution}
 unique(c(starwars$skin_color, starwars$eye_color))
@@ -961,48 +987,46 @@ unique(c(starwars$skin_color, starwars$eye_color))
 
 *7 exercises*
 
-A powerful tool for clearly expressing a sequence of multiple
-operations. Passes the output as the new input. They can be read as
-"and then".
+A powerful tool for clearly expressing a sequence of multiple operations.
+Passes the output as the new input.
+They can be read as "and then".
 
 The pipe translates `x |> f(y)` into `f(x, y)`.
 
-
-### Exercise 11.1: Use |> with select
+### Exercise 11.1: Use \|\> with select
 
 Select name and species from `starwars` using native pipe.
 
 ```{r pipe-ex1, exercise=TRUE}
 # Write your code here
 
-```  
+```
 
 ```{r pipe-ex1-solution}
 starwars |> select(name, species)
 ```
 
-### Exercise 11.2: Use |> with select
+### Exercise 11.2: Use \|\> with select
 
 Remove only the skin color from `starwars` using native pipe.
 
 ```{r pipe-ex2, exercise=TRUE}
 # Write your code here
 
-```  
+```
 
 ```{r pipe-ex2-solution}
 starwars |> select(-skin_color)
 ```
 
-
 ### Exercise 11.3: Combine filter and select
 
-Filter only the hermaphroditic characters from `starwars` and select their name, skin color and eye color. 
+Filter only the hermaphroditic characters from `starwars` and select their name, skin color and eye color.
 
 ```{r pipe-ex3, exercise=TRUE}
 # Write your code here
 
-```  
+```
 
 ```{r pipe-ex3-solution}
 starwars |> 
@@ -1010,11 +1034,10 @@ starwars |>
   select(name, skin_color, eye_color)
 ```
 
-
 ### Exercise 11.4: Pipeline with filter, select and mutate
 
-Filter only the female characters from `starwars` and select all the columns except for their hair color. Then change their height to meters.
-
+Filter only the female characters from `starwars` and select all the columns except for their hair color.
+Then change their height to meters.
 
 ```{r pipe-ex4, exercise=TRUE}
 # Write your code here
@@ -1029,11 +1052,9 @@ starwars |>
   mutate(height = height/100)
 ```
 
-
 ### Exercise 11.5: Pipeline with filter, select, remove missing values, and mutate
 
 From the `airquality` dataset, filter the data from June, drop the day of the month, remove missing values, and change the temperature from °Fahrenheit to °Celsius.
-
 
 ```{r pipe-ex5, exercise=TRUE}
 # Write your code here
@@ -1053,15 +1074,13 @@ airquality |>
 
 <div>
 
-**Hint:** The conversion formula is temperature °C =  (temperature °F - 32) * 5/9
+**Hint:** The conversion formula is temperature °C = (temperature °F - 32) \* 5/9
 
 </div>
-
 
 ### Exercise 11.6: Pipeline with filter, select, remove missing values, mutate, and arrange
 
 From the `airquality` dataset, filter the data from the first three weeks of August, keep only the columns "Ozone", "Solar.R", "Wind", and "Temp", remove missing values, change the temperature from °Fahrenheit to °Celsius, change the wind speed from miles per hour to kilometers per hour, make a new column "Month" with the name of the month in English, and sort the values by ozone (ascending) and solar radiation (descending).
-
 
 ```{r pipe-ex6, exercise=TRUE}
 # Write your code here
@@ -1089,11 +1108,11 @@ airquality |>
 
 </div>
 
-
 ### Exercise 11.7: Pipeline with filter, select, remove missing values, and mutate
 
-From the `airquality` dataset, filter the data from May, remove missing values, change the temperature from °Fahrenheit to °Celsius, round the resulting temperature to a whole number (no decimal points), and return only the unique temperatures. How many unique temperatures were there? **Use `mutate()` only once to do the calculation and rounding at the same time.**
-
+From the `airquality` dataset, filter the data from May, remove missing values, change the temperature from °Fahrenheit to °Celsius, round the resulting temperature to a whole number (no decimal points), and return only the unique temperatures.
+How many unique temperatures were there?
+**Use `mutate()` only once to do the calculation and rounding at the same time.**
 
 ```{r pipe-ex7, exercise=TRUE}
 # Write your code here
@@ -1115,12 +1134,12 @@ airquality |>
 
 <div>
 
-**Hint 1:** Use the `round()` function to round a number. It takes two arguments: values (a number or a numeric vector, like a column) and number of decimal places (default 0).
+**Hint 1:** Use the `round()` function to round a number.
+It takes two arguments: values (a number or a numeric vector, like a column) and number of decimal places (default 0).
 
 **Hint 2:** Use `nrow()` to return the number of rows.
 
 </div>
-
 
 ------------------------------------------------------------------------
 
@@ -1128,19 +1147,21 @@ airquality |>
 
 *8 + 2 exercises*
 
+When you group data with `group_by()`, you're putting it into categories based on one or more columns (like grouping people by age or cars by number of cylinders).
+Calling the grouping function does not change anything *visibly* but it changes the data "under the hood".
 
-When you group data with `group_by()`, you're putting it into categories based on one or more columns (like grouping people by age or cars by number of cylinders). Calling the grouping function does not change anything *visibly* but it changes the data "under the hood".
-
-When you summarize with `summarize()`, you calculate some new values for each group—like the average, total, or count. `summarize()` calculates a single value (per group) and drops columns which are not grouped by. In contrast, `mutate()` changes an existing column or adds a new one, but does not drop columns.
+When you summarize with `summarize()`, you calculate some new values for each group—like the average, total, or count.
+`summarize()` calculates a single value (per group) and drops columns which are not grouped by.
+In contrast, `mutate()` changes an existing column or adds a new one, but does not drop columns.
 
 **Use pipes to solve these exercises.**
 
-Recall that in Week 3 of the course we talked about the measures of central tendency (mean, median, standard deviation etc.). If you get stuck on these exercises, check the handout for week 3, pages 22-24.
+Recall that in Week 3 of the course we talked about the measures of central tendency (mean, median, standard deviation etc.).
+If you get stuck on these exercises, check the handout for week 3, pages 22-24.
 
-### Exercise 12.1: Average 
+### Exercise 12.1: Average
 
 Group `mtcars` by number of cylinders and compute average miles per gallon.
-
 
 ```{r group-ex1, exercise=TRUE}
 # Write your code here
@@ -1158,7 +1179,6 @@ mtcars |>
 **Hint:** Use `mean()` to calculate the mean value.
 
 </div>
-
 
 ### Exercise 12.2: Count characters by species
 
@@ -1181,7 +1201,6 @@ starwars |>
 
 </div>
 
-
 ### Exercise 12.3: Median sepal width by species
 
 Calculate the median sepal width per species in the `iris` data.
@@ -1202,7 +1221,6 @@ iris |>
 **Hint:** Use `median()` to calculate the median.
 
 </div>
-
 
 ### Exercise 12.4: Max horsepower by gear
 
@@ -1259,10 +1277,10 @@ airquality |>
 
 </div>
 
-
 ### Exercise 12.7: Central tendency of solar radiation by day
 
-Calculate the average, standard deviation solar radiation per day in `airquality` data. Round the solar radiation to a full number.
+Calculate the average, standard deviation solar radiation per day in `airquality` data.
+Round the solar radiation to a full number.
 
 ```{r group-ex7, exercise=TRUE}
 # Write your code here
@@ -1300,10 +1318,10 @@ starwars |>
 
 </div>
 
-
 ### Bonus Exercise 12.9: Tallest character per species
 
-Find the tallest character for each species in `starwars` data. **Return not only the number, but the whole row.**
+Find the tallest character for each species in `starwars` data.
+**Return not only the number, but the whole row.**
 
 ```{r group-ex9, exercise=TRUE, hint="Use group_by(species) then ."}
 # Write your code here
@@ -1343,7 +1361,7 @@ starwars |>
 
 </div>
 
----
+------------------------------------------------------------------------
 
 ## 13. If else statements
 
@@ -1351,16 +1369,16 @@ starwars |>
 
 In class, we used `ifelse()` and `case_when()` to recode values for conditions and also validate the answers to the Moses illusion questions.
 
-- Use `ifelse()` when you have one condition (or maybe two). It’s great for simple either/or decisions.
-- Use `case_when()` when you have multiple conditions. It checks several conditions in order, and returns the first one that's true.
+-   Use `ifelse()` when you have one condition (or maybe two). It’s great for simple either/or decisions.
+-   Use `case_when()` when you have multiple conditions. It checks several conditions in order, and returns the first one that's true.
 
 **Remember to use pipes to solve these exercises.**
 
-![Diagram of an if else statement](https://pryslopska.com/img/ifelse.png){width=50%}
+![Diagram of an if else statement](https://pryslopska.com/img/ifelse.png){width="50%"}
 
 ### Exercise 13.1: Flag efficient cars
 
-Create a new column called "efficient" in which you flag `mtcars` cars with mpg > 20 as efficient. 
+Create a new column called "efficient" in which you flag `mtcars` cars with mpg \> 20 as efficient.
 
 ```{r ifelse-ex1, exercise=TRUE}
 # Write your code here
@@ -1388,7 +1406,8 @@ mtcars |>
 
 ### Exercise 13.3: Case when for speed class
 
-Label the cars in `mtcars` with a speed class based on horse power: "High" for over 150 horse power, "Medium" for over 100 horse power, and "Low" otherwise. Use `case_when()`, because you have 3 options.
+Label the cars in `mtcars` with a speed class based on horse power: "High" for over 150 horse power, "Medium" for over 100 horse power, and "Low" otherwise.
+Use `case_when()`, because you have 3 options.
 
 ```{r casewhen-ex3, exercise=TRUE}
 # Write your code here
@@ -1404,13 +1423,14 @@ mtcars |>
 
 <div>
 
-**Hint:** `TRUE` is the final "else" statement. 
+**Hint:** `TRUE` is the final "else" statement.
 
 </div>
 
 ### Exercise 13.4: Categorize height
 
-Categorize characters by height in `starwars`: "Very tall" for 200 cm or more, "Tall" for over 180 cm, "Medium" for 150 cm or more, and "Small" for under 150 cm. Show only the name, height, and height class.
+Categorize characters by height in `starwars`: "Very tall" for 200 cm or more, "Tall" for over 180 cm, "Medium" for 150 cm or more, and "Small" for under 150 cm.
+Show only the name, height, and height class.
 
 ```{r casewhen-ex4, exercise=TRUE}
 # Write your code here
@@ -1428,7 +1448,8 @@ starwars |>
 
 ### Exercise 13.5: Flag missing birth year
 
-Flag `starwars` rows where "birth_year" is missing. Then select only the name, birth year, and the newly created column. 
+Flag `starwars` rows where "birth_year" is missing.
+Then select only the name, birth year, and the newly created column.
 
 ```{r ifelse-ex5, exercise=TRUE}
 # Write your code here
@@ -1443,7 +1464,7 @@ starwars |>
 
 <div>
 
-**Hint:** Use `is.na()` inside `ifelse()`. 
+**Hint:** Use `is.na()` inside `ifelse()`.
 
 </div>
 
@@ -1470,13 +1491,14 @@ airquality |>
 
 <div>
 
-**Hint:** Remember to calculate the correct temperature. 
+**Hint:** Remember to calculate the correct temperature.
 
 </div>
 
 ### Exercise 13.7: Case when for iris petal size
 
-Classify `iris` flowers by petal length using `case_when()`: "small", "medium", "large". Base your classification on the quantiles. 
+Classify `iris` flowers by petal length using `case_when()`: "small", "medium", "large".
+Base your classification on the quantiles.
 
 ```{r casewhen-ex7, exercise=TRUE}
 # Write your code here
@@ -1496,13 +1518,16 @@ iris |>
 
 <div>
 
-**Hint:** One of the ways of previewing data allowed us to check the quantiles. Go back to chapter 3 or the handout for Week 3 if you need a refresher.
+**Hint:** One of the ways of previewing data allowed us to check the quantiles.
+Go back to chapter 3 or the handout for Week 3 if you need a refresher.
 
 </div>
 
 ### Exercise 13.8: Engine performance tier
 
-Add column to `mtcars`: "Economy" (horse power under 100 and more than 25 miles per gallon), "Balanced" (between 100 and 200 horse power and at least 15 miles per gallon), "Performance" (more than 200 horse power) tiers. Any remaining cars should be classified as "Other". Lastly, count now many cars are in each of these classes.
+Add column to `mtcars`: "Economy" (horse power under 100 and more than 25 miles per gallon), "Balanced" (between 100 and 200 horse power and at least 15 miles per gallon), "Performance" (more than 200 horse power) tiers.
+Any remaining cars should be classified as "Other".
+Lastly, count now many cars are in each of these classes.
 
 ```{r casewhen-ex8, exercise=TRUE}
 # Write your code here
@@ -1524,21 +1549,21 @@ mtcars |>
 
 <div>
 
-**Hint:** Remember how we combined conditions when filtering and in set theory. 
+**Hint:** Remember how we combined conditions when filtering and in set theory.
 
 </div>
 
----
+------------------------------------------------------------------------
 
 ## 14. Assignment and data input
 
-In R, you can use three operators to assign values to a variable: `->`, `=`, and `->>`. 
+In R, you can use three operators to assign values to a variable: `->`, `=`, and `->>`.
 
 | Operator | Example | Uses |
-| -------- | ------- | ---- |
+|-----------------------|--------------------|---------------------------------------------------------|
 | `<-` and `->` | `x <- 5` | This is the traditional way of assigning values. You can read it as "Put 5 in x". |
 | `=` | `x = 5` | This is similar to the operator above. It works fine in most cases and is usually used inside functions (like `nrow(x = starwars)`). You can read the example as "Set x equal to 5". |
-| `->>` and `<<-` | `x <<- 5` | This is a special kind of `<-` operator: a "global assignment" operator. It assigns 5 to x in the **global environment** (outside the local scope), even if you're inside a function. In lay terms, it makes the variable jump out of its environment and become global.|
+| `->>` and `<<-` | `x <<- 5` | This is a special kind of `<-` operator: a "global assignment" operator. It assigns 5 to x in the **global environment** (outside the local scope), even if you're inside a function. In lay terms, it makes the variable jump out of its environment and become global. |
 
 In this course, we use the `->` operator for assigning global values (e.g. outside of functions) and the `=` operator for assigning values inside functions.
 
@@ -1578,7 +1603,8 @@ Assign a vector of 3 fruit names to `fruits`.
 
 ### Exercise 14.3: Create a logical vector
 
-Imagine you're playing the game "3 truths and a lie". Assign a vector of 4 logical values, 3 of which are `TRUE` and one which is not, to the variable `game`.
+Imagine you're playing the game "3 truths and a lie".
+Assign a vector of 4 logical values, 3 of which are `TRUE` and one which is not, to the variable `game`.
 
 ```{r assign-ex3, exercise=TRUE}
 # Write your code here
@@ -1606,22 +1632,24 @@ Create a variable called `mix` which contains 3 of your favorite numbers, 3 of y
 
 ```
 
----
+------------------------------------------------------------------------
 
 ## 15. Bonus: Creating dataframes
 
 *6 exercises*
 
-While the toolkit course does not cover creating dataframes, we used joins to add the correct answers to the Moses illusion responses. However, sometimes you might want to make data in R instead of importing it from elsewhere.
+While the toolkit course does not cover creating dataframes, we used joins to add the correct answers to the Moses illusion responses.
+However, sometimes you might want to make data in R instead of importing it from elsewhere.
 
 **You can safely skip this chapter** but working through this examples will give you a better understanding of the structures underlying the tables we're working with in class.
 
-**Note:** The data in this section is either fictional (`children`) or taken from [Wikipedia](https://en.wikipedia.org/) and [WorldoMeter](https://www.worldometers.info/). It may be inaccurate.
+**Note:** The data in this section is either fictional (`children`) or taken from [Wikipedia](https://en.wikipedia.org/) and [WorldoMeter](https://www.worldometers.info/).
+It may be inaccurate.
 
 ### Exercise 15.1: Create a small dataframe
 
-Create a dataframe with names of 3 children (Lila, Kai, and 
-Ezra) and their ages (7, 2, 12), assign it to `children`. Then print the dataframe.
+Create a dataframe with names of 3 children (Lila, Kai, and Ezra) and their ages (7, 2, 12), assign it to `children`.
+Then print the dataframe.
 
 ```{r df-ex1, exercise=TRUE, warning=FALSE}
 # Write your code here 
@@ -1641,16 +1669,16 @@ children
 
 ### Exercise 15.2: Create a country list
 
-Re-create this table as a dataframe, call it `countries`, and print it. 
+Re-create this table as a dataframe, call it `countries`, and print it.
 
-| Country | Capital | Continent |
-| -- | -- | -- |
-| Canada | Ottawa | North America |
-| Japan | Tokyo | Asia |
-| Brazil | Brasília | South America |
-| Egypt | Cairo | Africa |
-| Germany | Berlin | Europe |
-| Australia | Canberra | Oceania |
+| Country   | Capital  | Continent     |
+|-----------|----------|---------------|
+| Canada    | Ottawa   | North America |
+| Japan     | Tokyo    | Asia          |
+| Brazil    | Brasília | South America |
+| Egypt     | Cairo    | Africa        |
+| Germany   | Berlin   | Europe        |
+| Australia | Canberra | Oceania       |
 
 ```{r df-ex2, exercise=TRUE, warning=FALSE}
 # Write your code here 
@@ -1670,14 +1698,14 @@ print(countries_data)
 
 Add the estimated population in millions and print the resulting dataframe.
 
-|  Country  | Capital|     Continent | Population |
-| -- | -- | -- | -- |
-|   Canada    | Ottawa | North America   | 39.566 |
-|    Japan     | Tokyo  |        Asia   | 123.199 |
-|   Brazil | Brasília  |South America   | 212.693 |
-|    Egypt     | Cairo  |      Africa   | 118.084 |
-|  Germany    | Berlin  |      Europe   | 84.145 |
-| Australia  | Canberra  |    Oceania    | 26.934 |
+| Country   | Capital  | Continent     | Population |
+|-----------|----------|---------------|------------|
+| Canada    | Ottawa   | North America | 39.566     |
+| Japan     | Tokyo    | Asia          | 123.199    |
+| Brazil    | Brasília | South America | 212.693    |
+| Egypt     | Cairo    | Africa        | 118.084    |
+| Germany   | Berlin   | Europe        | 84.145     |
+| Australia | Canberra | Oceania       | 26.934     |
 
 ```{r df-ex3, exercise=TRUE}
 # Write your code here 
@@ -1695,23 +1723,26 @@ print(countries_data)
 
 </div>
 
-
 ### Exercise 15.4: Combining data with `cbind()`
 
 Think of `cbind()` as adding more columns to your data.
-Use it when you're adding new types of information about your existing entries (like currency and timezone). It is used to bind any number of dataframes by column. The resulting dataframe is wider.
+Use it when you're adding new types of information about your existing entries (like currency and timezone).
+It is used to bind any number of dataframes by column.
+The resulting dataframe is wider.
 
-In this exercise, you will create two new variables called `Population` and  `Official_Language` with the population and official languages of these countries. Then, use `cbind()` to add first "Population" and then "Official_Language" to the dataframe. The first part of the code is provided for you. Save the resulting the dataframe by overwriting `countries_data` and preview the data.
+In this exercise, you will create two new variables called `Population` and `Official_Language` with the population and official languages of these countries.
+Then, use `cbind()` to add first "Population" and then "Official_Language" to the dataframe.
+The first part of the code is provided for you.
+Save the resulting the dataframe by overwriting `countries_data` and preview the data.
 
-|  Country  | Capital |     Continent |   Population |     Official_Language |
-| -- | -- | -- | -- | -- |
-|   Canada  |   Ottawa | North America |    39.566 | English and French |
-|    Japan  |    Tokyo |          Asia |   123.199 |             Japanese |
-|   Brazil  |Brasília | South America |    212.693 |          Portuguese |
-|    Egypt  |    Cairo |        Africa |   118.084 |               Arabic |
-|  Germany  |   Berlin |        Europe |   84.145 |               German |
-| Australia |  Canberra |      Oceania  | 26.934 |               English |
-
+| Country   | Capital  | Continent     | Population | Official_Language  |
+|-----------|----------|---------------|------------|--------------------|
+| Canada    | Ottawa   | North America | 39.566     | English and French |
+| Japan     | Tokyo    | Asia          | 123.199    | Japanese           |
+| Brazil    | Brasília | South America | 212.693    | Portuguese         |
+| Egypt     | Cairo    | Africa        | 118.084    | Arabic             |
+| Germany   | Berlin   | Europe        | 84.145     | German             |
+| Australia | Canberra | Oceania       | 26.934     | English            |
 
 ```{r cbind1, exercise=TRUE}
 countries_data <- data.frame(
@@ -1742,16 +1773,19 @@ countries_data <- cbind(countries_data, Official_Language)
 print(countries_data)
 ```
 
-
 ### Exercise 15.5: Combining rows with `rbind()`
 
-Think of `rbind()` (row bind) as adding more rows to your data (in our case, more countries). It is used to bind any number of dataframes by row. The resulting dataframe is longer. 
-Use `rbind()` to add two new countries to the list: Poland and French Polynesia.  The first part of the code is provided for you. Save the resulting the dataframe by overwriting `countries_data` and preview the data.
+Think of `rbind()` (row bind) as adding more rows to your data (in our case, more countries).
+It is used to bind any number of dataframes by row.
+The resulting dataframe is longer.
+Use `rbind()` to add two new countries to the list: Poland and French Polynesia.
+The first part of the code is provided for you.
+Save the resulting the dataframe by overwriting `countries_data` and preview the data.
 
-|  Country  | Capital |     Continent |   Population |     Official_Language |
-| -- | -- | -- | -- | -- |
-| Poland | Warsaw | Europe |  37.637| Polish |
-| French Polynesia | Papeete | Oceania | 0.282 | French and Tahitian |
+| Country          | Capital | Continent | Population | Official_Language   |
+|------------------|---------|-----------|------------|---------------------|
+| Poland           | Warsaw  | Europe    | 37.637     | Polish              |
+| French Polynesia | Papeete | Oceania   | 0.282      | French and Tahitian |
 
 ```{r rbind1, exercise=TRUE}
 countries_data <- data.frame(
@@ -1811,14 +1845,17 @@ print(countries_data)
 
 ### Exercise 15.6: Combining rows and columns
 
-For this exercise, you will use both `rbind()` and `cbind()`. In class, we will use joins for combining dataframes, but if you know you have the same rows and columns everywhere, you can also use `rbind()` and `cbind()` for adding data to your dataframe. In this exercise:
+For this exercise, you will use both `rbind()` and `cbind()`.
+In class, we will use joins for combining dataframes, but if you know you have the same rows and columns everywhere, you can also use `rbind()` and `cbind()` for adding data to your dataframe.
+In this exercise:
 
-1. Add four new countries to your dataframe (in this order): India, Argentina, Kenya, and Mexico.
-2. Add three new columns, one by one, to your dataframe: currency, timezone, and calling code.
-3. Sort the resulting dataframe by the continent, population (descending), and timezone. Save it to `contries_final`.
-4. Print the `contries_final` data.
+1.  Add four new countries to your dataframe (in this order): India, Argentina, Kenya, and Mexico.
+2.  Add three new columns, one by one, to your dataframe: currency, timezone, and calling code.
+3.  Sort the resulting dataframe by the continent, population (descending), and timezone. Save it to `contries_final`.
+4.  Print the `contries_final` data.
 
-The code for the new rows and columns is provided for you. Mexico does not have an official language *de jure*, so that data is missing.
+The code for the new rows and columns is provided for you.
+Mexico does not have an official language *de jure*, so that data is missing.
 
 ```{r crbind1, exercise=TRUE}
 # Original dataframe with Poland and French Polynesia.
@@ -1977,46 +2014,50 @@ contries_final
 
 This is what you should expect:
 
-|          Country |     Capital |     Continent | Population |         Official_Language | Currency |  Timezone | Calling_code |
-| ----------------:| -----------:| -------------:|:---------- | -------------------------:| --------:| ---------:| ------------:|
-|            Egypt |       Cairo |        Africa |   118.084  |                    Arabic |      EGP | UTC+02:00 |          +20 |
-|            Kenya |     Nairobi |        Africa |    57.372  |          English, Swahili |      KES | UTC+03:00 |         +254 |
-|            India |   New Delhi |          Asia |  1461.987  |            Hindi, English |      INR | UTC+05:30 |          +91 |
-|            Japan |       Tokyo |          Asia |   123.199  |                  Japanese |      JPY | UTC+09:00 |          +81 |
-|          Germany |      Berlin |        Europe |    84.145  |                    German |      EUR | UTC+01:00 |          +49 |
-|           Poland |      Warsaw |        Europe |    37.637  |                    Polish |      PLN | UTC+01:00 |          +48 |
-|           Mexico | Mexico City | North America |   128.932  |                      <NA> |      MXN | UTC-06:00 |          +52 |
-|           Canada |      Ottawa | North America |    39.566  |        English and French |      CAD | UTC-05:00 |           +1 |
-|        Australia |    Canberra |       Oceania |    26.934  |                   English |      AUD | UTC+10:00 |          +61 |
-| French Polynesia |     Papeete |       Oceania |     0.282  |       French and Tahitian |      XPF | UTC-10:00 |         +689 |
-|           Brazil |    Brasília | South America |   212.693  |                Portuguese |      BRL | UTC-03:00 |          +55 |
-|             Peru |        Lima | South America |    34.524  |  Spanish, Quechua, Aymara |      PEN | UTC−05:00 |          +51 |
+| Country | Capital | Continent | Population | Official_Language | Currency | Timezone | Calling_code |
+|--------:|--------:|--------:|:--------|--------:|--------:|--------:|--------:|
+| Egypt | Cairo | Africa | 118.084 | Arabic | EGP | UTC+02:00 | +20 |
+| Kenya | Nairobi | Africa | 57.372 | English, Swahili | KES | UTC+03:00 | +254 |
+| India | New Delhi | Asia | 1461.987 | Hindi, English | INR | UTC+05:30 | +91 |
+| Japan | Tokyo | Asia | 123.199 | Japanese | JPY | UTC+09:00 | +81 |
+| Germany | Berlin | Europe | 84.145 | German | EUR | UTC+01:00 | +49 |
+| Poland | Warsaw | Europe | 37.637 | Polish | PLN | UTC+01:00 | +48 |
+| Mexico | Mexico City | North America | 128.932 | <NA> | MXN | UTC-06:00 | +52 |
+| Canada | Ottawa | North America | 39.566 | English and French | CAD | UTC-05:00 | +1 |
+| Australia | Canberra | Oceania | 26.934 | English | AUD | UTC+10:00 | +61 |
+| French Polynesia | Papeete | Oceania | 0.282 | French and Tahitian | XPF | UTC-10:00 | +689 |
+| Brazil | Brasília | South America | 212.693 | Portuguese | BRL | UTC-03:00 | +55 |
+| Peru | Lima | South America | 34.524 | Spanish, Quechua, Aymara | PEN | UTC−05:00 | +51 |
 
----
+------------------------------------------------------------------------
 
 ## 16. Joining data
 
 *10 exercises*
 
-Sometimes, you have two dataframes, and you want to combine them based on something they have in common (e.g. matching people by name, countries by continent, or books by title and author). `merge()` is a built-in R function. It looks for a common column (like "Country") in two dataframes and joins the rows that match. The `dplyr` package gives you more precise control with functions like:
+Sometimes, you have two dataframes, and you want to combine them based on something they have in common (e.g. matching people by name, countries by continent, or books by title and author).
+`merge()` is a built-in R function.
+It looks for a common column (like "Country") in two dataframes and joins the rows that match.
+The `dplyr` package gives you more precise control with functions like:
 
-- `left_join()`
-- `right_join()`
-- `inner_join()`
-- `full_join()`
-- `anti_join()`
+-   `left_join()`
+-   `right_join()`
+-   `inner_join()`
+-   `full_join()`
+-   `anti_join()`
 
-They all do the same basic thing as `merge()`: combine two dataframes using a shared column. But they let you choose what to keep if there's not a perfect match.
+They all do the same basic thing as `merge()`: combine two dataframes using a shared column.
+But they let you choose what to keep if there's not a perfect match.
 
-![Venn diagram from slides in Week 5](https://pryslopska.com/img/venn-join.png){width=50%}
+![Venn diagram from slides in Week 5](https://pryslopska.com/img/venn-join.png){width="50%"}
 
 ### Exercise 16.1: Full join two small dataframes
 
 For this exercise, do the following tasks:
 
-1. Create a dataframe with names of 10 children **in this order** (Lila, Kai, Ezra, Maya, Ethan, Zoe, Leo, Isla, Raja, Zara) and their ages (7, 2, 12, 4, 3, 2, 10, 13, 6, 7), assign it to `children`.
-2. Create a second dataframe with the names of the children  **in this order** (Zoe, Kai, Lila, Ethan, Leo, Ezra, Isla, Zara, Maya, Raja) and their favorite animals (Clownfish, Panda, Elephant, Penguin, Koala, Tiger, Giraffe, Rabbit, Cat, Fox), assign it to `animals`.
-3. Use `full_join()` to join these two dataframes by the common identifier column.
+1.  Create a dataframe with names of 10 children **in this order** (Lila, Kai, Ezra, Maya, Ethan, Zoe, Leo, Isla, Raja, Zara) and their ages (7, 2, 12, 4, 3, 2, 10, 13, 6, 7), assign it to `children`.
+2.  Create a second dataframe with the names of the children **in this order** (Zoe, Kai, Lila, Ethan, Leo, Ezra, Isla, Zara, Maya, Raja) and their favorite animals (Clownfish, Panda, Elephant, Penguin, Koala, Tiger, Giraffe, Rabbit, Cat, Fox), assign it to `animals`.
+3.  Use `full_join()` to join these two dataframes by the common identifier column.
 
 ```{r joinpractice-ex1, exercise=TRUE}
 # Write your code here 
@@ -2043,7 +2084,8 @@ full_join(children, animals, by="Name")
 
 ### Exercise 16.2: Inner join two small dataframes
 
-Again, make the same exact dataframes as in the previous exercise, but this time, use `inner_join()`. Does the resulting dataframe differ from the previous one?
+Again, make the same exact dataframes as in the previous exercise, but this time, use `inner_join()`.
+Does the resulting dataframe differ from the previous one?
 
 ```{r joinpractice-ex2, exercise=TRUE}
 # Write your code here 
@@ -2071,11 +2113,12 @@ inner_join(children, animals, by="Name")
 
 ### Exercise 16.3: Inner join on two differently sized dataframes
 
-In the previous two exercises, using both `inner_join()` and `full_join()` resulted in the same dataframe. This time, complete the following steps:
+In the previous two exercises, using both `inner_join()` and `full_join()` resulted in the same dataframe.
+This time, complete the following steps:
 
-1. Create a dataframe with names of 10 children **in this order** (Lila, Kai, Ezra, Maya, Ethan, Zoe, Leo, Isla, Raja, Zara) and their ages (7, 2, 12, 4, 3, 2, 10, 13, 6, 7), assign it to `children`.
-2. Create a second dataframe with the names of 15 children  **in this order** (Zoe, Kai, Lila, Ethan, Leo, Ezra, Isla, Zara, Maya, Raja, Catherine, Takeshi, Sven, Anouk, Amara) and their favorite animals (Clownfish, Panda, Elephant, Penguin, Koala, Tiger, Giraffe, Rabbit, Cat, Fox, Dog, Otter, Parrot, Owl, Llama), assign it to `animals`.
-3. Use `inner_join()` to join these two dataframes by the common identifier column.
+1.  Create a dataframe with names of 10 children **in this order** (Lila, Kai, Ezra, Maya, Ethan, Zoe, Leo, Isla, Raja, Zara) and their ages (7, 2, 12, 4, 3, 2, 10, 13, 6, 7), assign it to `children`.
+2.  Create a second dataframe with the names of 15 children **in this order** (Zoe, Kai, Lila, Ethan, Leo, Ezra, Isla, Zara, Maya, Raja, Catherine, Takeshi, Sven, Anouk, Amara) and their favorite animals (Clownfish, Panda, Elephant, Penguin, Koala, Tiger, Giraffe, Rabbit, Cat, Fox, Dog, Otter, Parrot, Owl, Llama), assign it to `animals`.
+3.  Use `inner_join()` to join these two dataframes by the common identifier column.
 
 How does the resulting data differ from the previous exercises?
 
@@ -2104,13 +2147,15 @@ inner_join(children, animals, by = "Name")
 
 ### Exercise 16.4: Full join two unequal dataframes
 
-In the last 3 exercises, the dataframes ended up being the same. `inner_join()` simply kept the existing children and did not add the newest 5. This time,  make the same exact dataframes as in the previous exercise (16.3), but this time, use `full_join()`. Does the resulting dataframe differ from the previous ones?
+In the last 3 exercises, the dataframes ended up being the same.
+`inner_join()` simply kept the existing children and did not add the newest 5.
+This time, make the same exact dataframes as in the previous exercise (16.3), but this time, use `full_join()`.
+Does the resulting dataframe differ from the previous ones?
 
 ```{r joinpractice-ex4, exercise=TRUE}
 # Write your code here 
 
 ```
-
 
 ```{r joinpractice-ex4-solution}
 children <- data.frame(
@@ -2124,10 +2169,10 @@ animals <- data.frame(
 full_join(children, animals, by = "Name")
 ```
 
-
 ### Exercise 16.5: Right join
 
-Make the same exact dataframes as in the previous exercises (this code is provided for you), but this time, use `right_join()`. Which other result does this one match: `inner_join()` or `full_join()`?
+Make the same exact dataframes as in the previous exercises (this code is provided for you), but this time, use `right_join()`.
+Which other result does this one match: `inner_join()` or `full_join()`?
 
 ```{r joinpractice-ex5, exercise=TRUE}
 children <- data.frame(
@@ -2144,7 +2189,6 @@ animals <- data.frame(
 
 ```
 
-
 ```{r joinpractice-ex5-solution}
 children <- data.frame(
   Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara"),
@@ -2157,10 +2201,10 @@ animals <- data.frame(
 right_join(children, animals, by = "Name")
 ```
 
-
 ### Exercise 16.6: Left join
 
-Make the same exact dataframes as in the previous exercises (this code is provided for you), but this time, use `left_join()`. Which other result does this one match: `inner_join()` or `full_join()`?
+Make the same exact dataframes as in the previous exercises (this code is provided for you), but this time, use `left_join()`.
+Which other result does this one match: `inner_join()` or `full_join()`?
 
 ```{r joinpractice-ex6, exercise=TRUE}
 children <- data.frame(
@@ -2189,10 +2233,10 @@ animals <- data.frame(
 left_join(children, animals, by = "Name")
 ```
 
-
 ### Exercise 16.7: Base R merge
 
-Merge two dataframes in base R using `merge()`. Which of the joins does this result resemble?
+Merge two dataframes in base R using `merge()`.
+Which of the joins does this result resemble?
 
 ```{r joinpractice-ex7, exercise=TRUE}
 children <- data.frame(
@@ -2221,27 +2265,26 @@ animals <- data.frame(
 merge(children, animals, by = "Name")
 ```
 
-
-
 ### Exercise 16.8: Add missing ages and schools
 
-When using `full_join()` on the `children` and `animals` dataframes, there were ages missing from a few kids. In this exercise you will:
+When using `full_join()` on the `children` and `animals` dataframes, there were ages missing from a few kids.
+In this exercise you will:
 
-1. Create a dataframe for children and their favorite animals (this code is provided for you).
-2. Use `full_join()` to create a combined dataframe of `children` and `animals`.
-3. Using `case_when()`, add the ages for Catherine (5), Takeshi and Sven (both 8), Anouk (3), and Amara (11).
-4. Then, create a new column called `School` for the school they go to:
-   - 1-5: Preschool
-   - 6-9: Primary school
-   - 10-15: Middle school
-   - 16+: High school
-5. Calculate the number of children (`N`) and their average age (`Mean_age`) per school.
-6. Sort the results by number of children.
-7. Print the resulting dataframe.
+1.  Create a dataframe for children and their favorite animals (this code is provided for you).
+2.  Use `full_join()` to create a combined dataframe of `children` and `animals`.
+3.  Using `case_when()`, add the ages for Catherine (5), Takeshi and Sven (both 8), Anouk (3), and Amara (11).
+4.  Then, create a new column called `School` for the school they go to:
+    -   1-5: Preschool
+    -   6-9: Primary school
+    -   10-15: Middle school
+    -   16+: High school
+5.  Calculate the number of children (`N`) and their average age (`Mean_age`) per school.
+6.  Sort the results by number of children.
+7.  Print the resulting dataframe.
 
 **Use pipes to complete steps 2-7.**
 
-```{r joinpractice-ex8, exercise=TRUE} 
+```{r joinpractice-ex8, exercise=TRUE}
 children <- data.frame(
   Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara"),
   Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7))
@@ -2257,8 +2300,7 @@ animals <- data.frame(
 
 ```
 
-
-```{r joinpractice-ex8-solution, exercise=TRUE} 
+```{r joinpractice-ex8-solution, exercise=TRUE}
 children <- data.frame(
   Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara"),
   Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7))
@@ -2301,9 +2343,11 @@ full_join(children, animals, by = "Name") |>
 
 ### Exercise 16.9: More join practice
 
-Unlike with the `children` and `animals`, the data we combined in class did not have one unique identifier column. We needed to use the item, condition, list and type columns to match the answers to the answer key. For this exercise, keep all the rows. 
+Unlike with the `children` and `animals`, the data we combined in class did not have one unique identifier column.
+We needed to use the item, condition, list and type columns to match the answers to the answer key.
+For this exercise, keep all the rows.
 
-```{r joinpractice-ex9, exercise=TRUE} 
+```{r joinpractice-ex9, exercise=TRUE}
 children <- data.frame(
   Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
   Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7, 5, 8, 8, 3, 11),
@@ -2321,8 +2365,7 @@ animals_answers <- data.frame(
 
 ```
 
-
-```{r joinpractice-ex9-solution} 
+```{r joinpractice-ex9-solution}
 children <- data.frame(
   Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
   Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7, 5, 8, 8, 3, 11),
@@ -2339,16 +2382,18 @@ full_join(children, animals_answers, by = c("Name", "Favorite_Animal"))
 
 ### Exercise 16.10: Even more join practice
 
-The children in our database are going to school. The school information is recorded in the `school` dataframe:
+The children in our database are going to school.
+The school information is recorded in the `school` dataframe:
 
 ```{r echo=F}
 school
 ```
 
-Use pipes for this exercise. 
-Join the `children` dataframe with the `school` to assign the students to their schools. **Keep only the values which are in the `children` data.** Arrange the results by age and name, then print the result. 
+Use pipes for this exercise.
+Join the `children` dataframe with the `school` to assign the students to their schools.
+**Keep only the values which are in the `children` data.** Arrange the results by age and name, then print the result.
 
-```{r joinpractice-ex10, exercise=TRUE} 
+```{r joinpractice-ex10, exercise=TRUE}
 children <- data.frame(
   Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
   Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7, 5, 8, 8, 3, 11))
@@ -2360,7 +2405,7 @@ children <- data.frame(
 
 ```
 
-```{r joinpractice-ex10-solution} 
+```{r joinpractice-ex10-solution}
 children <- data.frame(
   Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
   Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7, 5, 8, 8, 3, 11))
