@@ -17,12 +17,21 @@ This project uses the `learnr` package to provide an interactive and progressive
 
 The tutorial includes the following modules:
 
-- Working with the R Working Directory
-- Installing and Managing Packages
-- Previewing and Exploring Datasets
-- Selecting and Renaming Columns
-- Filtering and Mutating Data
-- Handling Missing Values
+1. Navigating working directories and file structure
+2. Installing, loading, and unloading R packages
+3. Previewing and exploring data
+4. Data preprocessing: 
+   - Selecting and renaming columns
+   - Filtering values (with an introduction to set theory)
+   - Handling missing values
+   - Creating new variables 
+   - Sorting rows
+   - Identifying unique values
+5. Grouping data and summarizing results
+6. Using conditional logic with if-else statements
+7. Assigning values and data input
+8. Creating dataframes, binding rows and columns
+9. Combining data with joins and merges
 
 Each section includes multiple hands-on exercises designed to reinforce the concepts covered.
 
