@@ -12,12 +12,12 @@ This is a rough overview of the topics discussed every week. These are subject t
 
 | Week | Date | Topic | Description | Assignments | Materials |
 | ---- | ----- | ----------- | ----------- | --------- | --------- |
-| 1 | 08.04 | Course intro, data | General information, syllabus, data security | Assignment 1 | Slides |
-| 2 | 15.04 | Data, R, RStudio | Data sources, directories, R and RStudio, installing and loading packages, working with scripts | Assignment 2 | Slides |
-| 3 | 22.04 | Data, R, RStudio | Scripts, data types, encoding, importing and inspecting data | Assignment 3 | Slides |
-| 4 | 29.04 | Data cleaning and manipulation | Basic operators, data manipulation (filtering, sorting, subsetting, arranging, renaming), dealing with missing data, sets, logic, pipes | Assignment 4 | Slides |
-| 5 | 06.05 | Data manipulation | Tidy code, joining data frames, if…else, summary statistics | Assignment 5 | Slides |
-| 6 | 13.05 | Debugging, data visualization | Debugging, MRE, data vis goals, accessibility, plot types, choice of visualization | Assignment 6 | Slides |
+| 1 | 08.04 | Course intro, data | General information, syllabus, data security | [Assignment 1](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%201/assignment01.md) | [Slides](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%201/week01handout.pdf) |
+| 2 | 15.04 | Data, R, RStudio | Data sources, directories, R and RStudio, installing and loading packages, working with scripts | [Assignment 2](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%202/assignment02.md) | [Slides](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%202/week02handout.pdf), [code](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%202/week02.R) |
+| 3 | 22.04 | Data, R, RStudio | Scripts, data types, encoding, importing and inspecting data | [Assignment 3](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%203/assignment03.md) | [Slides](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%203/week03handout.pdf), [code](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%203/week03.R) |
+| 4 | 29.04 | Data cleaning and manipulation | Basic operators, data manipulation (filtering, sorting, subsetting, arranging, renaming), dealing with missing data, sets, logic | [Assignment 4](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%204/assignment04.md) | [Slides](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%204/week04handout.pdf), [code](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%204/week04.R) |
+| 5 | 06.05 | Data manipulation | Mutating, pipes, joining data frames, if…else, summary statistics | [Assignment 5](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%205/assignment05.md) | [Slides](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%205/week05handout.pdf), [code](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%205/week05.R) |
+| 6 | 13.05 | Debugging, data visualization | Debugging, MRE, data vis goals, accessibility, plot types | Assignment 6 | Slides |
 | 7 | 20.05 | Data visualization | Communicating with graphics, accessibility, visualizing in R (`ggplot2`, `esquisse`), exporting plots and data | Assignment 7 | Slides |
 | 8 | 27.05 | Data visualization | Best practices, lying with plots, in-class exercises, exporting/saving plots and data. | Assignment 8 | Slides |
 | 9 | 03.06 | Documentation, Quarto | Pandoc, markdown, Quarto, `knitr`, basic syntax and elements, export, chunk options, documentation | Assignment 9 | Slides |
@@ -48,6 +48,8 @@ This is a rough overview of the topics discussed every week. These are subject t
 
 - QCBS R Workshop Series [`https://r.qcbs.ca/`](https://r.qcbs.ca/)
 - Wickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund (2023). *R for data science: import, tidy, transform, visualize, and model data*. 2nd ed. O’Reilly Media, Inc. URL: [`https://r4ds.hadley.nz/`](https://r4ds.hadley.nz/).
+- [Tidyverse practice tutorial](https://anna-pryslopska.shinyapps.io/TidyversePractice) for this class (selecting, arranging, filtering, grouping, summarizing etc.)
+- [Penguin wrangling `dplyr` tutorial](https://allisonhorst.github.io/posts/2021-02-08-dplyr-learnr/) by Allison Horst.
 
 ### Experiment
 
