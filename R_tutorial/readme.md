@@ -2,6 +2,8 @@
 
 Welcome to the repository for Tidyverse Practice, an interactive R tutorial developed for the *Digital Research Toolkit for the Humanities* course in the Summer Semester 2025. This tutorial helps students and researchers new to R gain hands-on experience with the tidyverse ecosystem, focusing on data manipulation with real-world datasets.
 
+Live demo: [LINK](https://anna-pryslopska.shinyapps.io/TidyversePractice/)
+
 ## About the Project
 
 This project uses the `learnr` package to provide an interactive and progressive learning environment. The tutorial covers foundational R concepts and `dplyr` functions with exercises that help learners build confidence in working with data.

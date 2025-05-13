@@ -1,28 +1,27 @@
 ---
 title: "Tidyverse Practice"
-output:
-  learnr::tutorial:
-    progressive: true
-    include_code: FALSE
-    theme:
-      bg: "#ffffff"
-      fg: "#343643"
-      secondary: "#0A0A1A"
-      primary: "#000000"
-      success: "#01AEAD"
-      info: "#1F9BCF"
-      warning: "#F0AD4E"
-      danger: "#D9534F"
+author: "Anna Pryslopska"
+output: learnr::tutorial
+    # progressive: true
+    # include_code: FALSE
+    # theme:
+    #   bg: "#ffffff"
+    #   fg: "#343643"
+    #   secondary: "#0A0A1A"
+    #   primary: "#000000"
+    #   success: "#01AEAD"
+    #   info: "#1F9BCF"
+    #   warning: "#F0AD4E"
+    #   danger: "#D9534F"
 runtime: shiny_prerendered
-editor_options: 
-  markdown: 
-    wrap: sentence
 ---
 
 ```{r setup, include=FALSE}
+library(shiny)
 library(learnr)
 library(tidyverse)
-# tutorial_options(exercise.timelimit = 60)
+library(fontawesome)
+library(here)
 
 countries_data <- data.frame(
   Country = c("Canada", "Japan", "Brazil", "Egypt", "Germany", "Australia"),
@@ -34,6 +33,9 @@ school <- data.frame(Age = 1:18,
                      School = c("Preschool", "Preschool","Preschool","Preschool", "Preschool",
                               "Primary school", "Primary school","Primary school","Primary school",
                               "Middle school","Middle school","Middle school","Middle school","Middle school","Middle school", "High school", "High school", "High school"))
+
+knitr::opts_chunk$set(echo = FALSE)
+
 ```
 
 ## Introduction
@@ -78,7 +80,7 @@ Originally published by [the UCI Machine Learning Repository](https://archive.ic
 The **`starwars`** dataset from the `dplyr` package contains [data on characters from the Star Wars universe](https://dplyr.tidyverse.org/reference/starwars.html).
 
 | Column | Explanation |
-|----------------------------------------|--------------------------------|
+|----|----|
 | `name` | Name of the character |
 | `height` | Height (cm) |
 | `mass` | Weight (kg) |
@@ -97,7 +99,7 @@ The **`starwars`** dataset from the `dplyr` package contains [data on characters
 The **`airquality`** data contains daily air quality measurements in New York (May–September 1973).
 
 | Column | Explanation |
-|----------------------------------------|--------------------------------|
+|----|----|
 | `Ozone` | Mean ozone in parts per billion from 1300 to 1500 hours at Roosevelt Island |
 | `Solar.R` | Solar radiation in Langleys in the frequency band 4000–7700 Angstroms from 0800 to 1200 hours at Central Park |
 | `Wind` | Average wind speed in miles per hour at 0700 and 1000 hours at LaGuardia Airport |
@@ -162,6 +164,12 @@ You won't actually manage to change it, but try to do it anyway.
 # Write your code here
 
 ```
+
+
+```{r directory-ex2-hint}
+setwd("path/to/your/directory/in quotes")
+```
+
 
 ```{r directory-ex2-solution}
 setwd("path/to/your/directory/in quotes")
@@ -1560,7 +1568,7 @@ mtcars |>
 In R, you can use three operators to assign values to a variable: `->`, `=`, and `->>`.
 
 | Operator | Example | Uses |
-|-----------------------|--------------------|---------------------------------------------------------|
+|----|----|----|
 | `<-` and `->` | `x <- 5` | This is the traditional way of assigning values. You can read it as "Put 5 in x". |
 | `=` | `x = 5` | This is similar to the operator above. It works fine in most cases and is usually used inside functions (like `nrow(x = starwars)`). You can read the example as "Set x equal to 5". |
 | `->>` and `<<-` | `x <<- 5` | This is a special kind of `<-` operator: a "global assignment" operator. It assigns 5 to x in the **global environment** (outside the local scope), even if you're inside a function. In lay terms, it makes the variable jump out of its environment and become global. |
@@ -2015,7 +2023,7 @@ contries_final
 This is what you should expect:
 
 | Country | Capital | Continent | Population | Official_Language | Currency | Timezone | Calling_code |
-|--------:|--------:|--------:|:--------|--------:|--------:|--------:|--------:|
+|---:|---:|---:|:---|---:|---:|---:|---:|
 | Egypt | Cairo | Africa | 118.084 | Arabic | EGP | UTC+02:00 | +20 |
 | Kenya | Nairobi | Africa | 57.372 | English, Swahili | KES | UTC+03:00 | +254 |
 | India | New Delhi | Asia | 1461.987 | Hindi, English | INR | UTC+05:30 | +91 |

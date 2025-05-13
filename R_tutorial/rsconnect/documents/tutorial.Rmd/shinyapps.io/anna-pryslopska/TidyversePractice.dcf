@@ -1,12 +1,14 @@
 name: TidyversePractice
 title: TidyversePractice
-username: anna-pryslopska
+username: 
 account: anna-pryslopska
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 14699182
-bundleId: 10256901
+bundleId: 10257058
 url: https://anna-pryslopska.shinyapps.io/TidyversePractice/
 version: 1
 asMultiple: FALSE
 asStatic: FALSE
+when: 1612315822.30477
+
