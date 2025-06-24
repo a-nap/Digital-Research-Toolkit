@@ -871,7 +871,7 @@ filter(starwars,
 
 <div>
 
-**Hint:** You don't need to select the name and species.
+<i class="fa-solid fa-circle-info"></i> **Hint:** You don't need to select the name and species.
 It's enough if you return the row with this individual.
 
 </div>
@@ -924,7 +924,7 @@ filter(starwars,
 
 <div>
 
-**Hint:** You don't need to select the homeworld.
+<i class="fa-solid fa-circle-info"></i> **Hint:** You don't need to select the homeworld.
 It's enough if you return the row with this individual.
 
 </div>
@@ -974,7 +974,7 @@ mutate(mtcars, power_to_weight = hp / wt)
 
 <div>
 
-**Hint:** To calculate the ratio you need to divide one thing by the other.
+<i class="fa-solid fa-circle-info"></i> **Hint:** To calculate the ratio you need to divide one thing by the other.
 Check the column names in the code window or in the introduction to figure out which values you need.
 
 </div>
@@ -1015,7 +1015,7 @@ starwars <- mutate(starwars, bmi = mass / (height_m ^ 2))
 
 <div>
 
-**Hint:** Since we're not using pipes at this stage yet, you have to proceed in 2 steps.
+<i class="fa-solid fa-circle-info"></i> **Hint:** Since we're not using pipes at this stage yet, you have to proceed in 2 steps.
 
 </div>
 
@@ -1037,7 +1037,7 @@ mutate(airquality, temp_c = (Temp - 32) * 5 / 9)
 
 <div>
 
-**Hint:** The conversion formula for temperature in °C is:
+<i class="fa-solid fa-circle-info"></i> **Hint:** The conversion formula for temperature in °C is:
 
 $$
 C = \frac{5}{9}(F - 32)
@@ -1146,7 +1146,7 @@ filter(airquality, is.na(Ozone)==TRUE)
 
 <div>
 
-**Hint:** Use the function `is.na()` to get a logical vector of rows with an `NA` value.
+<i class="fa-solid fa-circle-info"></i> **Hint:** Use the function `is.na()` to get a logical vector of rows with an `NA` value.
 This is similar to the functions `is.numeric()`, `is.logical()` etc. that we talked out in class.
 
 </div>
@@ -1173,7 +1173,7 @@ select(na.omit(airquality), Wind, Temp)
 
 <div>
 
-**Hint:** You can nest functions, which means calling one function from inside another function.
+<i class="fa-solid fa-circle-info"></i> **Hint:** You can nest functions, which means calling one function from inside another function.
 
 </div>
 
@@ -1499,7 +1499,7 @@ airquality |>
 
 <div>
 
-**Hint:** The conversion formula for temperature in °C is:
+<i class="fa-solid fa-circle-info"></i> **Hint:** The conversion formula for temperature in °C is:
 
 $$
 C = \frac{5}{9}(F - 32)
@@ -1563,7 +1563,7 @@ airquality |>
 
 <div>
 
-**Hint:** One mile is around 1609.344 meters.
+<i class="fa-solid fa-circle-info"></i> **Hint:** One mile is around 1609.344 meters.
 
 </div>
 
@@ -1625,8 +1625,9 @@ airquality |>
 
 <div>
 
-**Hint:** Use the `round()` function to round a number.
+<i class="fa-solid fa-circle-info"></i> **Hint:** Use the `round()` function to round a number.
 It takes two arguments: values (a number or a numeric vector, like a column) and number of decimal places (default 0).
+
 </div>
 
 ------------------------------------------------------------------------
@@ -3372,6 +3373,6 @@ starwars |>
 
 <div>
 
-**Hint:** You can adjust the bar position within the geom as `position = position_dodge()` if you want the bars to be next to each other (as opposed to stacked).
+<i class="fa-solid fa-circle-info"></i> **Hint:** You can adjust the bar position within the geom as `position = position_dodge()` if you want the bars to be next to each other (as opposed to stacked).
 
 </div>
