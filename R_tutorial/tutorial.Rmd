@@ -1,18 +1,19 @@
 ---
 title: "Tidyverse Practice"
 author: "Anna Pryslopska"
-output: learnr::tutorial
-    # progressive: true
-    # include_code: FALSE
-    # theme:
-    #   bg: "#ffffff"
-    #   fg: "#343643"
-    #   secondary: "#0A0A1A"
-    #   primary: "#000000"
-    #   success: "#01AEAD"
-    #   info: "#1F9BCF"
-    #   warning: "#F0AD4E"
-    #   danger: "#D9534F"
+output: 
+  learnr::tutorial:
+    progressive: TRUE
+    include_code: FALSE
+    theme:
+      bg: "#ffffff"
+      fg: "#343643"
+      secondary: "#0A0A1A"
+      primary: "#000000"
+      success: "#01AEAD"
+      info: "#01AEAD"
+      warning: "#F0AD4E"
+      danger: "#D9534F"
 runtime: shiny_prerendered
 ---
 
@@ -20,8 +21,8 @@ runtime: shiny_prerendered
 library(shiny)
 library(learnr)
 library(tidyverse)
-library(fontawesome)
-library(here)
+# library(fontawesome)
+# library(here)
 
 countries_data <- data.frame(
   Country = c("Canada", "Japan", "Brazil", "Egypt", "Germany", "Australia"),
@@ -40,70 +41,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Introduction
 
-This interactive tutorial will guide you through common **dplyr** and base R functions for data manipulation.
-You will practice with real datasets like `mtcars`, `iris`, `starwars`, and `airquality`.
-
-#### mtcars
-
-The **`mtcars`** dataset contains car data with fuel consumption and design specs for 32 car models taken from the US magazine *Motor Trend* (1973–74).
-
-| Column | Explanation                              |
-|--------|------------------------------------------|
-| `mpg`  | Miles/(US) gallon                        |
-| `cyl`  | Number of cylinders                      |
-| `disp` | Displacement (cu.in.)                    |
-| `hp`   | Gross horsepower                         |
-| `drat` | Rear axle ratio                          |
-| `wt`   | Weight (1000 lbs)                        |
-| `qsec` | 1/4 mile time                            |
-| `vs`   | Engine (0 = V-shaped, 1 = straight)      |
-| `am`   | Transmission (0 = automatic, 1 = manual) |
-| `gear` | Number of forward gears                  |
-
-#### iris
-
-The **`iris`** dataset contains measurements (sepal/petal) of 150 iris flowers across three species.
-Originally published by [the UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/53/iris).
-
-| Column         | Explanation      |
-|----------------|------------------|
-| `Sepal.Length` | Length of sepals |
-| `Sepal.Width`  | Width of sepals  |
-| `Petal.Length` | Length of petals |
-| `Petal.Width`  | Width of petals  |
-| `Species`      | One of 3 species |
-
-![Flower diagram from Wikipedia](https://upload.wikimedia.org/wikipedia/commons/7/7f/Mature_flower_diagram.svg){width="90%"}
-
-#### starwars
-
-The **`starwars`** dataset from the `dplyr` package contains [data on characters from the Star Wars universe](https://dplyr.tidyverse.org/reference/starwars.html).
-
-| Column | Explanation |
-|----|----|
-| `name` | Name of the character |
-| `height` | Height (cm) |
-| `mass` | Weight (kg) |
-| `hair_color`, `skin_color`, `eye_color` | Hair, skin, and eye colors |
-| `birth_year` | Year born (BBY = Before Battle of Yavin) |
-| `sex` | The biological sex of the character, namely male, female, hermaphroditic, or none (as in the case for Droids). |
-| `gender` | The gender role or gender identity of the character as determined by their personality or the way they were programmed (as in the case for Droids). |
-| `homeworld` | Name of homeworld |
-| `species` | Name of species |
-| `films` | List of films the character appeared in |
-| `vehicles` | List of vehicles the character has piloted |
-| `starships` | List of starships the character has piloted |
-
-#### airquality
-
-The **`airquality`** data contains daily air quality measurements in New York (May–September 1973).
-
-| Column | Explanation |
-|----|----|
-| `Ozone` | Mean ozone in parts per billion from 1300 to 1500 hours at Roosevelt Island |
-| `Solar.R` | Solar radiation in Langleys in the frequency band 4000–7700 Angstroms from 0800 to 1200 hours at Central Park |
-| `Wind` | Average wind speed in miles per hour at 0700 and 1000 hours at LaGuardia Airport |
-| `Temp` | Maximum daily temperature in degrees Fahrenheit at La Guardia Airport. |
+This interactive tutorial will guide you through common **dplyr**, **ggplot2** and base R functions for data manipulation.
+You will practice with real data sets like `mtcars`, `iris`, `starwars`, and `airquality`.
 
 ### About this tutorial
 
@@ -130,6 +69,123 @@ Topics covered include:
 7.  Assigning values and data input
 8.  Creating dataframes, binding rows and columns
 9.  Combining data with joins and merges
+10. Visualizing data 
+
+#### How to use this tutorial
+
+This tutorial consists primarily of exercises. 
+You will read a short description of the task and see a code chunk window, like the one below. 
+
+```{r intro, exercise=TRUE}
+# There is some code here
+print("Hello world!")
+```
+
+```{r intro-solution}
+# You can copy this code and it will print "Hello world!" 
+print("Hello world!")
+```
+
+You write your solution in the code window and run it by pressing `shift`+`enter`.The result should appear below the exercise window.
+
+Unfortunately, the run code button is disabled at the beginning for some reason (probably an error in the package or insufficient memory). 
+
+If you get stuck, you can click on the *Hint* and/or *Solution* button to (incrementally) reveal the solution. You can then copy and paste the solution into the code window. Click on the *Hint* or *Solution* button again to close the popup window and return to the code chunk.
+
+Your solution is not actually graded in this tutorial, so it does not look to see if your answer matches the solution. Rather, it's a guideline for self-study.
+
+#### The tidyverse
+
+In class, we used tidyverse functions over base R.
+The [tidyverse](https://www.tidyverse.org/)  is a curated set of R packages tailored for data science, all built around a consistent design philosophy, shared grammar, and common structures.
+They usually have punny names.
+
+There is SO MUCH more to both the packages we used in class and the tidyverse overall. 
+
+#### `dplyr`
+
+[`dplyr`](https://dplyr.tidyverse.org/) is an R package in the tidyverse. It helps you work with data by providing you a set of simple, consistent commands that make it easier to do common tasks like filtering, sorting, and summarizing data.
+
+#### `ggplot2`
+
+I class, we have been using the `ggplot2` and `esquisse` packages to visualize data. In this tutorial, you will practice plotting with the former package.
+
+[`ggplot2`](https://ggplot2.tidyverse.org/) is a tool for making graphs. Its approach to data viz is that of a layered grammar of graphics. You design and construct graphics in
+a structured manner from data upwards.
+First, you tell it what data to use, how to match data to things like color or position, and what kind of shapes to draw (like bars or lines). Then `ggplot2` builds the graph for you, handling the rest of the work.
+
+`ggplot2` was created by Hadley Wickham.  
+
+![Diagram from slides in Week 7](https://pryslopska.com/img/ggplot2025.svg){width="50%"}
+
+#### `esquisse`
+
+[`esquisse`](https://dreamrs.github.io/esquisse/) is a package that lets you explore data interactively in a graphical user interface. It uses `ggplot2` for visualization.
+You can export the generated graph and save the code to generate it.
+It has its limitations but is useful to get a first impression/overview.
+
+#### `mtcars`
+
+The **`mtcars`** data set contains car data with fuel consumption and design specs for 32 car models taken from the US magazine *Motor Trend* (1973–74).
+
+| Column | Explanation                              |
+|--------|------------------------------------------|
+| `mpg`  | Miles/(US) gallon                        |
+| `cyl`  | Number of cylinders                      |
+| `disp` | Displacement (cu.in.)                    |
+| `hp`   | Gross horsepower                         |
+| `drat` | Rear axle ratio                          |
+| `wt`   | Weight (1000 lbs)                        |
+| `qsec` | 1/4 mile time                            |
+| `vs`   | Engine (0 = V-shaped, 1 = straight)      |
+| `am`   | Transmission (0 = automatic, 1 = manual) |
+| `gear` | Number of forward gears                  |
+
+#### `iris` data set
+
+The **`iris`** data set contains measurements (sepal/petal) of 150 iris flowers across three species.
+Originally published by [the UCI Machine Learning Repository](https://archive.ics.uci.edu/data set/53/iris).
+
+| Column         | Explanation      |
+|----------------|------------------|
+| `Sepal.Length` | Length of sepals |
+| `Sepal.Width`  | Width of sepals  |
+| `Petal.Length` | Length of petals |
+| `Petal.Width`  | Width of petals  |
+| `Species`      | One of 3 species |
+
+![Flower diagram from Wikipedia](https://upload.wikimedia.org/wikipedia/commons/7/7f/Mature_flower_diagram.svg){width="90%"}
+
+#### `starwars` data set
+
+The **`starwars`** data set from the `dplyr` package contains [data on characters from the Star Wars universe](https://dplyr.tidyverse.org/reference/starwars.html).
+
+| Column | Explanation |
+|----|----|
+| `name` | Name of the character |
+| `height` | Height (cm) |
+| `mass` | Weight (kg) |
+| `hair_color`, `skin_color`, `eye_color` | Hair, skin, and eye colors |
+| `birth_year` | Year born (BBY = Before Battle of Yavin) |
+| `sex` | The biological sex of the character, namely male, female, hermaphroditic, or none (as in the case for Droids). |
+| `gender` | The gender role or gender identity of the character as determined by their personality or the way they were programmed (as in the case for Droids). |
+| `homeworld` | Name of homeworld |
+| `species` | Name of species |
+| `films` | List of films the character appeared in |
+| `vehicles` | List of vehicles the character has piloted |
+| `starships` | List of starships the character has piloted |
+
+#### `airquality` data set
+
+The **`airquality`** data contains daily air quality measurements in New York (May–September 1973).
+
+| Column | Explanation |
+|----|----|
+| `Ozone` | Mean ozone in parts per billion from 1300 to 1500 hours at Roosevelt Island |
+| `Solar.R` | Solar radiation in Langleys in the frequency band 4000–7700 Angstroms from 0800 to 1200 hours at Central Park |
+| `Wind` | Average wind speed in miles per hour at 0700 and 1000 hours at LaGuardia Airport |
+| `Temp` | Maximum daily temperature in degrees Fahrenheit at La Guardia Airport. |
+
 
 ------------------------------------------------------------------------
 
@@ -137,14 +193,16 @@ Topics covered include:
 
 *2 exercises*
 
-A directory or folder is a container for storing files or other folders.
-This is where R will look for files, where R will save visible and hidden files, and where R will automatically load files from.
+A **directory** or **folder** is a container for storing files or other folders.
+**File structure** or **file hierarchy** or **folder organization** is the way these containers are organized.
+
+The working directory is where R will look for files, where R will save visible and hidden files, and where R will automatically load files from.
 
 ![File structure](https://pryslopska.com/img/filestructure.png){width="50%"}
 
 ### Exercise 1.1: Check your working directory
 
-Check what working directory you are in.
+Check what working directory you are in. 
 
 ```{r directory-ex1, exercise=TRUE}
 # Write your code here
@@ -158,7 +216,7 @@ getwd()
 ### Exercise 1.2: Set your working directory
 
 Change the working directory to the one you're using in class.
-You won't actually manage to change it, but try to do it anyway.
+You won't actually manage to change it online, but try to do it anyway.
 
 ```{r directory-ex2, exercise=TRUE}
 # Write your code here
@@ -179,12 +237,12 @@ setwd("path/to/your/directory/in quotes")
 
 *4 exercises*
 
-Packages are collections of functions and/or datasets with a common theme (e.g. statistics, spatial analysis, plotting).
-Most packages are available through the Comprehensive R Archive Network (CRAN) and on GitHub.
+Packages are collections of functions and/or data sets with a common theme (e.g. statistics, spatial analysis, plotting).
+Most packages are available through the [Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/) and on GitHub.
 
 ### Exercise 2.1: Install packages
 
-Install the packages `ggplot2` and `formattable`.
+Install the packages `ggplot2` and `formattable` using the   `install.packages()` function.
 You won't be able to do this online (and will get an error like *trying to use CRAN without setting a mirror*), but try anyway.
 
 ```{r packages-ex1, exercise=TRUE}
@@ -192,15 +250,14 @@ You won't be able to do this online (and will get an error like *trying to use C
 
 ```
 
+```{r packages-ex1-hint}
+install.packages(c())
+
+```
+
 ```{r packages-ex1-solution}
 install.packages(c("ggplot2", "formattable"))
 ```
-
-<div>
-
-**Hint:** You want to take the range of columns, which should also include the "Ozone" and "Temp" columns.
-
-</div>
 
 ### Exercise 2.2: Load packages
 
@@ -210,6 +267,11 @@ Load (aka import or activate) the packages you just installed into the workspace
 # Write your code here
 
 ```
+
+```{r packages-ex2-hint}
+library(ggplot2)
+```
+
 
 ```{r packages-ex2-solution}
 library(ggplot2)
@@ -225,6 +287,13 @@ Unload the packages you just installed and loaded into the workspace.
 ```{r packages-ex3, exercise=TRUE}
 # Write your code here
 
+```
+
+```{r packages-ex3-hint}
+# Option 1: 
+unloadNamespace("ggplot2")
+# Option 2:
+detach("package:ggplot2", unload = TRUE)
 ```
 
 ```{r packages-ex3-solution}
@@ -286,6 +355,10 @@ What columns does the `mtcars` dataframe have?
 
 ```
 
+```{r preview-ex2-hint}
+colnames()
+```
+
 ```{r preview-ex2-solution}
 colnames(mtcars)
 ```
@@ -297,6 +370,10 @@ Print a summary of the `iris` data set.
 ```{r preview-ex3, exercise=TRUE}
 # Write your code here
 
+```
+
+```{r preview-ex3-hint}
+summary()
 ```
 
 ```{r preview-ex3-solution}
@@ -312,16 +389,21 @@ Using the package `psych`, show the description of the `airquality` data.
 
 ```
 
+```{r preview-ex4-hint-1}
+# Remember to load the package `psych` first.
+library(psych)
+```
+
+```{r preview-ex4-hint-2}
+# Then use the describe function
+library(psych)
+describe()
+```
+
 ```{r preview-ex4-solution}
 library(psych)
 describe(airquality)
 ```
-
-<div>
-
-**Hint:** Remember to load the package `psych` first.
-
-</div>
 
 ### Exercise 3.5: Print the whole data
 
@@ -331,6 +413,16 @@ All rows and columns.
 ```{r preview-ex5, exercise=TRUE}
 # Write your code here
 
+```
+
+```{r preview-ex5-hint-1}
+# Use the print() function
+print()
+```
+
+```{r preview-ex5-hint-2}
+# Specify how many rows to print (an infinite amount!)
+print(, n=Inf)
 ```
 
 ```{r preview-ex5-solution}
@@ -346,6 +438,12 @@ Print the first 6 rows of the `mtcars` data.
 
 ```
 
+```{r preview-ex6-hint}
+# The top rows are the head
+head()
+```
+
+
 ```{r preview-ex6-solution}
 head(mtcars)
 ```
@@ -359,6 +457,16 @@ Print the last 10 rows of the `iris` data.
 
 ```
 
+```{r preview-ex7-hint-1}
+# The bottom rows are the tail
+tail()
+```
+
+```{r preview-ex7-hint-2}
+# Specify how many rows to show (an infinite amount!)
+tail(, n=10)
+```
+
 ```{r preview-ex7-solution}
 tail(iris, n=10)
 ```
@@ -369,15 +477,31 @@ tail(iris, n=10)
 
 *4 exercises*
 
-During data clean up, we selected (or removed) only those columns that were meaningful for our analysis by using the function `select()`.
+During data clean up, we selected only those columns that were meaningful for our analysis by using the function `select()`. All the other columns were removed.
+
+You can use `select()` with operators to select variables, as per the documentation:
+
+- `:` for selecting a range of consecutive variables.
+- `!` for taking the complement of a set of variables.
+- `&` and `|` for selecting the intersection or the union of two sets of variables.
+- `c()` for combining selections.
 
 ### Exercise 4.1: Select specific columns
 
-Use `select()` on `mtcars` data to choose "mpg", "hp", and "wt".
+Use `select()` on `mtcars` data to choose miles per gallon, horse power, and weight columns.
 
 ```{r select-ex1, exercise=TRUE}
 # Write your code here
 
+```
+
+```{r select-ex1-hint-1}
+# The data is the first argument you must give to the function
+```
+
+
+```{r select-ex1-hint-2}
+# The columns you need are: mpg, hp, wt
 ```
 
 ```{r select-ex1-solution}
@@ -386,11 +510,15 @@ select(mtcars, mpg, hp, wt)
 
 ### Exercise 4.2: Exclude columns
 
-Use `select()` on `starwars` to drop "hair_color" and "skin_color" columns.
+Use `select()` on `starwars` to drop hair color and skin color columns.
 
 ```{r select-ex2, exercise=TRUE}
 # Write your code here
 
+```
+
+```{r select-ex2-hint}
+# The columns you want to remove are hair_color and skin_color
 ```
 
 ```{r select-ex2-solution}
@@ -406,8 +534,22 @@ Use `select()` on `iris` to pick the last three columns.
 
 ```
 
+```{r select-ex3-hint-1}
+# Go back to the introduction to check the columns or preview them
+colnames(iris)
+```
+
+```{r select-ex3-hint-2}
+# Now that you know the column names, you have two options to select the final 3.
+# Option 1: using c() for concatenation
+# Option 2: using : for the range
+```
+
 ```{r select-ex3-solution}
+# Option 1:
 select(iris, c(Petal.Length, Petal.Width, Species))
+# Option 2:
+select(iris, 3:5)
 ```
 
 ### Exercise 4.4: Select a column range
@@ -419,11 +561,9 @@ Use `select()` to select all the columns between "Ozone" and "Temp" in the `airq
 
 ```
 
-<div>
-
-**Hint:** You want to take the range of columns, which should also include the "Ozone" and "Temp" columns.
-
-</div>
+```{r select-ex4-hint}
+# You want to take the range of columns, which should also include the "Ozone" and "Temp" columns.
+```
 
 ```{r select-ex4-solution}
 select(airquality, Ozone:Temp)
@@ -447,6 +587,12 @@ In `mtcars`, rename "mpg" to "miles_per_gallon".
 
 ```
 
+```{r rename-ex1-hint}
+# The rename() function takes the arguments:
+# Data (frame)
+# New variable name = Old variable name
+```
+
 ```{r rename-ex1-solution}
 rename(mtcars, miles_per_gallon = mpg)
 ```
@@ -460,8 +606,34 @@ In `starwars`, rename "birth_year" to "age" and "mass" to "weight."
 
 ```
 
+```{r rename-ex2-hint-1}
+# As in the exercise before, you need to specify the data frame and new names for old columns. 
+# You can simply list the new columns as arguments (comma separated) or use concatenation.
+```
+
+```{r rename-ex2-hint-2}
+# Option 1:
+rename(df, 
+       new1 = old1,
+       new2 = old2)
+```
+
+```{r rename-ex2-hint-3}
+# Option 2:
+rename(df, 
+       c(new1 = old1,
+       new2 = old2))
+```
+
 ```{r rename-ex2-solution}
-rename(starwars, age = birth_year, weight = mass)
+# Option 1:
+rename(starwars, 
+       age = birth_year, 
+       weight = mass)
+# Option 2:
+rename(starwars, 
+       c(age = birth_year, 
+         weight = mass))
 ```
 
 ### Exercise 5.3: Rename after select
@@ -472,19 +644,25 @@ Do this in two steps, assigning the steps to the variables `df1` and `df2` ("dat
 ```{r rename-ex3, exercise=TRUE}
 # Write your code here
 
+```
 
+```{r rename-ex3-hint-1}
+# Start by creating a new data frame with the selected columns
+df1 <- select(df, column1, column2)
+```
+
+```{r rename-ex3-hint-2}
+# Rename the columns
+# Remember to pass the correct variable to the second function.
+df2 <- rename(df, 
+              new1 = old1, 
+              new2 = old2)
 ```
 
 ```{r rename-ex3-solution}
-df1 <- select(starwars, species, homeworld)  
+df1 <- select(starwars, species, homeworld)
 df2 <- rename(df1, type = species, planet = homeworld)
 ```
-
-<div>
-
-**Hint:** Remember to pass the correct variable (i.e. dataframe) to the second function.
-
-</div>
 
 ------------------------------------------------------------------------
 
@@ -531,6 +709,12 @@ Filter `mtcars` for rows where the miles per gallon are more than 25.
 
 ```
 
+```{r filter-ex1-hint}
+# Substitute "condition" for a statement that evaluates to TRUE
+# In this case, miles per gallon is over 25.
+filter(df, condition)
+```
+
 ```{r filter-ex1-solution}
 filter(mtcars, mpg > 25)
 ```
@@ -544,8 +728,28 @@ From `starwars`, keep only masculine characters which are taller than 180.
 
 ```
 
+```{r filter-ex2-hint-1}
+# Option 1:
+filter(df, 
+       condition1, 
+       condition2)
+```
+
+```{r filter-ex2-hint-2}
+# Option 2:
+filter(df, 
+       condition1 & condition2)
+```
+
 ```{r filter-ex2-solution}
-filter(starwars, gender == 'masculine', height > 180)
+# Option 1:
+filter(starwars, 
+       gender == 'masculine',
+       height > 180)
+# Option 2:
+filter(starwars,
+       gender == 'masculine' &
+       height > 180)
 ```
 
 ### Exercise 6.3: Filter with %in%
@@ -557,8 +761,20 @@ On `iris`, filter only the setosa and versicolor species.
 
 ```
 
+```{r filter-ex3-hint}
+# There are multiple ways to solve this exercise:
+# Option 1: Using %in%
+# Option 2: Using == and |
+# Option 3: Using !=
+```
+
 ```{r filter-ex3-solution}
+# Option 1:
 filter(iris, Species %in% c('setosa', 'versicolor'))
+# Option 2:
+filter(iris, Species == 'setosa' | Species == 'versicolor')
+# Option 3:
+filter(iris, Species != 'virginica')
 ```
 
 ### Exercise 6.4: More filters
@@ -570,11 +786,41 @@ On `iris`, how many flowers of the virginica species have the petal width of at 
 
 ```
 
+```{r filter-ex4-hint-1}
+# As a reminder, you can combine the conditions in two ways:
+# Option 1: As a comma-separated list
+# Option 2: By using &
+```
+
+```{r filter-ex4-hint-2}
+# Option 1:
+filter(df, 
+       condition1,
+       condition2,
+       cobndition3)
+```
+
+```{r filter-ex4-hint-3}
+# Option 2:
+filter(df, 
+       condition1 & 
+       condition2 &
+       condition3)
+```
+
+
 ```{r filter-ex4-solution}
 # This is true of only 2 flowers
-filter(iris, Species == 'virginica',
+# Option 1:
+filter(iris, 
+       Species == 'virginica',
        Petal.Width > 2.4,
-       Petal.Length <= 6.0) 
+       Petal.Length <= 6.0)
+# Option 2:
+filter(iris, 
+       Species == 'virginica' &
+       Petal.Width > 2.4 &
+       Petal.Length <= 6.0)
 ```
 
 ### Exercise 6.5: Mixing filters
@@ -588,7 +834,7 @@ What is the name and species of the man who is between 100 and 180 cm tall, has 
 ```
 
 ```{r filter-ex5-solution}
-filter(starwars, 
+filter(starwars,
        sex == "male",
        height %in% 100:180,
        eye_color %in% c("black", "blue"),
@@ -624,7 +870,7 @@ filter(starwars,
        !(eye_color %in% c("yellow", "gold")),
        mass < 90,
        starships != "Millennium Falcon",
-       (height < 200 | height > 230)) 
+       (height < 200 | height > 230))
 ```
 
 <div>
@@ -647,7 +893,7 @@ Find the only woman with a combined height and mass under 200.
 ```{r filter-ex7-solution}
 filter(starwars,
        sex =="female",
-       (height + mass) < 200) 
+       (height + mass) < 200)
 ```
 
 ------------------------------------------------------------------------
@@ -778,7 +1024,7 @@ nrow(na.omit(starwars))
 
 ### Exercise 8.3: Difference
 
-Subtract the number of rows with missing values from the number of all rows in the `iris` dataset.
+Subtract the number of rows with missing values from the number of all rows in the `iris` data set.
 
 ```{r naomit-ex3, exercise=TRUE}
 # Write your code here
@@ -800,13 +1046,13 @@ In the `starwars` data, remove NAs then select the name, weight, and birth_year.
 ```
 
 ```{r naomit-ex4-solution}
-df1 <- na.omit(starwars) 
+df1 <- na.omit(starwars)
 select(df1, name, mass, birth_year)
 ```
 
 ### Exercise 8.5: Show all missing values
 
-Using and `filter()`, show all the rows in the `airquality` dataset with missing values.
+Using and `filter()`, show all the rows in the `airquality` data set with missing values in the Ozone column.
 
 ```{r naomit-ex5, exercise=TRUE}
 # Write your code here
@@ -945,7 +1191,7 @@ arrange(iris, desc(Species), Sepal.Width, -Sepal.Length)
 
 ### Exercise 10.1: Unique values in a column
 
-Show all unique species in the `iris` dataset.
+Show all unique species in the `iris` data set.
 
 ```{r unique-ex1, exercise=TRUE}
 # Write your code here
@@ -978,7 +1224,7 @@ length(unique(mtcars$gear))
 
 ### Exercise 10.3: Multiple unique values
 
-Get the unique eye and skin colors in the `starwars` dataset.
+Get the unique eye and skin colors in the `starwars` data set.
 
 ```{r unique-ex3, exercise=TRUE}
 # Write your code here
@@ -1037,8 +1283,8 @@ Filter only the hermaphroditic characters from `starwars` and select their name,
 ```
 
 ```{r pipe-ex3-solution}
-starwars |> 
-  filter(sex == "hermaphroditic")  |>
+starwars |>
+  filter(sex == "hermaphroditic") |>
   select(name, skin_color, eye_color)
 ```
 
@@ -1054,15 +1300,15 @@ Then change their height to meters.
 ```
 
 ```{r pipe-ex4-solution}
-starwars |> 
-  filter(sex == "female")  |>
+starwars |>
+  filter(sex == "female") |>
   select(-hair_color) |>
   mutate(height = height/100)
 ```
 
 ### Exercise 11.5: Pipeline with filter, select, remove missing values, and mutate
 
-From the `airquality` dataset, filter the data from June, drop the day of the month, remove missing values, and change the temperature from °Fahrenheit to °Celsius.
+From the `airquality` data set, filter the data from June, drop the day of the month, remove missing values, and change the temperature from °Fahrenheit to °Celsius.
 
 ```{r pipe-ex5, exercise=TRUE}
 # Write your code here
@@ -1088,7 +1334,7 @@ airquality |>
 
 ### Exercise 11.6: Pipeline with filter, select, remove missing values, mutate, and arrange
 
-From the `airquality` dataset, filter the data from the first three weeks of August, keep only the columns "Ozone", "Solar.R", "Wind", and "Temp", remove missing values, change the temperature from °Fahrenheit to °Celsius, change the wind speed from miles per hour to kilometers per hour, make a new column "Month" with the name of the month in English, and sort the values by ozone (ascending) and solar radiation (descending).
+From the `airquality` data set, filter the data from the first three weeks of August, keep only the columns "Ozone", "Solar.R", "Wind", and "Temp", remove missing values, change the temperature from °Fahrenheit to °Celsius, change the wind speed from miles per hour to kilometers per hour, make a new column "Month" with the name of the month in English, and sort the values by ozone (ascending) and solar radiation (descending).
 
 ```{r pipe-ex6, exercise=TRUE}
 # Write your code here
@@ -1105,7 +1351,7 @@ airquality |>
   select(Ozone, Solar.R, Wind, Temp) |>
   na.omit() |>
   mutate(Temp = (Temp - 32) * 5/9,
-         Wind = Wind * 1609.344,
+         Wind = Wind * 1.609344,
          Month = "August") |>
   arrange(Ozone, -Solar.R)
 ```
@@ -1118,7 +1364,7 @@ airquality |>
 
 ### Exercise 11.7: Pipeline with filter, select, remove missing values, and mutate
 
-From the `airquality` dataset, filter the data from May, remove missing values, change the temperature from °Fahrenheit to °Celsius, round the resulting temperature to a whole number (no decimal points), and return only the unique temperatures.
+From the `airquality` data set, filter the data from May, remove missing values, change the temperature from °Fahrenheit to °Celsius, round the resulting temperature to a whole number (no decimal points), and return only the unique temperatures.
 How many unique temperatures were there?
 **Use `mutate()` only once to do the calculation and rounding at the same time.**
 
@@ -1134,7 +1380,7 @@ How many unique temperatures were there?
 airquality |>
   filter(Month == 5) |>
   na.omit() |>
-  mutate(Temp = round((Temp - 32) * 5/9), 0) |>
+  mutate(Temp = round((Temp - 32) * 5/9, 0)) |>
   select(Temp) |>
   unique() |>
   nrow()
@@ -1178,7 +1424,7 @@ Group `mtcars` by number of cylinders and compute average miles per gallon.
 
 ```{r group-ex1-solution}
 mtcars |>
-  group_by(cyl) |> 
+  group_by(cyl) |>
   summarise(avg_mpg = mean(mpg))
 ```
 
@@ -1199,7 +1445,7 @@ Count number of characters per species in `starwars`.
 
 ```{r group-ex2-solution}
 starwars |>
-  group_by(species) |> 
+  group_by(species) |>
   summarise(count = n())
 ```
 
@@ -1219,8 +1465,8 @@ Calculate the median sepal width per species in the `iris` data.
 ```
 
 ```{r group-ex3-solution}
-iris |> 
-  group_by(Species) |> 
+iris |>
+  group_by(Species) |>
   summarise(median_width = median(Sepal.Width))
 ```
 
@@ -1230,7 +1476,7 @@ iris |>
 
 </div>
 
-### Exercise 12.4: Max horsepower by gear
+### Exercise 12.4: Max and min horsepower by gear
 
 Calculate the maximal and minimal horsepower by number of forward gears in `mtcars`.
 
@@ -1256,8 +1502,8 @@ Count number of observations per month in `airquality` data.
 ```
 
 ```{r group-ex5-solution}
-airquality |> 
-  group_by(Month) |> 
+airquality |>
+  group_by(Month) |>
   summarise(count = n())
 ```
 
@@ -1422,10 +1668,10 @@ Use `case_when()`, because you have 3 options.
 
 ```
 
-```{r ifelse-ex3-solution}
-mtcars |> 
-  mutate(speen_class = case_when(hp > 150 ~ 'High', 
-                                 hp > 100 ~ 'Medium', 
+```{r casewhen-ex3-solution}
+mtcars |>
+  mutate(speed_class = case_when(hp > 150 ~ 'High',
+                                 hp > 100 ~ 'Medium',
                                  TRUE ~ 'Low'))
 ```
 
@@ -1435,7 +1681,7 @@ mtcars |>
 
 </div>
 
-### Exercise 13.4: Categorize height
+### Exercise 13.4: Categorize characters by height
 
 Categorize characters by height in `starwars`: "Very tall" for 200 cm or more, "Tall" for over 180 cm, "Medium" for 150 cm or more, and "Small" for under 150 cm.
 Show only the name, height, and height class.
@@ -1445,10 +1691,10 @@ Show only the name, height, and height class.
 
 ```
 
-```{r ifelse-ex4-solution}
-starwars |> 
+```{r casewhen-ex4-solution}
+starwars |>
   mutate(height_class = case_when(height >= 200 ~ 'Very Tall',
-                                  height > 180 ~ 'Tall', 
+                                  height > 180 ~ 'Tall',
                                   height >= 150 ~ 'Medium',
                                   TRUE ~ 'Short')) |>
   select(name, height, height_class)
@@ -1459,12 +1705,12 @@ starwars |>
 Flag `starwars` rows where "birth_year" is missing.
 Then select only the name, birth year, and the newly created column.
 
-```{r ifelse-ex5, exercise=TRUE}
+```{r casewhen-ex5, exercise=TRUE}
 # Write your code here
 
 ```
 
-```{r ifelse-ex5-solution}
+```{r casewhen-ex5-solution}
 starwars |>
   mutate(missing_birthyear = ifelse(is.na(birth_year), TRUE, FALSE)) |>
   select(name, birth_year, missing_birthyear)
@@ -1485,7 +1731,7 @@ Label `airquality` days as "Hot", "Warm", or "Cool" based on temperature in °Ce
 
 ```
 
-```{r ifelse-ex6-solution}
+```{r casewhen-ex6-solution}
 airquality |>
   mutate(
     Temp_C = (Temp - 32) * 5/9,
@@ -1513,7 +1759,7 @@ Base your classification on the quantiles.
 
 ```
 
-```{r ifelse-ex7-solution}
+```{r casewhen-ex7-solution}
 iris |>
   mutate(
   PetalSize = case_when(
@@ -1535,14 +1781,14 @@ Go back to chapter 3 or the handout for Week 3 if you need a refresher.
 
 Add column to `mtcars`: "Economy" (horse power under 100 and more than 25 miles per gallon), "Balanced" (between 100 and 200 horse power and at least 15 miles per gallon), "Performance" (more than 200 horse power) tiers.
 Any remaining cars should be classified as "Other".
-Lastly, count now many cars are in each of these classes.
+Lastly, count how many cars are in each of these classes.
 
 ```{r casewhen-ex8, exercise=TRUE}
 # Write your code here
 
 ```
 
-```{r ifelse-ex8-solution}
+```{r casewhen-ex8-solution}
 mtcars |>
   mutate(
     Tier = case_when(
@@ -1625,7 +1871,7 @@ Assign a vector of 4 logical values, 3 of which are `TRUE` and one which is not,
 
 ```
 
-### Exercise 14.3: Create a mixed vector
+### Exercise 14.4: Create a mixed vector
 
 Create a variable called `mix` which contains 3 of your favorite numbers, 3 of your favorite fruits, and one logical vector.
 
@@ -1660,7 +1906,7 @@ Create a dataframe with names of 3 children (Lila, Kai, and Ezra) and their ages
 Then print the dataframe.
 
 ```{r df-ex1, exercise=TRUE, warning=FALSE}
-# Write your code here 
+# Write your code here
 
 ```
 
@@ -1689,7 +1935,7 @@ Re-create this table as a dataframe, call it `countries`, and print it.
 | Australia | Canberra | Oceania       |
 
 ```{r df-ex2, exercise=TRUE, warning=FALSE}
-# Write your code here 
+# Write your code here
 
 ```
 
@@ -1716,7 +1962,7 @@ Add the estimated population in millions and print the resulting dataframe.
 | Australia | Canberra | Oceania       | 26.934     |
 
 ```{r df-ex3, exercise=TRUE}
-# Write your code here 
+# Write your code here
 
 ```
 
@@ -1762,7 +2008,7 @@ countries_data <- data.frame(
 Population = c(39.566, 123.199, 212.693, 118.084, 84.145, 26.934)
 countries_data <- cbind(countries_data, Population)
 
-# Write your code here 
+# Write your code here
 
 ```
 
@@ -1859,8 +2105,8 @@ In this exercise:
 
 1.  Add four new countries to your dataframe (in this order): India, Argentina, Kenya, and Mexico.
 2.  Add three new columns, one by one, to your dataframe: currency, timezone, and calling code.
-3.  Sort the resulting dataframe by the continent, population (descending), and timezone. Save it to `contries_final`.
-4.  Print the `contries_final` data.
+3.  Sort the resulting dataframe by the continent, population (descending), and timezone. Save it to `countries_final`.
+4.  Print the `countries_final` data.
 
 The code for the new rows and columns is provided for you.
 Mexico does not have an official language *de jure*, so that data is missing.
@@ -2001,7 +2247,7 @@ calling_code <- c(
 
 # Adding the four new countries.
 countries_data <- rbind(countries_data,
-                        india, 
+                        india,
                         peru,
                         kenya,
                         mexico)
@@ -2011,13 +2257,13 @@ countries_data <- cbind(countries_data,
                         Currency = currency,
                         Timezone = timezone,
                         Calling_code = calling_code)
-                        
 
-contries_final <- arrange(countries_data, 
-                          Continent, 
+
+countries_final <- arrange(countries_data,
+                          Continent,
                           -Population,
                           Timezone)
-contries_final
+countries_final
 ```
 
 This is what you should expect:
@@ -2068,7 +2314,7 @@ For this exercise, do the following tasks:
 3.  Use `full_join()` to join these two dataframes by the common identifier column.
 
 ```{r joinpractice-ex1, exercise=TRUE}
-# Write your code here 
+# Write your code here
 
 ```
 
@@ -2096,7 +2342,7 @@ Again, make the same exact dataframes as in the previous exercise, but this time
 Does the resulting dataframe differ from the previous one?
 
 ```{r joinpractice-ex2, exercise=TRUE}
-# Write your code here 
+# Write your code here
 
 ```
 
@@ -2131,7 +2377,7 @@ This time, complete the following steps:
 How does the resulting data differ from the previous exercises?
 
 ```{r joinpractice-ex3, exercise=TRUE}
-# Write your code here 
+# Write your code here
 
 ```
 
@@ -2142,7 +2388,7 @@ children <- data.frame(
 
 animals <- data.frame(
   Name = c("Zoe", "Kai", "Lila", "Ethan", "Leo", "Ezra", "Isla", "Zara", "Maya", "Raja", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
-  Favorite_Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+  Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
 
 inner_join(children, animals, by = "Name")
 ```
@@ -2161,7 +2407,7 @@ This time, make the same exact dataframes as in the previous exercise (16.3), bu
 Does the resulting dataframe differ from the previous ones?
 
 ```{r joinpractice-ex4, exercise=TRUE}
-# Write your code here 
+# Write your code here
 
 ```
 
@@ -2172,7 +2418,7 @@ children <- data.frame(
 
 animals <- data.frame(
   Name = c("Zoe", "Kai", "Lila", "Ethan", "Leo", "Ezra", "Isla", "Zara", "Maya", "Raja", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
-  Favorite_Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+  Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
 
 full_join(children, animals, by = "Name")
 ```
@@ -2189,11 +2435,12 @@ children <- data.frame(
 
 animals <- data.frame(
   Name = c("Zoe", "Kai", "Lila", "Ethan", "Leo", "Ezra", "Isla", "Zara", "Maya", "Raja", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
-  Favorite_Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+  Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
 
 ###################################
 # Start your code here
 ###################################
+
 
 ```
 
@@ -2204,7 +2451,7 @@ children <- data.frame(
 
 animals <- data.frame(
   Name = c("Zoe", "Kai", "Lila", "Ethan", "Leo", "Ezra", "Isla", "Zara", "Maya", "Raja", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
-  Favorite_Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+  Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
 
 right_join(children, animals, by = "Name")
 ```
@@ -2221,7 +2468,7 @@ children <- data.frame(
 
 animals <- data.frame(
   Name = c("Zoe", "Kai", "Lila", "Ethan", "Leo", "Ezra", "Isla", "Zara", "Maya", "Raja", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
-  Favorite_Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+  Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
 
 ###################################
 # Start your code here
@@ -2236,7 +2483,7 @@ children <- data.frame(
 
 animals <- data.frame(
   Name = c("Zoe", "Kai", "Lila", "Ethan", "Leo", "Ezra", "Isla", "Zara", "Maya", "Raja", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
-  Favorite_Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+  Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
 
 left_join(children, animals, by = "Name")
 ```
@@ -2253,7 +2500,7 @@ children <- data.frame(
 
 animals <- data.frame(
   Name = c("Zoe", "Kai", "Lila", "Ethan", "Leo", "Ezra", "Isla", "Zara", "Maya", "Raja", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
-  Favorite_Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+  Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
 
 ###################################
 # Start your code here
@@ -2268,7 +2515,7 @@ children <- data.frame(
 
 animals <- data.frame(
   Name = c("Zoe", "Kai", "Lila", "Ethan", "Leo", "Ezra", "Isla", "Zara", "Maya", "Raja", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
-  Favorite_Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+  Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
 
 merge(children, animals, by = "Name")
 ```
@@ -2299,7 +2546,7 @@ children <- data.frame(
 
 animals <- data.frame(
   Name = c("Zoe", "Kai", "Lila", "Ethan", "Leo", "Ezra", "Isla", "Zara", "Maya", "Raja", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
-  Favorite_Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+  Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
 
 ###################################
 # Start your code here
@@ -2308,14 +2555,14 @@ animals <- data.frame(
 
 ```
 
-```{r joinpractice-ex8-solution, exercise=TRUE}
+```{r joinpractice-ex8-solution}
 children <- data.frame(
   Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara"),
   Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7))
 
 animals <- data.frame(
   Name = c("Zoe", "Kai", "Lila", "Ethan", "Leo", "Ezra", "Isla", "Zara", "Maya", "Raja", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
-  Favorite_Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+  Animal = c("Clownfish", "Panda", "Elephant", "Penguin", "Koala", "Tiger", "Giraffe", "Rabbit", "Cat", "Fox", "Dog", "Otter", "Parrot", "Owl", "Llama"))
 
 
 full_join(children, animals, by = "Name") |>
@@ -2359,33 +2606,34 @@ For this exercise, keep all the rows.
 children <- data.frame(
   Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
   Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7, 5, 8, 8, 3, 11),
-  Favorite_Animal = c("Elephant", "Panda", "Tiger", "Cat", "Penguin", "Clownfish", "Koala", "Giraffe", "Fox", "Rabbit", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+  Animal = c("Elephant", "Panda", "Tiger", "Cat", "Penguin", "Clownfish", "Koala", "Giraffe", "Fox", "Rabbit", "Dog", "Otter", "Parrot", "Owl", "Llama"))
 
 animals_answers <- data.frame(
   Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
-  Favorite_Animal = c("Elephant", "Panda", "Tiger", "Cat", "Penguin", "Clownfish", "Koala", "Giraffe", "Fox", "Rabbit", "Dog", "Otter", "Parrot", "Owl", "Llama"),
+  Animal = c("Elephant", "Panda", "Tiger", "Cat", "Penguin", "Clownfish", "Koala", "Giraffe", "Fox", "Rabbit", "Dog", "Otter", "Parrot", "Owl", "Llama"),
   Pets = c(F, F, F, T, F, T, F, F, F, T, T, F, T, F, F),
   Type = c("Mammal", "Mammal", "Mammal", "Mammal", "Bird", "Fish", "Mammal", "Mammal", "Mammal", "Mammal", "Mammal", "Mammal", "Bird", "Bird", "Mammal"))
 
 ###################################
 # Start your code here
 ###################################
-
+ 
+ 
 ```
 
 ```{r joinpractice-ex9-solution}
 children <- data.frame(
   Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
   Age = c(7, 2, 12, 4, 3, 2, 10, 13, 6, 7, 5, 8, 8, 3, 11),
-  Favorite_Animal = c("Elephant", "Panda", "Tiger", "Cat", "Penguin", "Clownfish", "Koala", "Giraffe", "Fox", "Rabbit", "Dog", "Otter", "Parrot", "Owl", "Llama"))
+  Animal = c("Elephant", "Panda", "Tiger", "Cat", "Penguin", "Clownfish", "Koala", "Giraffe", "Fox", "Rabbit", "Dog", "Otter", "Parrot", "Owl", "Llama"))
 
 animals_answers <- data.frame(
   Name = c("Lila", "Kai", "Ezra", "Maya", "Ethan", "Zoe", "Leo", "Isla", "Raja", "Zara", "Catherine", "Takeshi", "Sven", "Anouk", "Amara"),
-  Favorite_Animal = c("Elephant", "Panda", "Tiger", "Cat", "Penguin", "Clownfish", "Koala", "Giraffe", "Fox", "Rabbit", "Dog", "Otter", "Parrot", "Owl", "Llama"),
+  Animal = c("Elephant", "Panda", "Tiger", "Cat", "Penguin", "Clownfish", "Koala", "Giraffe", "Fox", "Rabbit", "Dog", "Otter", "Parrot", "Owl", "Llama"),
   Pets = c(F, F, F, T, F, T, F, F, F, T, T, F, T, F, F),
   Type = c("Mammal", "Mammal", "Mammal", "Mammal", "Bird", "Fish", "Mammal", "Mammal", "Mammal", "Mammal", "Mammal", "Mammal", "Bird", "Bird", "Mammal"))
 
-full_join(children, animals_answers, by = c("Name", "Favorite_Animal"))
+full_join(children, animals_answers, by = c("Name", "Animal"))
 ```
 
 ### Exercise 16.10: Even more join practice
@@ -2422,3 +2670,474 @@ school |>
   inner_join(children, by = join_by(Age)) |> # You can also use right_join()
   arrange(Age, Name)
 ```
+
+## 17. Plotting
+
+*22 exercises*
+
+### Exercise 17.1: Create a ggplot object
+
+Using `ggplot()`, create a plot object from the `mtcars` data.
+
+```{r data-1, exercise=TRUE}
+# Write your code here
+
+```
+
+```{r data-1-solution}
+ggplot(data = mtcars)
+```
+
+### Exercise 17.2: Create another ggplot object
+
+Create a ggplot object from the `iris` data. This time, use the pipe operator.
+
+```{r data-2, exercise=TRUE}
+# Write your code here
+
+```
+
+```{r data-2-solution}
+iris |>
+  ggplot()
+```
+
+### Exercise 17.3: Add aesthetics
+
+Create a ggplot object from the `mtcars` data and put the horsepower on the x axis and the miles per gallon on the y axis.
+
+```{r data-3, exercise=TRUE}
+# Write your code here
+
+```
+
+```{r data-3-solution}
+ggplot(data = mtcars) +
+  aes(x = hp, y = mpg)
+```
+
+### Exercise 17.4: Add aesthetics again
+
+Create a ggplot object from the `iris` data and put the petal length on the x axis and petal width y axis. This time, use the pipe operator.
+
+```{r data-4, exercise=TRUE}
+# Write your code here
+
+```
+
+```{r data-4-solution}
+iris |>
+  ggplot() +
+  aes(x = Petal.Length, y = Petal.Width)
+```
+
+### Exercise 17.5: Add geometries
+
+Create a ggplot object from the `mtcars` data and put the horsepower on the x axis and the miles per gallon on the y axis.
+Then add the geometry to make it a point plot.
+
+```{r data-5, exercise=TRUE}
+# Write your code here
+
+```
+
+```{r data-5-solution}
+ggplot(data = mtcars) +
+  aes(x = hp, y = mpg) +
+  geom_point()
+```
+
+### Exercise 17.6: Add geometries again
+
+Create a ggplot object from the `iris` data and put the petal length on the x axis. Then add the geometry to make it a bar plot.
+This time, use the pipe operator.
+
+```{r data-6, exercise=TRUE}
+# Write your code here
+
+```
+
+```{r data-6-solution}
+iris |>
+  ggplot() +
+  aes(x = Petal.Length) +
+  geom_bar()
+```
+
+### Exercise 17.7: Add geometries once more
+
+Create a ggplot object from the `iris` data and put the petal length on the x axis and petal width y axis. This time, use the pipe operator and make it a column plot.
+
+```{r data-7, exercise=TRUE}
+# Write your code here
+
+```
+
+```{r data-7-solution}
+iris |>
+  ggplot() +
+  aes(x = Petal.Length, y = Petal.Width) +
+  geom_col()
+```
+
+### Exercise 17.8: Add geometries one last time
+
+Create a ggplot object from the `airquality` data from May only. Put the day of the month on the x axis and the temperature on the y axis. Add first a column geometry and then a line geometry. Use the pipe operator.
+
+```{r data-8, exercise=TRUE}
+# Write your code here
+
+```
+
+```{r data-8-solution}
+airquality |>
+  filter(Month == 5) |>
+  ggplot() +
+  aes(x = Day, y = Temp) +
+  geom_col() +
+  geom_line()
+```
+
+
+### Exercise 17.9: Add scales
+
+Create a ggplot object from the `airquality`. Change the month column from numbers to characters. Put the temperature on the x axis and the ozone values on the y axis and create a column plot. Use the pipe operator.
+
+```{r data-9, exercise=TRUE}
+# Write your code here
+
+```
+
+```{r data-9-solution, warning=FALSE}
+airquality |>
+  mutate(Month = as.character(Month)) |>
+ggplot() +
+  aes(x = Temp,
+      y = Ozone,
+      fill = Month) +
+  geom_col()
+```
+
+### Exercise 17.10: Add scales again
+
+Create a bar ggplot from the `iris` data. Put the petal length on the y axis. Group the data by petal width. Then change the color of the bars to the default gradient.
+
+```{r data-10, exercise=TRUE}
+# Write your code here
+
+```
+
+```{r data-10-solution}
+iris |>
+  ggplot() +
+  aes(y = Petal.Length,
+      group = Petal.Width,
+      fill = Petal.Width) +
+  geom_bar() +
+  scale_fill_gradient()
+```
+
+<div>
+
+**Hint:** Use `scale_fill_gradient()` to set the gradient
+
+</div>
+
+
+### Exercise 17.11: Add scales once more
+
+
+Create a point plot with a smoothing line from the `iris` data. Put the petal length on the x axis and petal width on the y axis. Group the data by species. Then change the color of the points to pink, orchid and purple.
+
+
+```{r data-11, exercise=TRUE}
+# Write your code here
+
+```
+
+```{r data-11-solution}
+iris |>
+  ggplot() +
+  aes(x = Petal.Length,
+      y = Petal.Width,
+      group = Species,
+      color = Species) +
+  geom_point() +
+  scale_color_manual(values = c("pink", "orchid", "purple")) +
+  geom_smooth()
+```
+
+
+<div>
+
+**Hint 1:** Use `c("pink", "orchid", "purple")` to set the colors.
+
+**Hint 2:** Use `geom_smooth()` to get the smoothing lines.
+
+</div>
+
+### Exercise 17.12: Add scales and change the shape
+
+Create a point ggplot from the `iris` data. Put the petal length on the x axis and petal width on the y axis. Group the data by species. Then change the shape (default) AND color of the points (to pink, orchid and purple).
+
+```{r data-12, exercise=TRUE}
+# Write your code here
+
+```
+
+```{r data-12-solution}
+iris |>
+  ggplot() +
+  aes(x = Petal.Length,
+      y = Petal.Width,
+      group = Species,
+      color = Species,
+      shape = Species) +
+  geom_point() +
+  scale_color_manual(values = c("pink", "orchid", "purple"))
+```
+
+### Exercise 17.13: Add scales and change them
+
+Create a column plot from the `airquality`. Change the month column from numbers to characters. Put the day on the x axis, the temp on the y axis, and group the data by month (as a character). Transform the y axis using log10 and don't stack the data.
+
+```{r data-13, exercise=TRUE}
+# Write your code here
+
+```
+
+```{r data-13-solution}
+airquality |>
+  mutate(Month = as.character(Month)) |>
+ggplot() +
+  aes(x = Day,
+      y = Temp,
+      fill = Month) +
+  geom_col(position = "dodge") +
+  scale_y_log10()
+```
+
+<div>
+
+**Hint 1:** Use `scale_y_log10()` to transform the y axis.
+
+**Hint 2:** Use `position = "dodge"` to change the columns from stacked to next to each other.
+
+</div>
+
+
+### Exercise 17.14: Add coordinates
+
+Create a boxplot of the `iris` data. Plot the species on the x axis and the sepal length on they axis, the flip the coordinates.
+
+```{r coord-1, exercise=TRUE}
+# Write your code here
+
+
+```
+
+```{r coord-1-solution}
+iris |>
+ggplot() +
+  aes(x = Species, y = Sepal.Length) +
+  geom_boxplot() +
+  coord_flip()
+```
+
+<div>
+
+**Hint:** Use `coord_flip()` to flip the axes.
+
+</div>
+
+### Exercise 17.15: Add coordinates again
+
+Create a polar bar chart of number of cars by gear.
+
+```{r coord-2, exercise=TRUE}
+# Write your code here
+
+
+```
+
+```{r coord-2-solution}
+mtcars |>
+ggplot() +
+  aes(x = factor(gear)) +
+  geom_bar() +
+  coord_polar()
+```
+
+### Exercise 17.16: Add facets
+
+Create a facet wrap by species using the `iris` data set.
+
+```{r facet-1, exercise=TRUE}
+# Write your code here
+
+
+```
+
+```{r facet-1-solution}
+iris |>
+  ggplot() +
+  aes(x = Petal.Length, y = Petal.Width) +
+  geom_point() +
+  facet_wrap(~ Species)
+```
+
+### Exercise 17.17: Add facets again
+
+Use facet grid to compare data by month and day in the `airquality` data.
+
+```{r facet-2, exercise=TRUE}
+# Write your code here
+
+```
+
+```{r facet-2-solution}
+airquality |>
+  mutate(Month = as.factor(Month)) |>
+  ggplot() +
+  aes(x = Wind, y = Temp) +
+  geom_point() +
+  facet_grid(Month ~ .)
+```
+
+### Exercise 17.18: Add facets yet again
+
+Use `mtcars` data set and facet by number of gears and cylinders.
+
+```{r facet-3, exercise=TRUE}
+# Write your code here
+
+```
+
+```{r facet-3-solution}
+mtcars |>
+  ggplot() +
+  aes(x = mpg, y = hp) +
+  geom_point() +
+  facet_grid(gear ~ cyl)
+```
+
+### Exercise 17.19: Add a theme
+
+`gglpot2` has multiple integrated themes:
+
+- `theme_gray()` and `theme_grey()`
+- `theme_bw()`
+- `theme_linedraw()`
+- `theme_light()`
+- `theme_dark()`
+- `theme_minimal()`
+- `theme_classic()`
+- and more!
+
+Use a classic theme on an `iris` point plot where you plot the sepal length and sepal width on the x and y axes, respectively.
+
+```{r theme-1, exercise=TRUE}
+# Write your code here
+
+```
+
+```{r theme-1-solution}
+iris |>
+  ggplot() +
+  aes(x = Sepal.Length, y = Sepal.Width) +
+  geom_point() +
+  theme_classic()
+```
+
+### Exercise 17.20: Add a theme again
+
+Use a void theme on an `starwars` column plot where you plot the hair color and height x and y axes, respectively. Remove the bold characters and the missing values before plotting.
+
+```{r theme-2, exercise=TRUE}
+# Write your code here
+
+```
+
+```{r theme-2-solution}
+starwars |>
+  na.omit() |>
+  filter(hair_color != "none") |>
+  ggplot() +
+  aes(x = hair_color, y = height) +
+  geom_col() +
+  theme_void()
+```
+
+### Exercise 17.21: Add labels
+
+You can add labels such as title and subtitle to your plot, as well as rename the x and y axes and color guides by using the `labs()` function.
+
+Create a point ggplot from the `iris` data:
+
+- Put the petal length on the y axis and petal width on the x axis. 
+- Group the data by species. Then change the shape (default) AND color of the points (to pink, orchid and purple).
+- Add a black and white theme.
+- Change the labels on the x and y axes to "Petal width" and "Petal length", respectively.
+- Change the color and shape guide to "Species"
+
+```{r labels-1, exercise=TRUE}
+# Write your code here
+
+```
+
+```{r labels-1-solution}
+iris |>
+  ggplot() +
+  aes(x = Petal.Length,
+      y = Petal.Width,
+      group = Species,
+      color = Species,
+      shape = Species) +
+  geom_point() +
+  scale_color_manual(values = c("pink", "orchid", "purple")) +
+  theme_bw() +
+  labs(x = "Petal width", y = "Petal length", color = "Species", shape = "Species")
+```
+
+### Exercise 17.22: Add labels again
+
+Create a histogram plot from the `starwars` data:
+
+- Remove the missing values.
+- Plot the height on the x axis.
+- Use gender for coloring the bars.
+- Set the number of bins in the geom to 20 and the bar position to dodge.
+- Use the minimal theme.
+- Add a title and a subtitle to the plot.
+- Change the x and y axes labels, as well as the fill.
+
+and the gender on 
+
+```{r labels-2, exercise=TRUE}
+# Write your code here
+
+```
+
+
+```{r}
+starwars |>
+ filter(!is.na(gender)) |>
+ ggplot() +
+  aes(x = height, 
+      group = gender,
+      fill = gender) +
+  geom_histogram(bins = 20, position = position_dodge()) +
+  labs(
+    x = "Height (cm)",
+    y = "Count",
+    title = "Starwars characters",
+    subtitle = "Character height distribution by gender",
+    fill = "Gender") +
+  theme_minimal()
+```
+
+<div>
+
+**Hint:** You can adjust the bar position within the geom as `position = position_dodge()` if you want the bars to be next to each other (as opposed to stacked).
+
+</div>
