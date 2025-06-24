@@ -48,7 +48,7 @@ You will practice with real data sets like `mtcars`, `iris`, `starwars`, and `ai
 
 These exercises are meant to be complementary to the *Digital Research Toolkit for Linguists* offered in the summer semester 2025 at the University of Stuttgart.
 I reference the materials and examples from the seminar in several places.
-The relevant slides and exercises are available from the GitHub repository: [LINK](https://github.com/a-nap/Digital-Research-Toolkit).
+The relevant slides and exercises are available from the GitHub repository: <i class="fa-solid fa-link"></i>[LINK](https://github.com/a-nap/Digital-Research-Toolkit).
 
 For questions and feedback, please contact Anna Prysłopska at `anna . pryslopska [AT] gmail . com`
 
@@ -113,8 +113,6 @@ I class, we have been using the `ggplot2` and `esquisse` packages to visualize d
 [`ggplot2`](https://ggplot2.tidyverse.org/) is a tool for making graphs. Its approach to data viz is that of a layered grammar of graphics. You design and construct graphics in
 a structured manner from data upwards.
 First, you tell it what data to use, how to match data to things like color or position, and what kind of shapes to draw (like bars or lines). Then `ggplot2` builds the graph for you, handling the rest of the work.
-
-`ggplot2` was created by Hadley Wickham.  
 
 ![Diagram from slides in Week 7](https://pryslopska.com/img/ggplot2025.svg){width="50%"}
 
@@ -309,7 +307,7 @@ detach("package:formattable", unload = TRUE)
 
 You should collect information about current R session, so that you can reproduce the analysis, should anything change in R or in the packages you use.
 
-Check what packages are loaded in
+Check what packages are loaded in the current session.
 
 ```{r packages-ex4, exercise=TRUE}
 # Write your code here
@@ -1686,7 +1684,7 @@ starwars |>
 
 <div>
 
-**Hint:** Use `n()` to count the number of cases.
+<i class="fa-solid fa-circle-info"></i> **Hint:** Use `n()` to count the number of cases.
 
 </div>
 
@@ -1707,7 +1705,7 @@ iris |>
 
 <div>
 
-**Hint:** Use `median()` to calculate the median.
+<i class="fa-solid fa-circle-info"></i> **Hint:** Use `median()` to calculate the median.
 
 </div>
 
@@ -1762,7 +1760,7 @@ airquality |>
 
 <div>
 
-**Hint:** Remove missing values before calculating the mean.
+<i class="fa-solid fa-circle-info"></i> **Hint:** Remove missing values before calculating the mean.
 
 </div>
 
@@ -1803,7 +1801,7 @@ starwars |>
 
 <div>
 
-**Hint:** You can set the argument `na.rm` i.e. "remove NA" to `TRUE` within the summing function to remove all missing values, or you can use the NA removing function we used so far.
+<i class="fa-solid fa-circle-info"></i> **Hint:** You can set the argument `na.rm` i.e. "remove NA" to `TRUE` within the summing function to remove all missing values, or you can use the NA removing function we used so far.
 
 </div>
 
@@ -1825,7 +1823,7 @@ starwars |>
 
 <div>
 
-**Hint:** Use `slice_max()` to return the *row* with the maximal value in a group.
+<i class="fa-solid fa-circle-info"></i> **Hint:** Use `slice_max()` to return the *row* with the maximal value in a group.
 
 </div>
 
@@ -1846,7 +1844,7 @@ starwars |>
 
 <div>
 
-**Hint:** Use `n_distinct()` to count the number of distinct values.
+<i class="fa-solid fa-circle-info"></i> **Hint:** Use `n_distinct()` to count the number of distinct values.
 
 </div>
 
@@ -1912,7 +1910,7 @@ mtcars |>
 
 <div>
 
-**Hint:** `TRUE` is the final "else" statement.
+<i class="fa-solid fa-circle-info"></i> **Hint:** `TRUE` is the final "else" statement.
 
 </div>
 
@@ -1953,7 +1951,7 @@ starwars |>
 
 <div>
 
-**Hint:** Use `is.na()` inside `ifelse()`.
+<i class="fa-solid fa-circle-info"></i> **Hint:** Use `is.na()` inside `ifelse()`.
 
 </div>
 
@@ -1980,7 +1978,7 @@ airquality |>
 
 <div>
 
-**Hint:** Remember to calculate the correct temperature.
+<i class="fa-solid fa-circle-info"></i> **Hint:** Remember to calculate the correct temperature.
 
 </div>
 
@@ -2007,7 +2005,7 @@ iris |>
 
 <div>
 
-**Hint:** One of the ways of previewing data allowed us to check the quantiles.
+<i class="fa-solid fa-circle-info"></i> **Hint:** One of the ways of previewing data allowed us to check the quantiles.
 Go back to chapter 3 or the handout for Week 3 if you need a refresher.
 
 </div>
@@ -2038,7 +2036,7 @@ mtcars |>
 
 <div>
 
-**Hint:** Remember how we combined conditions when filtering and in set theory.
+<i class="fa-solid fa-circle-info"></i> **Hint:** Remember how we combined conditions when filtering and in set theory.
 
 </div>
 
@@ -2152,7 +2150,7 @@ children
 
 <div>
 
-**Hint:** You need two different kinds of assignment for this exercise.
+<i class="fa-solid fa-circle-info"></i> **Hint:** You need two different kinds of assignment for this exercise.
 
 </div>
 
@@ -2208,7 +2206,7 @@ print(countries_data)
 
 <div>
 
-**Hint:** You can reuse the dataframe you created in the previous exercise.
+<i class="fa-solid fa-circle-info"></i> **Hint:** You can reuse the dataframe you created in the previous exercise.
 
 </div>
 
@@ -2567,7 +2565,7 @@ full_join(children, animals, by="Name")
 
 <div>
 
-**Hint:** The `full_join()` function takes as argument two dataframes and the common identifier arguments by which to match the rows `by=`.
+<i class="fa-solid fa-circle-info"></i> **Hint:** The `full_join()` function takes as argument two dataframes and the common identifier arguments by which to match the rows `by=`.
 
 </div>
 
@@ -2596,7 +2594,7 @@ inner_join(children, animals, by="Name")
 
 <div>
 
-**Hint:** The `inner_join()` function takes as argument two dataframes and the common identifier arguments by which to match the rows `by=`, just like `full_join()`.
+<i class="fa-solid fa-circle-info"></i> **Hint:** The `inner_join()` function takes as argument two dataframes and the common identifier arguments by which to match the rows `by=`, just like `full_join()`.
 
 </div>
 
@@ -2630,7 +2628,7 @@ inner_join(children, animals, by = "Name")
 
 <div>
 
-**Hint:** You can reuse the code from the previous exercise.
+<i class="fa-solid fa-circle-info"></i> **Hint:** You can reuse the code from the previous exercise.
 
 </div>
 
@@ -2827,7 +2825,7 @@ full_join(children, animals, by = "Name") |>
 
 <div>
 
-**Hint:** Think about how to handle the cases where you **don't** want to change the age.
+<i class="fa-solid fa-circle-info"></i> **Hint:** Think about how to handle the cases where you **don't** want to change the age.
 
 </div>
 
@@ -3074,7 +3072,7 @@ iris |>
 
 <div>
 
-**Hint:** Use `scale_fill_gradient()` to set the gradient
+<i class="fa-solid fa-circle-info"></i> **Hint:** Use `scale_fill_gradient()` to set the gradient
 
 </div>
 
@@ -3105,9 +3103,9 @@ iris |>
 
 <div>
 
-**Hint 1:** Use `c("pink", "orchid", "purple")` to set the colors.
+<i class="fa-solid fa-circle-info"></i> **Hint 1:** Use `c("pink", "orchid", "purple")` to set the colors.
 
-**Hint 2:** Use `geom_smooth()` to get the smoothing lines.
+<i class="fa-solid fa-circle-info"></i> **Hint 2:** Use `geom_smooth()` to get the smoothing lines.
 
 </div>
 
@@ -3154,9 +3152,9 @@ ggplot() +
 
 <div>
 
-**Hint 1:** Use `scale_y_log10()` to transform the y axis.
+<i class="fa-solid fa-circle-info"></i> **Hint 1:** Use `scale_y_log10()` to transform the y axis.
 
-**Hint 2:** Use `position = "dodge"` to change the columns from stacked to next to each other.
+<i class="fa-solid fa-circle-info"></i> **Hint 2:** Use `position = "dodge"` to change the columns from stacked to next to each other.
 
 </div>
 
@@ -3181,7 +3179,7 @@ ggplot() +
 
 <div>
 
-**Hint:** Use `coord_flip()` to flip the axes.
+<i class="fa-solid fa-circle-info"></i> **Hint:** Use `coord_flip()` to flip the axes.
 
 </div>
 
