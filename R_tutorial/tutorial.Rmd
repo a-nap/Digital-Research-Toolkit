@@ -21,7 +21,7 @@ runtime: shiny_prerendered
 library(shiny)
 library(learnr)
 library(tidyverse)
-# library(fontawesome)
+library(fontawesome)
 # library(here)
 
 countries_data <- data.frame(
@@ -826,11 +826,37 @@ filter(iris,
 ### Exercise 6.5: Mixing filters
 
 Look at the `starwars` data.
-What is the name and species of the man who is between 100 and 180 cm tall, has black or blue eyes, weighs 80 kg or less, does not have black hair, and whose homeworld is neither "Sullust" nor "Bespin".
+What is the name and species of the man who is between 100 and 180 cm tall, has black or blue eyes, weighs 80 kg or less, does not have black hair, and whose homeworld is neither Sullust nor Bespin.
 
 ```{r filter-ex5, exercise=TRUE}
 # Write your code here
 
+```
+
+```{r filter-ex5-hint-1}
+# Build your filter incrementally
+filter(starwars,
+       sex == "male",
+       height %in% 100:180)
+```
+
+```{r filter-ex5-hint-2}
+# Again, there are many ways to achieve the same filter.
+filter(starwars,
+       sex == "male",
+       height %in% 100:180,
+       eye_color %in% c("black", "blue"))
+```
+
+```{r filter-ex5-hint-3}
+# The conditions must evaluate to TRUE.
+# One more is missing.
+filter(starwars,
+       sex == "male",
+       height %in% 100:180,
+       eye_color %in% c("black", "blue"),
+       mass <= 80,
+       hair_color != "black")
 ```
 
 ```{r filter-ex5-solution}
@@ -862,7 +888,30 @@ They're either over 230 cm or under 200 cm tall.
 
 ```
 
+```{r filter-ex6-hint-1}
+# Start with the easy filters
+filter(starwars,
+       skin_color %in% c("grey", "green"),
+       hair_color == "none",
+       sex =="male",
+       mass < 90,
+       starships != "Millennium Falcon")
+```
+
+```{r filter-ex6-hint-2}
+# As before, feel free to experiment with different ways to get the same result
+filter(starwars,
+       !(eye_color %in% c("yellow", "gold")))
+```
+
+```{r filter-ex6-hint-3}
+# The last condition must evaluate to TRUE
+filter(starwars,
+       (height < 200 | height > 230))
+```
+
 ```{r filter-ex6-solution}
+# The solution as it is spelled out in the text
 filter(starwars,
        skin_color %in% c("grey", "green"),
        hair_color == "none",
@@ -914,6 +963,11 @@ In `mtcars`, make a new column called "power_to_weight" which is the ratio of ho
 
 ```
 
+```{r mutate-ex1-hint}
+# This is the general function syntax
+mutate(df, new_column = value)
+```
+
 ```{r mutate-ex1-solution}
 mutate(mtcars, power_to_weight = hp / wt)
 ```
@@ -932,32 +986,45 @@ In `starwars`, calculate two values:
 -   "height_m" each character's height in meters, and
 -   "bmi" [the body mass index](https://en.wikipedia.org/wiki/Body_mass_index) of each character.
 
+$$
+\text{BMI} = \frac{\text{weight (kg)}}{[\text{height (m)}]^2}
+$$
+
+
 **Don't use pipes for this exercise.**
 
 ```{r mutate-ex2, exercise=TRUE}
 # Write your code here
 
-
-
 ```
 
-<div>
+```{r mutate-ex2-hint-1}
+# BMI is measured in kg/m2, but the height values in `starwars` are in centimeters.
+starwars <- mutate(starwars, height_m = height / 100)
+```
 
-**Hint 1:** BMI is measured in kg/m2.
-The "height" values in `starwars` are in centimeters.
-
-**Hint 2:** Since we're not using pipes at this stage yet, you have to proceed in 2 steps.
-
-</div>
+```{r mutate-ex2-hint-2}
+# Now calculate the BMI
+starwars <- mutate(starwars, bmi = mass / (height_m ^ 2))
+```
 
 ```{r mutate-ex2-solution}
 starwars <- mutate(starwars, height_m = height / 100)
 starwars <- mutate(starwars, bmi = mass / (height_m ^ 2))
 ```
 
+<div>
+
+**Hint:** Since we're not using pipes at this stage yet, you have to proceed in 2 steps.
+
+</div>
+
+
 ### Exercise 7.3: More mutations
 
 Convert temperature from Fahrenheit to Celsius in `airquality` data and save it to a new column "temp_c".
+
+
 
 ```{r mutate-ex3, exercise=TRUE}
 # Write your code here
@@ -970,7 +1037,11 @@ mutate(airquality, temp_c = (Temp - 32) * 5 / 9)
 
 <div>
 
-**Hint:** The conversion formula is temperature °C = (temperature °F - 32) \* 5/9
+**Hint:** The conversion formula for temperature in °C is:
+
+$$
+C = \frac{5}{9}(F - 32)
+$$
 
 </div>
 
@@ -996,16 +1067,16 @@ Apply `na.omit()` to `airquality` and report the number of rows before and after
 
 ```
 
+```{r naomit-ex1-hint-1}
+# Use the function `nrow()` to get the number of rows of a dataframe.
+nrow(airquality)
+```
+
+
 ```{r naomit-ex1-solution}
 nrow(airquality)
 nrow(na.omit(airquality))
 ```
-
-<div>
-
-**Hint:** Use the function `nrow()` to get the number of rows of a dataframe.
-
-</div>
 
 ### Exercise 8.2: Compare before and after
 
@@ -1013,7 +1084,6 @@ Report the number of rows of the `starwars` data before and after removing missi
 
 ```{r naomit-ex2, exercise=TRUE}
 # Write your code here
-
 
 ```
 
@@ -1037,12 +1107,17 @@ nrow(iris) - nrow(na.omit(iris))
 
 ### Exercise 8.4: Chain with select
 
-In the `starwars` data, remove NAs then select the name, weight, and birth_year.
+In the `starwars` data, remove NAs then select the name, weight, and birth year.
 **Do this in two steps.**
 
 ```{r naomit-ex4, exercise=TRUE}
 # Write your code here
 
+```
+
+```{r naomit-ex4-hint}
+# First create a new data frame without missing values
+df1 <- na.omit(starwars)
 ```
 
 ```{r naomit-ex4-solution}
@@ -1059,6 +1134,12 @@ Using and `filter()`, show all the rows in the `airquality` data set with missin
 
 ```
 
+```{r naomit-ex5-hint}
+# Try out what happens when you apply is.na() to the Ozone column.
+# You get a vector for rows with missing values (=TRUE) or not (=FALSE).
+is.na(airquality$Ozone)
+```
+
 ```{r naomit-ex5-solution}
 filter(airquality, is.na(Ozone)==TRUE)
 ```
@@ -1073,11 +1154,17 @@ This is similar to the functions `is.numeric()`, `is.logical()` etc. that we tal
 ### Exercise 8.6: Chain with select in one line
 
 In the `airquality` data, remove NAs then select the the wind and temperature.
-**Do this in one steps and one line.**
+**Do this in one step and one line.**
 
 ```{r naomit-ex6, exercise=TRUE}
 # Write your code here
 
+```
+
+```{r naomit-ex6-hint}
+# The first argument of select() is the data frame.
+# You just need to remove the missing values from it.
+select(df_with_no_missing_values, Wind, Temp)
 ```
 
 ```{r naomit-ex6-solution}
@@ -1092,7 +1179,7 @@ select(na.omit(airquality), Wind, Temp)
 
 ### Exercise 8.7: Chain multiple functions in one line
 
-In the `airquality` data, remove NAs then select the the wind and temperature, then count the number of rows.
+In the `airquality` data, remove missing values, then select the the wind and temperature, then count the number of rows.
 **Do this in one steps and one line.**
 
 ```{r naomit-ex7, exercise=TRUE}
@@ -1100,15 +1187,15 @@ In the `airquality` data, remove NAs then select the the wind and temperature, t
 
 ```
 
+```{r naomit-ex7-hint}
+# You can reuse the code from the previous exercise
+# There is something missing though.
+select(na.omit(airquality), Wind, Temp)
+```
+
 ```{r naomit-ex7-solution}
 nrow(select(na.omit(airquality), Wind, Temp))
 ```
-
-<div>
-
-**Hint:** You can the `nrow()` functions to return the number of rows.
-
-</div>
 
 ------------------------------------------------------------------------
 
@@ -1116,8 +1203,12 @@ nrow(select(na.omit(airquality), Wind, Temp))
 
 *4 exercises*
 
-Sort the values in a dataframe.
-By default, `arrange()` sorts the values from smallest to largest of alphabetically from A to Z.
+This function is used to sort the values in a dataframe.
+By default, `arrange()` sorts the values in ascending order (smallest to largest or alphabetically from A to Z). 
+You can use the function `desc()` on a column name from **within** `arrange()` to sort values in descending order.
+If the values in a column are numerical, you can also inverse the sorting order by using `-` in front of the column name.
+
+The values are sorted first by the first column, then by the second, then by the third and so on.
 
 ### Exercise 9.1: Ascending order
 
@@ -1128,51 +1219,58 @@ Arrange `mtcars` by weight and horsepower, both in ascending order.
 
 ```
 
+```{r arrange-ex1-hint}
+arrange(df, column1, column2)
+```
+
 ```{r arrange-ex1-solution}
 arrange(mtcars, wt, hp)
 ```
 
 ### Exercise 9.2: Descending order of numbers
 
-Arrange `starwars` by height in descending.
+Arrange `starwars` by height in descending order.
 
 ```{r arrange-ex2, exercise=TRUE}
 # Write your code here
 
 ```
 
-```{r arrange-ex2-solution}
-arrange(starwars, -height)
+```{r arrange-ex2-hint}
+# Option 1:
+arrange(df, -column)
+# Option 2:
+arrange(df, desc(column))
 ```
 
-<div>
-
-**Hint:** To sort numeric values from largest to smallest, you can use `-` in front of the column name.
-
-</div>
+```{r arrange-ex2-solution}
+# Option 1:
+arrange(starwars, -height)
+# Option 2:
+arrange(starwars, desc(height))
+```
 
 ### Exercise 9.3: Descending order of characters
 
-Arrange `starwars` by species in descending.
+Arrange `starwars` by species in descending order.
 
 ```{r arrange-ex3, exercise=TRUE}
 # Write your code here
 
 ```
 
+```{r arrange-ex3-hint}
+# Since the values in "species" are strings/characters, 
+# you cannot use - to inverse the order.
+```
+
 ```{r arrange-ex3-solution}
 arrange(starwars, desc(species))
 ```
 
-<div>
-
-**Hint:** To sort characters or strings in descending order, use the function `desc()`.
-
-</div>
-
 ### Exercise 9.4: Multiple variables
 
-Arrange `iris` by species (descending), then by sepal width (ascending), then by sepal length (descending).
+Arrange `iris` by species (descending), then by sepal width (ascending), then by sepal length (descending). 
 
 ```{r arrange-ex4, exercise=TRUE}
 # Write your code here
@@ -1180,6 +1278,8 @@ Arrange `iris` by species (descending), then by sepal width (ascending), then by
 ```
 
 ```{r arrange-ex4-solution}
+# There are multiple solutions to this exercise.
+# This is just one.
 arrange(iris, desc(Species), Sepal.Width, -Sepal.Length)
 ```
 
@@ -1189,6 +1289,13 @@ arrange(iris, desc(Species), Sepal.Width, -Sepal.Length)
 
 *3 exercises*
 
+This function extracts unique elements. In other words, it removes duplicate elements or rows. 
+
+In these exercises, you will be looking at a single column in the data frame.
+We haven't done this in class much, but in a nutshell, you can get a single column from a data frame in base R by using the dollar sign: `$`
+
+`df$col` translates to *take the column named `col` from the data frame `df`*.
+
 ### Exercise 10.1: Unique values in a column
 
 Show all unique species in the `iris` data set.
@@ -1196,6 +1303,11 @@ Show all unique species in the `iris` data set.
 ```{r unique-ex1, exercise=TRUE}
 # Write your code here
 
+```
+
+```{r unique-ex1-hint}
+# Use the dollar sign to select only one column from the data set.
+iris$Species
 ```
 
 ```{r unique-ex1-solution}
@@ -1207,20 +1319,27 @@ unique(iris$Species)
 Count how many unique gear values are in `mtcars`.
 Do this in one line.
 
+To get the number of values, use the `length()` function, which takes only one element and returns the length of an object.
+
 ```{r unique-ex2, exercise=TRUE}
 # Write your code here
 
 ```
 
+```{r unique-ex2-hint-1}
+# Select the appropriate column
+mtcars$gear
+```
+
+```{r unique-ex2-hint-2}
+# Remove the duplicates
+# There is one more step
+unique(mtcars$gear)
+```
+
 ```{r unique-ex2-solution}
 length(unique(mtcars$gear))
 ```
-
-<div>
-
-**Hint:** To get the number of values, use the `length()` function, which takes only one element.
-
-</div>
 
 ### Exercise 10.3: Multiple unique values
 
@@ -1229,6 +1348,12 @@ Get the unique eye and skin colors in the `starwars` data set.
 ```{r unique-ex3, exercise=TRUE}
 # Write your code here
 
+```
+
+```{r unique-ex3-hint}
+# unique() checks only one argument for duplicates.
+# You can call the concatenation function from within 
+# the `unique()` function to reduce the number of objects. 
 ```
 
 ```{r unique-ex3-solution}
@@ -1254,6 +1379,11 @@ Select name and species from `starwars` using native pipe.
 ```{r pipe-ex1, exercise=TRUE}
 # Write your code here
 
+```
+
+```{r pipe-ex1-hint}
+# The pipe passes the previous output as the new input.
+# You must skip the first argument of select()
 ```
 
 ```{r pipe-ex1-solution}
@@ -1282,6 +1412,15 @@ Filter only the hermaphroditic characters from `starwars` and select their name,
 
 ```
 
+```{r pipe-ex3-hint-1}
+starwars |>
+```
+
+```{r pipe-ex3-hint-2}
+starwars |>
+  filter(sex == "hermaphroditic") |>
+```
+
 ```{r pipe-ex3-solution}
 starwars |>
   filter(sex == "hermaphroditic") |>
@@ -1299,6 +1438,22 @@ Then change their height to meters.
 
 ```
 
+```{r pipe-ex4-hint-1}
+starwars |>
+```
+
+```{r pipe-ex4-hint-2}
+starwars |>
+  filter(sex == "female") |>
+```
+
+```{r pipe-ex4-hint-3}
+starwars |>
+  filter(sex == "female") |>
+  select(-hair_color) |>
+```
+
+
 ```{r pipe-ex4-solution}
 starwars |>
   filter(sex == "female") |>
@@ -1308,17 +1463,33 @@ starwars |>
 
 ### Exercise 11.5: Pipeline with filter, select, remove missing values, and mutate
 
-From the `airquality` data set, filter the data from June, drop the day of the month, remove missing values, and change the temperature from °Fahrenheit to °Celsius.
+From the `airquality` data set, filter the data from June, drop the day of the month, remove missing values, and change the temperature from °Fahrenheit to °Celsius. Would the results change if you inversed the order of the steps?
 
 ```{r pipe-ex5, exercise=TRUE}
 # Write your code here
 
+```
 
+```{r pipe-ex5-hint-1}
+airquality |>
+  filter(Month == 6) |>
+```
 
+```{r pipe-ex5-hint-2}
+airquality |>
+  filter(Month == 6) |>
+  select(-Day) |>
+```
 
+```{r pipe-ex5-hint-3}
+airquality |>
+  filter(Month == 6) |>
+  select(-Day) |>
+  na.omit() |>
 ```
 
 ```{r pipe-ex5-solution}
+# The order does not matter in this case
 airquality |>
   filter(Month == 6) |>
   select(-Day) |>
@@ -1328,7 +1499,11 @@ airquality |>
 
 <div>
 
-**Hint:** The conversion formula is temperature °C = (temperature °F - 32) \* 5/9
+**Hint:** The conversion formula for temperature in °C is:
+
+$$
+C = \frac{5}{9}(F - 32)
+$$
 
 </div>
 
@@ -1339,9 +1514,39 @@ From the `airquality` data set, filter the data from the first three weeks of Au
 ```{r pipe-ex6, exercise=TRUE}
 # Write your code here
 
+```
+
+```{r pipe-ex6-hint-1}
+airquality |>
+  filter(Month == 8,
+         Day <22) |>
+```
 
 
+```{r pipe-ex6-hint-2}
+airquality |>
+  filter(Month == 8,
+         Day <22) |>
+  select(Ozone, Solar.R, Wind, Temp) |>
+```
 
+```{r pipe-ex6-hint-3}
+airquality |>
+  filter(Month == 8,
+         Day <22) |>
+  select(Ozone, Solar.R, Wind, Temp) |>
+  na.omit() |>
+```
+
+```{r pipe-ex6-hint-4}
+airquality |>
+  filter(Month == 8,
+         Day <22) |>
+  select(Ozone, Solar.R, Wind, Temp) |>
+  na.omit() |>
+  mutate(Temp = (Temp - 32) * 5/9,
+         Wind = Wind * 1.609344,
+         Month = "August") |>
 ```
 
 ```{r pipe-ex6-solution}
@@ -1365,15 +1570,47 @@ airquality |>
 ### Exercise 11.7: Pipeline with filter, select, remove missing values, and mutate
 
 From the `airquality` data set, filter the data from May, remove missing values, change the temperature from °Fahrenheit to °Celsius, round the resulting temperature to a whole number (no decimal points), and return only the unique temperatures.
-How many unique temperatures were there?
+How many unique temperatures were there? Does it matter in which order we execute these steps? 
 **Use `mutate()` only once to do the calculation and rounding at the same time.**
 
 ```{r pipe-ex7, exercise=TRUE}
 # Write your code here
 
+```
 
+```{r pipe-ex7-hint-1}
+airquality |>
+  filter(Month == 5) |>
+```
 
+```{r pipe-ex7-hint-2}
+airquality |>
+  filter(Month == 5) |>
+  na.omit() |>
+```
 
+```{r pipe-ex7-hint-3}
+airquality |>
+  filter(Month == 5) |>
+  na.omit() |>
+  mutate(Temp = round((Temp - 32) * 5/9, 0)) |>
+```
+
+```{r pipe-ex7-hint-4}
+airquality |>
+  filter(Month == 5) |>
+  na.omit() |>
+  mutate(Temp = round((Temp - 32) * 5/9, 0)) |>
+  select(Temp) |>
+```
+
+```{r pipe-ex7-hint-5}
+airquality |>
+  filter(Month == 5) |>
+  na.omit() |>
+  mutate(Temp = round((Temp - 32) * 5/9, 0)) |>
+  select(Temp) |>
+  unique() |>
 ```
 
 ```{r pipe-ex7-solution}
@@ -1388,11 +1625,8 @@ airquality |>
 
 <div>
 
-**Hint 1:** Use the `round()` function to round a number.
+**Hint:** Use the `round()` function to round a number.
 It takes two arguments: values (a number or a numeric vector, like a column) and number of decimal places (default 0).
-
-**Hint 2:** Use `nrow()` to return the number of rows.
-
 </div>
 
 ------------------------------------------------------------------------
@@ -1430,7 +1664,7 @@ mtcars |>
 
 <div>
 
-**Hint:** Use `mean()` to calculate the mean value.
+<i class="fa-solid fa-circle-info"></i> **Hint:** Use `mean()` to calculate the mean value.
 
 </div>
 
