@@ -1,0 +1,78 @@
+---
+title: Moses illusion stuff
+format: html # This is the default; try jats or pdf
+author:
+  - name: Anna Prysłopska
+    corresponding: true
+    email: anna.pryslopska@ling.uni-stuttgart.de
+    affiliations:
+      - University of Stuttgart
+keywords:
+  - Psycholinguistics
+  - Teaching
+  - something
+  - something else
+abstract: |
+  A mini experiment on the Moses illusion created for the Digital Toolkit seminar ...
+date: last-modified
+# bibliography: references.bib TBA!
+number-sections: true
+---
+
+Remember to edit the frontmatter: title, author, keywords, and the abstract
+
+# Introduction
+
+Write 4-5 sentences of background info on the Moses illusion. Include one image, e.g. from Wikipedia, and [hyperlink]() it. **Reference the image in the text.**
+
+# Methods
+
+Write a few sentences describing the experiment, the task, the goal. Give four examples of a question (this is a conspicuous number, think about it!) as a nested numbered and unnumbered list:
+
+1.  Something:
+    -   Item 1
+    -   Item 2
+2.  Something else: ...
+
+**This section should have same subsections in the Method(s) section as the Dudschig et al. (2016) article linked in the lecture slides.**
+
+## Subsection 1
+
+# \[redacted\] and \[redacted\]
+
+(You need to figure out the name for this section.)
+
+Your code for the Moses illusion analysis will go here. You have to put it in code chunks. Everything we did in the homework assignments that is related to preprocessing and analysing the data. However, it should not be rendered in the document.
+
+🖼️ **Show only the following output:**
+
+1.  At least one table (either as a table or rendered in code)
+2.  At least two plots (not imported as images, but rendered in code!)
+
+Both the table and the plots have to be relevant and sensical.
+
+📘 **Describe the results in 5-6 sentences:**
+
+-   Who took part and how many people were there?
+-   Did you remove some data during preprocessing? (Think: journal article relevant info, not technical report!)
+-   Did the participants fall for the illusion? Use some measure to describe this, e.g. in percent or proportions, e.g. *participants were X times more likely to* or *In X% of the cases, ...*
+-   What were the response times and was there any regularity?
+
+```{r}
+#| include: false
+nr <- 200
+```
+
+🔗 **Reference the table and plots in the text.**\
+Tip: you can use inline code to print information such as participant number or mean values, e.g.: `r nr` participants did not take part in the experiment, it was way less. 
+
+# Discussion
+
+In 2-3 sentences, what can we conclude from the results?
+
+# References
+
+For now, just a list of 2 relevant references as an unnumbered list. 
+# Appendix
+
+Your session info here.
