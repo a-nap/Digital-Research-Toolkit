@@ -1364,9 +1364,8 @@ unique(c(starwars$skin_color, starwars$eye_color))
 
 *7 exercises*
 
-A powerful tool for clearly expressing a sequence of multiple operations.
-Passes the output as the new input.
-They can be read as "and then".
+Pipes are a powerful tool for clearly expressing a sequence of multiple operations. They pass the output of one step as the new input of the next one.
+They can be read as "and then". In class, we used the native R pipe: `|>`.
 
 The pipe translates `x |> f(y)` into `f(x, y)`.
 
