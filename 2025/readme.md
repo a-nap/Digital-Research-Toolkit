@@ -30,14 +30,19 @@ This is a rough overview of the topics discussed every week. These are subject t
 
 ## Recommended reading
 
-### Git
+### Git, GitHub, and SSH
 
 - GitHub Git guide: [`https://github.com/git-guides/`](https://github.com/git-guides/)
 - Another git guide: [`http://rogerdudler.github.io/git-guide/`](http://rogerdudler.github.io/git-guide/)
 - Git tutorial: [`http://git-scm.com/docs/gittutorial`](http://git-scm.com/docs/gittutorial)
 - Another git tutorial: [`https://www.w3schools.com/git/`](https://www.w3schools.com/git/)
+- Connecting to GitHub with SSH: [`https://docs.github.com/en/authentication/connecting-to-github-with-ssh`](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
 - Git cheat sheets: [`https://training.github.com/`](https://training.github.com/)
 - Where to ask questions: [Stackoverflow](https://stackoverflow.com)
+- Intro video SSH for GitHub: [`https://www.youtube.com/embed/u3kLRcGC9o0`](https://www.youtube.com/embed/u3kLRcGC9o0)
+- SSH for Mac: [`https://superuser.com/questions/88470/how-to-use-mac-os-x-keychain-with-ssh-keys`](https://superuser.com/questions/88470/how-to-use-mac-os-x-keychain-with-ssh-keys)
+- SSH for Windows: [`https://nerdsid.com/posts/windows/setup-ssh-authentication-for-git-in-windows/`](https://nerdsid.com/posts/windows/setup-ssh-authentication-for-git-in-windows/)
+- Windows error when adding SSH keys: [`https://stackoverflow.com/questions/52113738/starting-ssh-agent-on-windows-10-fails-unable-to-start-ssh-agent-service-erro`](https://stackoverflow.com/questions/52113738/starting-ssh-agent-on-windows-10-fails-unable-to-start-ssh-agent-service-erro)
 
 ### Quarto
 
@@ -54,3 +59,23 @@ This is a rough overview of the topics discussed every week. These are subject t
 ### Experiment
 
 - Erickson, Thomas D and Mark E Mattson (1981). “From words to meaning: A semantic illusion”. In: *Journal of Verbal Learning and Verbal Behavior* 20.5, pp. 540–551. DOI: [`10.1016/s0022-5371(81)90165-1`](https://www.sciencedirect.com/science/article/abs/pii/S0022537181901651).
+
+### AI and LLM
+
+- Gimpel, Henner et al. (Mar. 20, 2023). "Unlocking the Power of Generative AI: Models and Systems such as GPT-4 and ChatGPT for Higher Education – A Guide for Students and Lecturers." URL: [`https://www.fit.fraunhofer.de/content/dam/fit/en/documents/Unlocking-the-Power-of-Generative-AI.pdf`](https://www.fit.fraunhofer.de/content/dam/fit/en/documents/Unlocking-the-Power-of-Generative-AI.pdf).
+- Schöllhammer (2023) "Chatbots (ChatGPT) und Lehre"
+
+### Literature research
+
+Websites for starting literature research:
+
+- [Connected papers](https://www.connectedpapers.com/)
+- [Citation Gecko](https://citationgecko.azurewebsites.net/)
+- [Research rabbit](https://www.researchrabbit.ai/) (integrates connected papers)
+- [Elicit](https://elicit.com/)
+
+### Reference managers
+
+- Zotero tutorial: [`https://www.youtube.com/watch?v=86YDP2J-YvQ`](https://www.youtube.com/watch?v=86YDP2J-YvQ)
+- Citavi tutorial: [`https://www.youtube.com/watch?v=9GDYEGWooXE`](https://www.youtube.com/watch?v=9GDYEGWooXE)
+- EndNote tutorial: [`https://www.youtube.com/watch?v=IKPZfGPsXtg`](https://www.youtube.com/watch?v=IKPZfGPsXtg)
