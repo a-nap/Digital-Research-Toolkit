@@ -22,11 +22,11 @@ This is a rough overview of the topics discussed every week. These are subject t
 | 8 | 27.05 | Data visualization | Best practices, lying with plots, in-class exercises, exporting/saving plots and data. | [Assignment 8](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%208/assignment08.md) | [Slides](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%208/week08handout.pdf), [code](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%208/week08.R) |
 | 9 | 03.06 | Documentation, Quarto | Pandoc, markdown, Quarto, `knitr`, basic syntax and elements, export, chunk options, documentation | [Assignment 9](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%209/assignment09.md) | [Slides](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%209/week09handout.pdf), [Quarto demo](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%209/quarto_demo.zip) |
 | 10 | 10.06 | *no class* | | |
-| 11 | 17.06 | Text editors, writing reports | Plain text editors, writing reports | Assignment 10 | Slides |
-| 12 | 24.06 | Reference management | Reference managers, literature research, DOIs | Assignment 11 | Slides |
-| 13 | 01.07 | LLM, AI | LLM for humanities, effective AI use | Assignment 12 | Slides |
-| 14 | 08.07 | Git, GitHub | Version control, Git, GitHub, SSH | Assignment 13 | Slides |
-| 15 | 15.07 | Git, GitHub, course outro | Git, GitHub, reverting to older versions, class recap | In class assignment | Slides |
+| 11 | 17.06 | *no class* | | | |
+| 12 | 24.06 | Text editors, writing reports | Documentation and quarto recap, plain text editors, writing reports | [Assignment 10](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%2012/assignment10.md) | [Slides](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%2012/week12handout.pdf) |
+| 13 | 01.07 | Reference management, LLM, AI | Reference managers, literature research, DOIs, LLM for humanities, effective AI use. | [Assignment 11](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%2013/assignment11.md) | [Slides](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%2013/week13handout.pdf) |
+| 14 | 08.07 | Git, GitHub | Git, GitHub, version control | [Assignment 12](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%2014/assignment12.md) | [Slides](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%2014/week14handout.pdf) |
+| 15 | 15.07 | Git, GitHub, course outro | Git, GitHub, reverting to older versions, class recap | In class assignment | [Slides](https://github.com/a-nap/Digital-Research-Toolkit/blob/main/2025/Week%2015/week15handout.pdf) |
 
 ## Recommended reading
 
